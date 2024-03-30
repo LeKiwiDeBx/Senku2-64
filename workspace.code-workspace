@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../.vim/bundle/vim-bookmarkfancy"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.tcc": "c",
+			"variant": "c",
+			"thread": "c",
+			"mutex": "c",
+			"ctype.h": "c",
+			"gtk.h": "c",
+			"features.h": "c",
+			"matrix.h": "c",
+			"splash.h": "c"
+		},
+		"editor.fontFamily": "'FiraMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
+		"editor.fontLigatures": false,
+		"cSpell.words": [
+			"senku"
+		]
+	}
+}

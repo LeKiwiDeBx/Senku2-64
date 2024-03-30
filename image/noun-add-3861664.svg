@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   data-name="Layer 1"
+   viewBox="0 0 24 30"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="noun-add-3861664.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="28.033333"
+     inkscape:cx="12.003567"
+     inkscape:cy="15"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <title
+     id="title1">Icon</title>
+  <path
+     d="M12,2.75A9.25,9.25,0,1,0,21.25,12,9.26,9.26,0,0,0,12,2.75Zm0,16.5A7.25,7.25,0,1,1,19.25,12,7.26,7.26,0,0,1,12,19.25Z"
+     id="path1"
+     inkscape:export-filename="image_button_new_add.svg"
+     inkscape:export-xdpi="332.10809"
+     inkscape:export-ydpi="332.10809" />
+  <path
+     d="M16.38,11H13V7.62a1,1,0,0,0-2,0V11H7.62a1,1,0,0,0,0,2H11v3.38a1,1,0,0,0,2,0V13h3.38a1,1,0,0,0,0-2Z"
+     id="path2" />
+  <text
+     x="0"
+     y="39"
+     fill="#000000"
+     font-size="5px"
+     font-weight="bold"
+     font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+     id="text2">Created by Mas Dhimas</text>
+  <text
+     x="0"
+     y="44"
+     fill="#000000"
+     font-size="5px"
+     font-weight="bold"
+     font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+     id="text3">from the Noun Project</text>
+</svg>

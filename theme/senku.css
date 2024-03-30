@@ -1,0 +1,401 @@
+/* CSS Style Senku
+-------------------------------------------------------------------------------
+Version: 1.0    Date: 18 Mars 2024    Author: LeKiwiDeBx
+File name: senku.css
+
+Directory usage: appDir/theme/
+Constraint: GTK 3.0 Widget'css
+Miscellaneous:
+official: https://developer.gnome.org/gtk3/stable/chap-css-overview.html
+french palette: https://flatuicolors.com/palette/fr
+blog: https://touha.me/post/gtk3-style-css/
+twitter: #DaisyIsTrash
+
+<No copyright>   <void Happy_Coding{}>      </ LeKiwiDeBx >    <No trademark>
+-------------------------------------------------------------------------------
+*/
+
+/**********************************************************************************************
+* symbolic color pour Senku @define-color implementation GTK+
+**********************************************************************************************/
+
+@define-color senku_text_dark #2E3244;
+@define-color senku_text_light whitesmoke;
+@define-color senku_background #2E3244;
+@define-color senku_peg_delete #516079;
+@define-color senku_peg_hover #F1895C;
+@define-color senku_peg_move #5AAAA4;
+@define-color senku_peg_board #2E3244;
+@define-color senku_peg_select #F1895C;
+@define-color senku_label_title_values #5B374D;
+@define-color senku_button_hover #F1895C;
+@define-color senku_value_number #F1895C;
+
+
+/*-------------------------------------------------------------------------------------------*/
+
+/**********************************************************************************************
+*   Pour la fenêtre principale and other window
+*
+**********************************************************************************************/
+
+#windowMain,
+dialog {
+    background-color: @senku_background;
+
+}
+
+#img_logo {
+    background-image: url("../image/palette-couleurs-senku.png");
+}
+
+#dialogMenu {}
+
+#windowGetName grid>label {
+    color: @senku_text_light;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin: 5px 15px;
+    border-radius: 10px;
+}
+
+#windowGetName>grid~label {
+    color: @senku_text_light;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 20px 15px 20px 15px;
+    margin: 10px 10px;
+    border: 1px solid transparent;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+#windowGetName>grid>entry {
+    color: @senku_text_light;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 5px 15px;
+    padding-left: 30px;
+    border: 1px solid transparent;
+    border-color: transparent;
+    border-radius: 10px;
+    background-color: #5AAAA4;
+    background-image: url("../image/username.png");
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+}
+
+
+#windowGetName grid>label:nth-child(even) {
+    background-color: @senku_label_title_values;
+    padding: 0px 15px 20px 15px;
+    margin: 10px 10px;
+}
+
+#boxScore grid>label {
+    color: @senku_text_light;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin: 5px 15px;
+    border-radius: 10px;
+}
+
+#boxScore grid>label:nth-child(5n + 1) {
+    background-color: @senku_label_title_values;
+   
+}
+
+#boxScore grid>label:nth-child(5n + 2) {
+    background-color:#5AAAA4;
+   
+}
+#boxScore grid>label:nth-last-child(5n + 3) {
+    background-color: #5AAAA4;
+    
+}
+
+#boxScore grid>label:nth-last-child(5n + 4) {
+    background-color: @senku_label_title_values;
+    
+}
+
+#boxScore grid>label:nth-child(-n + 5) {
+    background-color: #5AAAA4;
+    
+}
+#boxScore .rank {
+    border: 3px solid #F1895C;
+    border-radius: 10px;
+}
+
+/**********************************************************************************************
+*   Pour les labels
+*
+**********************************************************************************************/
+box>label {
+    color: @senku_text_light;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 2px 15px 2px 15px;
+    margin: 2px;
+    border: 1px solid transparent;
+    border-color: transparent;
+    background-color: @senku_label_title_values;
+    border-radius: 10px;
+}
+
+.matrix-name-label {
+    color: #F1895C;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 15px 2px;
+    margin: 2px;
+}
+
+.value-title-label {
+    color: @senku_text_light;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.value-values-label {
+    color: @senku_value_number;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/**********************************************************************************************
+*   Pour les boutons
+*
+**********************************************************************************************/
+/* button, */
+button,
+messagedialog box button label {
+    margin: 5px 5px 5px 5px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    background: none;
+    border-color: transparent;
+    box-shadow: inset 0 0, inset 0 0;
+    color: @senku_text_light;
+    font-size: 1.1em;
+}
+
+button:hover {
+    background-color: @senku_button_hover;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: @senku_text_light;
+    border-radius: 0px;
+    text-shadow: none;
+}
+
+#buttonNewGame {
+    background-image: url("../image/img_button_new_game64x64.png");
+}
+
+#buttonUndo {
+    background-image: url("../image/img_button_undo64x64.png");
+}
+
+#buttonScore {
+    background-image: url("../image/img_button_score64x64.png");
+}
+
+#buttonRotateLeft {
+    background-image: url("../image/img_button_left64x64.png");
+}
+
+#buttonRotateRight {
+    background-image: url("../image/img_button_right64x64.png");
+}
+
+#buttonQuit {
+    background-image: url("../image/img_button_quit64x64.png");
+}
+
+.image-button {
+    /* background-image: url("../image/img_button_new_game.png"); */
+
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 50%;
+    font-size: xx-large;
+    transition: all 0.5s ease-out;
+}
+
+.image-button:disabled {
+    opacity: 0.3;
+}
+
+/**********************************************************************************************
+*   Pour les pegs
+*
+**********************************************************************************************/
+.peg-hover {
+    /* background-color: #F1895C; */
+
+    /* background-image:  url("../image/circle_blue32.png"); */
+    opacity: .85;
+    border-radius: 50%;
+    background-color: @senku_peg_hover;
+    background-image: radial-gradient(ellipse at center, #F1895C 0%, #2E3244 100%);
+    transition-duration: 250ms;
+    padding: 2px;
+}
+
+.peg-delete {
+
+    background-color: @senku_peg_delete;
+    border-radius: 50%;
+    opacity: 1;
+    margin: 2px;
+}
+
+.peg-move {
+
+    background-color: @senku_peg_move;
+    border-radius: 50%;
+    opacity: 1;
+    margin: 2px;
+}
+
+.peg-board {
+
+    background-color: @senku_peg_board;
+    border-radius: 50%;
+    opacity: 1;
+    margin: 2px;
+}
+
+.peg-select {
+    background-color: @senku_peg_select;
+    border-radius: 50%;
+    opacity: 1;
+    margin: 2px;
+
+}
+
+/**********************************************************************************************
+*   Pour les frames
+*
+**********************************************************************************************/
+frame {
+    background-color: @senku_background;
+
+}
+
+frame>label {
+    /* color: @senku_text_light; */
+}
+
+/**********************************************************************************************
+ *   Pour les fenêtres dialogue
+ *
+ * ********************************************************************************************/
+window,
+messagedialog {
+    background-color: @senku_background;
+}
+
+messagedialog,
+dialog label {
+    color: @senku_text_light;
+}
+
+dialog>radiobutton {
+    opacity: .85;
+}
+
+/**********************************************************************************************
+*   Pour les box
+*
+**********************************************************************************************/
+box {}
+
+/**********************************************************************************************
+ *   Pour les radio button choix
+ *
+ * *********************************************************************************************/
+
+radiobutton>label {
+    margin: 5px 5px 5px 25px;
+    background-color: #F1895C;
+    border: 2px solid @senku_value_number;
+    border-radius: 12px;
+    padding-left: 15px;
+
+}
+
+
+radiobutton {
+    margin: 20px 20px;
+    font-weight: bold;
+    padding: 20px 100px 20px 20px;
+    font-size: 1.5em;
+    color: @senku_text_light;
+    background-color: @senku_background;
+    border: 2px solid @senku_value_number;
+    border-radius: 12px;
+}
+
+radio:checked {
+    color: #F1895C;
+
+}
+
+radio:hover {
+    color: #F1895C;
+}
+
+/**********************************************************************************************
+ *   Pour la grille matrice
+ *
+ * *********************************************************************************************/
+#gridMatrix {
+    border: 3px solid #F1895C;
+    border-radius: 3%;
+    padding: 5px;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: padding, background-image 0.5s ease-in-out 1s;
+
+}
+
+#gridMatrix.logo {
+    padding: 130px;
+    background-image: url("../image/logo_senku.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px;
+    animation: logomove 8s ease-in-out 0s infinite normal none;
+}
+
+@keyframes logomove {
+    0% {
+        opacity: 0.1;
+
+    }
+
+    50% {
+        opacity: 1;
+
+
+    }
+
+    100% {
+        opacity: 0.1;
+
+    }
+
+
+}
+
+/****************************************** END OF CSS **********************************************/

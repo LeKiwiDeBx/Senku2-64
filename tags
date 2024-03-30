@@ -1,0 +1,277 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTION_SELECT_PEG	board.c	/^    ACTION_SELECT_PEG,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_EAST	board.c	/^    ACTION_SELECT_TAKE_EAST,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_NORTH	board.c	/^    ACTION_SELECT_TAKE_NORTH,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_SOUTH	board.c	/^    ACTION_SELECT_TAKE_SOUTH,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_WEST	board.c	/^    ACTION_SELECT_TAKE_WEST,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_UNSELECT_PEG	board.c	/^    ACTION_SELECT_UNSELECT_PEG = 10,$/;"	e	enum:e_actionSelect	file:
+ACTION_UNDO	board.c	55;"	d	file:
+APPLICATION_BORDER_WIDTH	board.c	61;"	d	file:
+APPLICATION_SIZE_HEIGHT	board.c	60;"	d	file:
+APPLICATION_SIZE_WIDTH	board.c	59;"	d	file:
+APPLICATION_TITLE	board.c	58;"	d	file:
+BLANK	board.c	56;"	d	file:
+BOX_SCORE_TITLE	board.c	57;"	d	file:
+Board	board.h	/^} Board;$/;"	t	typeref:struct:s_Board
+CC	Makefile	/^CC = gcc$/;"	m
+CENTER	peg.h	/^    CENTER, \/* 0 Peg central par rapport aux 4 directions *\/$/;"	e	enum:e_Peg_Direction
+CFLAGS	Makefile	/^CFLAGS = -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -O3 -Wall -Wextra -o$/;"	m
+Coord	board.c	/^} Coord ;$/;"	t	typeref:struct:s_coord	file:
+DEFAULT	peg.h	/^    DEFAULT, \/* 5 emplacement par defaut *\/$/;"	e	enum:e_Peg_Direction
+EAST	peg.h	/^    EAST, \/* 2 					*\/$/;"	e	enum:e_Peg_Direction
+HOR_MAX	matrix.h	18;"	d
+IMG_PEG_BOARD	board.c	52;"	d	file:
+IMG_PEG_DELETE	board.c	49;"	d	file:
+IMG_PEG_DELETE_UNDO	board.c	50;"	d	file:
+IMG_PEG_MOVE	board.c	47;"	d	file:
+IMG_PEG_SELECT	board.c	48;"	d	file:
+IMG_PEG_UNDO	board.c	51;"	d	file:
+LABEL_BONUS	board.c	/^    LABEL_BONUS,$/;"	e	enum:typeLabel	file:
+LABEL_BONUS_TEXT	board.c	63;"	d	file:
+LABEL_COLOR_BG_LOGO	board.c	37;"	d	file:
+LABEL_COLOR_LOGO	board.c	36;"	d	file:
+LABEL_COLOR_TEXT	board.c	35;"	d	file:
+LABEL_COLOR_TITLE	board.c	34;"	d	file:
+LABEL_LOGO	board.c	66;"	d	file:
+LABEL_PEG	board.c	/^    LABEL_PEG,$/;"	e	enum:typeLabel	file:
+LABEL_PEG_TEXT	board.c	64;"	d	file:
+LABEL_TIME	board.c	/^    LABEL_TIME,$/;"	e	enum:typeLabel	file:
+LABEL_TIME_TEXT	board.c	65;"	d	file:
+LDFLAGS	Makefile	/^LDFLAGS= # -mwindows$/;"	m
+MAX_CAR_NAME	score.h	10;"	d
+MAX_LABEL	board.c	62;"	d	file:
+MAX_SEC_BONUS	score.h	11;"	d
+MAX_STRUCT_PEG	peg.h	11;"	d
+MEMENTO_H	memento.h	8;"	d
+MIN_SEC_BONUS	score.h	12;"	d
+Matrix	matrix.h	/^typedef char Matrix[HOR_MAX][VER_MAX];$/;"	t
+NB_UNDO	memento.h	12;"	d
+NORTH	peg.h	/^    NORTH, \/* 1 direction où aller *\/$/;"	e	enum:e_Peg_Direction
+NO_ACTION_UNDO	board.c	54;"	d	file:
+NO_MORE_MOVE	board.c	53;"	d	file:
+NO_MOVE	peg.h	/^    NO_MOVE = 10 \/* on reclique sur le meme Peg (GDK) *\/$/;"	e	enum:e_Peg_Direction
+OBJECTS	Makefile	/^OBJECTS = main.o board.o peg.o matrix.o timer.o score.o memento.o$/;"	m
+OnCloseBoxScore	board.c	/^void OnCloseBoxScore(GtkWidget *pWidget, gpointer pData)$/;"	f
+OnDestroy	board.c	/^void OnDestroy(GtkWidget *pWidget, gpointer pData)$/;"	f
+OnDestroyGetName	board.c	/^void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)$/;"	f
+OnDisplayScore	board.c	/^void OnDisplayScore(GtkWidget *pWidget, dataName *pData)$/;"	f
+OnNewGame	board.c	/^void OnNewGame(GtkWidget *pWidget, gpointer pData)$/;"	f
+OnPlay	board.c	/^void OnPlay(GtkWidget *pWidget, gpointer pData)$/;"	f
+OnRadioToggled	board.c	/^int OnRadioToggled(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f
+OnSelect	board.c	/^void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f
+OnSetName	board.c	/^void OnSetName(GtkWidget *pWidget, dataName *pData)$/;"	f
+OnUndo	board.c	/^void OnUndo(GtkWidget *pWidget, gpointer pData)$/;"	f
+PEG	score.c	/^    PEG,$/;"	e	enum:e_typeSort	file:
+PKG_CONFIG	Makefile	/^PKG_CONFIG = `pkg-config --libs --cflags gtk+-3.0`$/;"	m
+PRN	score.c	15;"	d	file:
+PROG	Makefile	/^PROG = senku$/;"	m
+Peg	peg.h	/^} Peg;$/;"	t	typeref:struct:s_Peg
+Peg_Coord	peg.h	/^} Peg_Coord;$/;"	t	typeref:struct:s_Peg_Coord
+Peg_Direction	peg.h	/^} Peg_Direction;$/;"	t	typeref:enum:e_Peg_Direction
+Peg_Memento	peg.h	/^} Peg_Memento;$/;"	t	typeref:struct:s_Peg_Memento
+SCORE	score.c	/^    SCORE$/;"	e	enum:e_typeSort	file:
+SCORE_BEST_OF	score.h	13;"	d
+SENKU_ABS	board.c	42;"	d	file:
+SENKU_PANGO_CONCAT_STR	board.c	40;"	d	file:
+SENKU_PANGO_MARKUP_LABEL	board.c	41;"	d	file:
+SIZE_TAB	memento.c	14;"	d	file:
+SOUTH	peg.h	/^    SOUTH, \/* 3 					*\/$/;"	e	enum:e_Peg_Direction
+TIME	score.c	/^    TIME,$/;"	e	enum:e_typeSort	file:
+TIMER_DELAY	board.c	46;"	d	file:
+TITLE_MAIN	board.c	44;"	d	file:
+TITLE_MENU	board.c	45;"	d	file:
+UNDO	peg.h	/^    UNDO = 666, \/* 666 Devil Number =:> Peg à undo *\/$/;"	e	enum:e_Peg_Direction
+UNKNOWN	score.h	14;"	d
+VER_MAX	matrix.h	19;"	d
+WEST	peg.h	/^    WEST, \/* 4 					*\/$/;"	e	enum:e_Peg_Direction
+_BOARD_H_	board.h	9;"	d
+_LINUX_	board.c	30;"	d	file:
+_MATRIX_H_	matrix.h	9;"	d
+_PEG_H_	peg.h	9;"	d
+_SCORE_H_	score.h	8;"	d
+_TIMER_H_	timer.h	9;"	d
+__addBegin	score.c	/^__addBegin( ) {$/;"	f	file:
+__addEnd	score.c	/^__addEnd( ) {$/;"	f	file:
+__addInside	score.c	/^__addInside( int posInsert ) {$/;"	f	file:
+__calculateScore	score.c	/^__calculateScore( const int remainPeg, const double timeBonus ) {$/;"	f	file:
+__getCoordPegWhereWeGo	matrix.c	/^__getCoordPegWhereWeGo( int where ) {$/;"	f
+__insertRecord	score.c	/^__insertRecord( score *inputScore ) {$/;"	f	file:
+__setBonusElapseTime	score.c	/^__setBonusElapseTime( int bonus ) {$/;"	f	file:
+__setIdScore	score.c	/^__setIdScore( int idScore ) {$/;"	f	file:
+__setRemainingPeg	score.c	/^__setRemainingPeg( int remainPeg ) {$/;"	f	file:
+__setScoreGame	score.c	/^__setScoreGame( int scoreGame ) {$/;"	f	file:
+__updateCursorScore	score.c	/^__updateCursorScore( const score * inputScore ) {$/;"	f	file:
+_firstSelectPeg	board.c	/^_firstSelectPeg(char *action, gboolean value)$/;"	f
+_g_displayMatrix	board.c	/^void _g_displayMatrix(Matrix matrix)$/;"	f
+_g_displayUndoMatrix	board.c	/^void _g_displayUndoMatrix(pMemento pm)$/;"	f
+_g_displayUpdateMatrix	board.c	/^void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)$/;"	f
+_g_display_box_menu	board.c	/^void _g_display_box_menu(gpointer pData)$/;"	f
+_g_display_box_score	board.c	/^void _g_display_box_score(pScore ps, const int rank)$/;"	f
+_g_display_get_name	board.c	/^void _g_display_get_name(int rank)$/;"	f
+_g_display_time	board.c	/^_g_display_time(gpointer pData)$/;"	f
+_g_erase_displayMatrix	board.c	/^void _g_erase_displayMatrix()$/;"	f
+_g_labelSet	board.c	/^void _g_labelSet(GtkWidget *pWidget, gpointer pData)$/;"	f
+_g_new_GridMatrix	board.c	/^void _g_new_GridMatrix()$/;"	f
+_setLastMementoUndoRedrawNormal	board.c	/^void _setLastMementoUndoRedrawNormal(pMemento pm)$/;"	f
+actionSelect	board.c	/^} actionSelect;$/;"	t	typeref:enum:e_actionSelect	file:
+boardInit	board.c	/^int boardInit()$/;"	f
+bonusElapseTime	score.h	/^    double bonusElapseTime;$/;"	m	struct:s_Score
+bonusTimeScore	score.c	/^static double bonusTimeScore = 0 ;$/;"	v	file:
+bydefault	peg.h	/^    int bydefault;$/;"	m	struct:s_Peg
+caretakerAddMemento	memento.c	/^caretakerAddMemento( pMemento pmArray ) {$/;"	f
+caretakerGetMemento	memento.c	/^caretakerGetMemento( int undo ) {$/;"	f
+caretakerNew	memento.c	/^caretakerNew( ) {$/;"	f
+column	memento.h	/^    int column;$/;"	m	struct:s_mvt
+column	peg.h	/^    int column;$/;"	m	struct:s_Peg_Coord
+coord	peg.h	/^    Peg_Coord coord;$/;"	m	struct:s_Peg
+coordBetween	peg.h	/^    Peg_Coord coordBetween;$/;"	m	struct:s_Peg_Memento
+coordEnd	peg.h	/^    Peg_Coord coordEnd;$/;"	m	struct:s_Peg_Memento
+coordStart	peg.h	/^    Peg_Coord coordStart;$/;"	m	struct:s_Peg_Memento
+currentMatrixOfBoard	matrix.h	/^matrixOfBoard currentMatrixOfBoard;$/;"	v
+currentTimer	timer.c	/^static time_t currentTimer ;$/;"	v	file:
+cursorCurrentScore	score.c	/^static score cursorCurrentScore ;$/;"	v	file:
+cursorScore	score.c	/^static pScore cursorScore ;$/;"	v	file:
+dataName	board.c	/^} dataName;$/;"	t	typeref:struct:s_dataName	file:
+direction	peg.h	/^    Peg_Direction direction;$/;"	m	struct:s_Peg
+e_Peg_Direction	peg.h	/^typedef enum e_Peg_Direction {$/;"	g
+e_actionSelect	board.c	/^typedef enum e_actionSelect$/;"	g	file:
+e_typeSort	score.c	/^typedef enum e_typeSort {$/;"	g	file:
+elapseTimer	timer.c	/^static double elapseTimer ;$/;"	v	file:
+eventCoord	board.c	/^Coord eventCoord, *pEventCoord;$/;"	v
+fmtTime	timer.h	/^} fmtTime;$/;"	t	typeref:struct:s_fmtTime
+handleTimeout	board.c	/^static guint handleTimeout = 0;          \/\/handle de la fonction g_timeout_add()$/;"	v	file:
+id	matrix.h	/^    int id;$/;"	m	struct:s_matrixOfBoard
+idRollback	memento.h	/^    int idRollback; \/\/ identifiant du mouvement$/;"	m	struct:s_memento
+idScore	score.h	/^    int idScore;$/;"	m	struct:s_Score
+inputScore	score.c	/^static score inputScore ;$/;"	v	file:
+mArrayList	memento.c	/^static mementoArrayList mArrayList = {NULL} ; \/\/tableau de pointeur de memento$/;"	v	file:
+main	main.c	/^main( int argc, char *argv[] ) {$/;"	f
+matrixCanMovePeg	matrix.c	/^matrixCanMovePeg( ) {$/;"	f
+matrixCopy	matrix.h	/^Matrix matrixCopy;$/;"	v
+matrixCountRemainPeg	matrix.c	/^matrixCountRemainPeg( ) {$/;"	f
+matrixDiamond	matrix.c	/^Matrix matrixDiamond = {$/;"	v
+matrixEnglish	matrix.c	/^Matrix matrixEnglish = {$/;"	v
+matrixGerman	matrix.c	/^Matrix matrixGerman = {$/;"	v
+matrixLoad	matrix.c	/^matrixLoad( int choice ) {$/;"	f
+matrixOfBoard	matrix.h	/^} matrixOfBoard;$/;"	t	typeref:struct:s_matrixOfBoard
+matrixSelectPeg	matrix.c	/^matrixSelectPeg( int row, int column ) {$/;"	f
+matrixUpdate	matrix.c	/^matrixUpdate( Peg_Direction where ) {$/;"	f
+memento	memento.h	/^} memento;$/;"	t	typeref:struct:s_memento
+mementoArrayList	memento.h	/^typedef pMemento mementoArrayList[NB_UNDO]; \/\/typedef pMemento mementoArrayList[NB_UNDO]<br\/>tableau de pointeur de memento$/;"	t
+mementoGetSaveState	memento.c	/^mementoGetSaveState( pMemento pm ) {$/;"	f
+mementoIsEmpty	memento.c	/^mementoIsEmpty( ) {$/;"	f
+mementoNew	memento.c	/^mementoNew( mvt mvtStart, mvt mvtBetween, mvt mvtEnd ) {$/;"	f
+mkt_min	timer.h	/^    double mkt_min;$/;"	m	struct:s_fmtTime
+mkt_sec	timer.h	/^    double mkt_sec;$/;"	m	struct:s_fmtTime
+mvt	memento.h	/^} mvt;$/;"	t	typeref:struct:s_mvt
+mvtBetween	memento.h	/^    mvt mvtBetween; \/\/ coord intermediaire du mouvement$/;"	m	struct:s_memento
+mvtEnd	memento.h	/^    mvt mvtEnd; \/\/ coord arrivée du mouvement$/;"	m	struct:s_memento
+mvtStart	memento.h	/^    mvt mvtStart; \/\/ coord depart du mouvement$/;"	m	struct:s_memento
+name	matrix.h	/^    char *name;$/;"	m	struct:s_matrixOfBoard
+namePlayer	score.h	/^    char namePlayer[MAX_CAR_NAME];$/;"	m	struct:s_Score
+oldCurrentTimer	timer.c	/^static time_t oldCurrentTimer ;$/;"	v	file:
+onlyOneBoard	board.c	/^Board onlyOneBoard;$/;"	v
+originatorRestoreFromMemento	memento.c	/^originatorRestoreFromMemento( pMemento pm ) {$/;"	f
+originatorSaveToMemento	memento.c	/^originatorSaveToMemento( ) {$/;"	f
+originatorSet	memento.c	/^originatorSet( Peg_Memento state ) {$/;"	f
+pBoxMenu	board.c	/^GtkWidget *pBoxMenu = NULL;$/;"	v
+pBoxMenuButton	board.c	/^GtkWidget *pBoxMenuButton = NULL;$/;"	v
+pBoxMenuOption	board.c	/^GtkWidget *pBoxMenuOption = NULL;$/;"	v
+pBoxScore	board.c	/^GtkWidget *pBoxScore = NULL;$/;"	v
+pBtnMenuPlay	board.c	/^GtkWidget *pBtnMenuPlay = NULL;$/;"	v
+pBtnMenuQuit	board.c	/^GtkWidget *pBtnMenuQuit = NULL;$/;"	v
+pButtonNewGame	board.c	/^GtkWidget *pButtonNewGame = NULL;$/;"	v
+pButtonQuit	board.c	/^GtkWidget *pButtonQuit = NULL;$/;"	v
+pButtonScore	board.c	/^GtkWidget *pButtonScore = NULL;$/;"	v
+pButtonUndo	board.c	/^GtkWidget *pButtonUndo = NULL;$/;"	v
+pDataName	board.c	/^dataName *pDataName;$/;"	v
+pDialogBoxQuit	board.c	/^GtkWidget *pDialogBoxQuit = NULL;$/;"	v
+pEventCoord	board.c	/^Coord eventCoord, *pEventCoord;$/;"	v
+pGridMain	board.c	/^GtkWidget *pGridMain;$/;"	v
+pGridMatrix	board.c	/^GtkWidget *pGridMatrix;$/;"	v
+pGridScore	board.c	/^GtkWidget *pGridScore = NULL;$/;"	v
+pHbox	board.c	/^GtkWidget *pHbox = NULL;$/;"	v
+pMatrixLoad	matrix.h	/^char ( * pMatrixLoad)[VER_MAX]; \/\/pointeur sur le tableau Matrix multidimensionnel$/;"	v
+pMemento	memento.h	/^typedef memento* pMemento;$/;"	t
+pMementoLastUndo	board.c	/^static pMemento pMementoLastUndo = NULL; \/\/retiens le dernier undo$/;"	v	file:
+pScore	score.h	/^typedef score *pScore;$/;"	t
+pShape	matrix.h	/^    Matrix *pShape;$/;"	m	struct:s_matrixOfBoard
+pVbox	board.c	/^GtkWidget *pVbox;$/;"	v
+pWidgetName	board.c	/^    GtkWidget *pWidgetName;$/;"	m	struct:s_dataName	file:
+pWindowGetName	board.c	/^GtkWidget *pWindowGetName = NULL;$/;"	v
+pWindowMain	board.c	/^GtkWidget *pWindowMain;$/;"	v
+pegBuildPeg	peg.c	/^pegBuildPeg( int row, int column, Peg_Direction direction ) {$/;"	f
+pegFirstPeg	peg.c	/^pegFirstPeg( int row, int column ) {$/;"	f
+pegFlushPeg	peg.c	/^pegFlushPeg( ) {$/;"	f
+pegReturnDefaultPeg	peg.c	/^pegReturnDefaultPeg( ) {$/;"	f
+pfmtTime	timer.h	/^typedef fmtTime *pfmtTime;$/;"	t
+pfrComments	board.c	/^GtkWidget *pfrComments = NULL;$/;"	v
+pfrTitle	board.c	/^GtkWidget *pfrTitle = NULL;$/;"	v
+plbBonus	board.c	/^GtkWidget *plbBonus = NULL;$/;"	v
+plbBonusValue	board.c	/^GtkWidget *plbBonusValue = NULL;$/;"	v
+plbComments	board.c	/^GtkWidget *plbComments = NULL;$/;"	v
+plbLogo	board.c	/^GtkWidget *plbLogo = NULL;$/;"	v
+plbPegs	board.c	/^GtkWidget *plbPegs = NULL;$/;"	v
+plbPegsValue	board.c	/^GtkWidget *plbPegsValue = NULL;$/;"	v
+plbTime	board.c	/^GtkWidget *plbTime = NULL;$/;"	v
+plbTimeValue	board.c	/^GtkWidget *plbTimeValue = NULL;$/;"	v
+plbTitle	board.c	/^GtkWidget *plbTitle = NULL;$/;"	v
+plbValues	board.c	/^GtkWidget *plbValues[MAX_LABEL];$/;"	v
+plbValuesValue	board.c	/^GtkWidget *plbValuesValue[MAX_LABEL];$/;"	v
+pm	memento.c	/^static pMemento pm ;$/;"	v	file:
+radio	board.c	/^GtkWidget *radio = NULL;$/;"	v
+rang	board.c	/^    int rang;$/;"	m	struct:s_dataName	file:
+remainingPeg	score.c	/^static int remainingPeg = 0 ;$/;"	v	file:
+remainingPeg	score.h	/^    int remainingPeg;$/;"	m	struct:s_Score
+row	memento.h	/^    int row;$/;"	m	struct:s_mvt
+row	peg.h	/^    int row;$/;"	m	struct:s_Peg_Coord
+s_Board	board.h	/^typedef struct s_Board {$/;"	s
+s_Peg	peg.h	/^typedef struct s_Peg {$/;"	s
+s_Peg_Coord	peg.h	/^typedef struct s_Peg_Coord {$/;"	s
+s_Peg_Memento	peg.h	/^typedef struct s_Peg_Memento {$/;"	s
+s_Score	score.h	/^typedef struct s_Score {$/;"	s
+s_coord	board.c	/^typedef struct s_coord$/;"	s	file:
+s_dataName	board.c	/^typedef struct s_dataName$/;"	s	file:
+s_fmtTime	timer.h	/^typedef struct s_fmtTime {$/;"	s
+s_matrixOfBoard	matrix.h	/^typedef struct s_matrixOfBoard {$/;"	s
+s_memento	memento.h	/^typedef struct s_memento {$/;"	s
+s_mvt	memento.h	/^typedef struct s_mvt {$/;"	s
+score	score.h	/^} score;$/;"	t	typeref:struct:s_Score
+scoreGame	score.h	/^    double scoreGame;$/;"	m	struct:s_Score
+scoreGetBonusTimeScore	score.c	/^scoreGetBonusTimeScore( ) {$/;"	f
+scoreGetSortScore	score.c	/^scoreGetSortScore( int rank ) {$/;"	f
+scoreInit	score.c	/^scoreInit( ) {$/;"	f
+scoreNew	score.c	/^scoreNew( ) {$/;"	f
+scoreResetBonusTimeScore	score.c	/^scoreResetBonusTimeScore( ) {$/;"	f
+scoreSetCalculateBonusElapseTimer	score.c	/^scoreSetCalculateBonusElapseTimer( double elapseTimer ) {$/;"	f
+scoreSetNamePlayer	score.c	/^scoreSetNamePlayer( const char *sName, int rank ) {$/;"	f
+scoreSetRemainingPeg	score.c	/^scoreSetRemainingPeg( int number ) {$/;"	f
+set	board.h	/^    matrixOfBoard *set;$/;"	m	struct:s_Board
+startClock	timer.c	/^static clock_t startClock ;$/;"	v	file:
+startTimer	timer.c	/^static time_t startTimer ;$/;"	v	file:
+statePeg	memento.c	/^static Peg_Memento statePeg ;$/;"	v	file:
+stopClock	timer.c	/^static clock_t stopClock ;$/;"	v	file:
+stopTimer	timer.c	/^static time_t stopTimer ;$/;"	v	file:
+tabScore	score.h	/^typedef score tabScore[SCORE_BEST_OF];$/;"	t
+tabSortScore	score.c	/^static tabScore tabSortScore ;$/;"	v	file:
+tab_Peg	peg.c	/^Peg tab_Peg[MAX_STRUCT_PEG] = {$/;"	v
+timerGetElapseClock	timer.c	/^timerGetElapseClock( ) {$/;"	f
+timerGetElapseTimer	timer.c	/^timerGetElapseTimer( ) {$/;"	f
+timerGetMktime	timer.c	/^timerGetMktime( double rawTime ) {$/;"	f
+timerGetTotalTimer	timer.c	/^timerGetTotalTimer( ) {$/;"	f
+timerSetElapseTimer	timer.c	/^timerSetElapseTimer( ) {$/;"	f
+timerSetStartTimer	timer.c	/^timerSetStartTimer( ) {$/;"	f
+timerSetStopTimer	timer.c	/^timerSetStopTimer( ) {$/;"	f
+timerStartClock	timer.c	/^timerStartClock( ) {$/;"	f
+timerStopClock	timer.c	/^timerStopClock( ) {$/;"	f
+typeLabel	board.c	/^enum typeLabel$/;"	g	file:
+typeSort	score.c	/^} typeSort ;$/;"	t	typeref:enum:e_typeSort	file:
+uniqInstance	timer.c	/^static int uniqInstance = 1 ;$/;"	v	file:
+which_radio_is_selected	board.c	/^int which_radio_is_selected(GSList *group)$/;"	f
+x	board.c	/^    char x;$/;"	m	struct:s_coord	file:
+y	board.c	/^    char y;$/;"	m	struct:s_coord	file:

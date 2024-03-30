@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 77 103.75"
+   fill="none"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="noun-power-3389493.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="8.1060241"
+     inkscape:cx="38.489893"
+     inkscape:cy="51.875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <path
+     d="M38.1641 43.1816C35.9641 43.1816 34.1641 41.3816 34.1641 39.1816V4.68164C34.1641 2.48164 35.9641 0.681641 38.1641 0.681641C40.3641 0.681641 42.1641 2.48164 42.1641 4.68164V39.1816C42.1641 41.3816 40.4641 43.1816 38.1641 43.1816ZM76.1641 44.4824C76.1641 29.8824 68.0645 16.7832 55.0645 10.2832C53.0645 9.2832 50.6641 10.082 49.6641 12.082C48.6641 14.082 49.4648 16.4824 51.4648 17.4824C61.7648 22.5824 68.1641 32.9824 68.1641 44.4824C68.1641 61.1824 54.6641 74.6816 38.1641 74.6816C21.6641 74.6816 8.16406 61.1824 8.16406 44.4824C8.16406 32.8824 14.5633 22.5828 24.8633 17.3828C26.8633 16.3828 27.6641 13.9824 26.6641 11.9824C25.6641 9.98242 23.2637 9.18164 21.2637 10.1816C8.26367 16.7816 0.164062 29.8824 0.164062 44.4824C0.164062 65.5824 17.1641 82.6816 38.1641 82.6816C59.1641 82.6816 76.1641 65.5824 76.1641 44.4824Z"
+     fill="black"
+     id="path1"
+     inkscape:export-filename="img_button_quit.png"
+     inkscape:export-xdpi="74.926865"
+     inkscape:export-ydpi="74.926865" />
+  <text
+     x="0"
+     y="98"
+     fill="#000000"
+     font-size="5px"
+     font-weight="bold"
+     font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+     id="text1">Created by Anitha Jagathish</text>
+  <text
+     x="0"
+     y="103"
+     fill="#000000"
+     font-size="5px"
+     font-weight="bold"
+     font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+     id="text2">from the Noun Project</text>
+</svg>
