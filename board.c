@@ -385,9 +385,6 @@ activate(GtkApplication *app,
 
     // attachement de la grille matrice a la grille principale
     pGridMatrix = gtk_grid_new();
-    // gtk_grid_set_row_spacing(GTK_GRID(pGridMatrix), 2);
-    // gtk_grid_set_column_spacing(GTK_GRID(pGridMatrix), 2);
-    //  gtk_grid_attach_next_to(GTK_GRID(pGridMain), pGridMatrix, NULL, GTK_POS_LEFT, 1, 1);
     gtk_grid_attach(GTK_GRID(pGridMain), pGridMatrix, 0, 0, 1, 1);
 
     gtk_widget_set_halign(GTK_WIDGET(pGridMatrix), GTK_ALIGN_CENTER);
@@ -399,42 +396,26 @@ activate(GtkApplication *app,
     gtk_widget_set_margin_top(GTK_WIDGET(pHbox), 0);
     gtk_widget_set_halign(GTK_WIDGET(pHbox), GTK_ALIGN_CENTER);
 
-    // const gchar *lbNewGame = "New Game";
-    // pButtonNewGame = gtk_button_new_with_label(lbNewGame);
     pButtonNewGame = gtk_button_new();
-    // GtkWidget * imgButtonNewGame = gtk_image_new_from_file(IMG_BUTTON_NEW_GAME);
-    // gtk_button_set_image(GTK_BUTTON(pButtonNewGame), GTK_WIDGET(imgButtonNewGame));
-    // gtk_button_set_always_show_image (GTK_BUTTON(pButtonNewGame), TRUE);
-
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonNewGame), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonNewGame, FALSE, FALSE, 0);
 
-    // const gchar *lbUndo = "Undo";
-    // pButtonUndo = gtk_button_new_with_label(lbUndo);
     pButtonUndo = gtk_button_new();
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonUndo), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonUndo, FALSE, FALSE, 0);
 
-    // const gchar *lbScore = "Score";
-    // pButtonScore = gtk_button_new_with_label(lbScore);
     pButtonScore = gtk_button_new();
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonScore), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonScore, FALSE, FALSE, 0);
 
-    // const gchar *lbRotateLeft = "Left";
-    // pButtonRotateLeft = gtk_button_new_with_label(lbRotateLeft);
     pButtonRotateLeft = gtk_button_new();
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonRotateLeft), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonRotateLeft, FALSE, FALSE, 0);
 
-    // const gchar *lbRotateRight = "Right";
-    // pButtonRotateRight = gtk_button_new_with_label(lbRotateRight);
     pButtonRotateRight = gtk_button_new();
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonRotateRight), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonRotateRight, FALSE, FALSE, 0);
 
-    // const gchar *lbQuit = "Quit";
-    // pButtonQuit = gtk_button_new_with_label(lbQuit);
     pButtonQuit = gtk_button_new();
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonQuit), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonQuit, FALSE, FALSE, 0);
@@ -464,9 +445,6 @@ activate(GtkApplication *app,
     for (int k = 0; k < 3; k++)
     {
         plbValues[k] = gtk_label_new(plbValuesTitle[k]);
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TITLE, s), plbValuesTitle[k]);
-        // gtk_label_set_markup(GTK_LABEL(plbValues[k]), markup);
-        // g_free(markup);
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValues[k]), "value-title-label");
     }
 
@@ -517,24 +495,19 @@ activate(GtkApplication *app,
     onlyOneBoard.set = &currentMatrixOfBoard;
     scoreInit();
     gtk_widget_show_all(pWindowMain);
-    //  _g_display_get_name(1);
     _g_display_box_menu_new_game(NULL);
 }
 
 int boardInitNew()
 {
-
     int status;
     app = gtk_application_new("lekiwidebx.dev.senku", G_APPLICATION_FLAGS_NONE);
     g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
     status = g_application_run(G_APPLICATION(app), 0, NULL);
-    // scoreInit();
-    // gtk_main();
-    // EXIT_SUCCESS;
     return status;
 }
 
-int boardInit()
+int boardInit() ////////  DO NOT USE OLD CODE DO NOT USE OLD CODE DO NOT USE OLD CODE  ////////////////////
 {
     const char *lbNewGame = "New Game";
     const char *lbUndo = "Undo";
@@ -716,14 +689,10 @@ int _g_display_box_menu_new_game(gpointer pData)
 
     gtk_widget_show_all(pDialogMenu);
     gint result = gtk_dialog_run(GTK_DIALOG(pDialogMenu));
-    // g_printf("DEBUG: %d\n", result);
     gint newGame = 0;
     switch (result)
     {
     case GTK_RESPONSE_OK:
-        // gtk_widget_destroy(GTK_WIDGET(pDialogMenu));
-        // GTK_IS_RADIO_BUTTON (GTK_RADIO_BUTTON(pRadio)) ? g_printf("RADIO\n") : g_printf("NOT RADIO\n");
-        // g_printf("DEBUG: %d\n", which_radio_is_selected(gtk_radio_button_get_group(GTK_RADIO_BUTTON(pRadio))));
         int radio_selected = which_radio_is_selected(gtk_radio_button_get_group(GTK_RADIO_BUTTON(pRadio)));
         OnPlay(NULL, GINT_TO_POINTER(radio_selected));
         newGame = radio_selected;
@@ -1017,50 +986,24 @@ __displayPlayAgain( ) {
 
 void OnDestroy(GtkWidget *pWidget, gpointer pData)
 {
-    // const gchar *msg = "Do you Really wish to Quit Senku ?";
-    // pDialogBoxQuit = gtk_message_dialog_new(GTK_WINDOW(pWindowMain), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_OK_CANCEL, msg);
-
     pDialogBoxQuit = gtk_message_dialog_new(GTK_WINDOW(pWindowMain), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_OK_CANCEL, "Do you Really wish to Quit Senku ?");
     gtk_window_set_title(GTK_WINDOW(pDialogBoxQuit), "Confirm QUIT");
-    // if (pData != NULL)
-    // {
-    //     gtk_window_set_transient_for(GTK_WINDOW(pDialogBoxQuit), GTK_WINDOW(pWindowMain)); //pData replace pWindowMain
-    //     gtk_window_set_position(GTK_WINDOW(pDialogBoxQuit), GTK_WIN_POS_CENTER_ON_PARENT);
-    // }
-    // else
-    //     gtk_window_set_position(GTK_WINDOW(pDialogBoxQuit), GTK_WIN_POS_CENTER_ALWAYS);
     gint result = gtk_dialog_run((GTK_DIALOG(pDialogBoxQuit)));
-    // printf("result dialog %d", result); //DEBUG
+
     switch (result)
     {
     case GTK_RESPONSE_OK:
-        // gtk_main_quit();
-        //  g-applcation
         g_application_quit(G_APPLICATION(app));
         break;
     default:
-        // if (gtk_widget_hide_on_delete(pWindowMain))
         gtk_widget_destroy(pDialogBoxQuit);
         gtk_widget_show_all(pWindowMain);
     }
-    // gtk_widget_destroy(pDialogBoxQuit);
 }
-
-// void OnDelete(GtkWidget *pWidget, gpointer pData)
-// {
-// 	if (_g_display_confirm_quit() == TRUE)
-// 	{
-// 		exit(EXIT_SUCCESS);
-// 	}
-// 	else if (gtk_widget_hide_on_delete(pWindowMain))
-// 		gtk_widget_show_all(pWindowMain);
-// }
 
 void OnUndo(GtkWidget *pWidget, gpointer pData)
 {
     char *msg;
-    // char *markup;
-    // pMemento pMementoUndo = NULL;
     pMemento pMementoUndo = (memento *)malloc(1 * sizeof(memento));
     if (pMementoLastUndo->mvtEnd.row != 0 && pMementoLastUndo != NULL)
     {
@@ -1069,8 +1012,6 @@ void OnUndo(GtkWidget *pWidget, gpointer pData)
     if ((pMementoUndo = caretakerGetMemento(1)))
     {
         msg = ACTION_UNDO;
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), msg);
-        // gtk_label_set_markup(GTK_LABEL(plbComments), markup);
         gtk_label_set_label(GTK_LABEL(plbComments), ACTION_UNDO);
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
         if (!strcmp(msg, NO_ACTION_UNDO))
@@ -1080,30 +1021,19 @@ void OnUndo(GtkWidget *pWidget, gpointer pData)
         }
         else if (pMementoUndo != NULL && !strcmp(msg, ACTION_UNDO))
         {
-            //            if(pMementoLastUndo->mvtEnd.row != 0 && pMementoLastUndo != NULL)
-            //                _setLastMementoUndoRedrawNormal(pMementoLastUndo) ;
             originatorRestoreFromMemento(pMementoUndo);
             _g_displayUndoMatrix(pMementoUndo);
             gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
-
-            //            memcpy(pMementoLastUndo,pMementoUndo,sizeof(memento) ) ;
-            // g_free(pMementoUndo);
         }
-        // g_free(markup);
     }
 
     else
     {
         msg = NO_ACTION_UNDO;
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), msg);
-        // gtk_label_set_markup(GTK_LABEL(plbComments), markup);
-        //        g_free( markup ) ;
-        // g_free(markup);
         gtk_label_set_label(GTK_LABEL(plbComments), NO_ACTION_UNDO);
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
         gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
     }
-    // g_free(pMementoUndo);
 }
 
 void _setLastMementoUndoRedrawNormal(pMemento pm)
@@ -1115,10 +1045,10 @@ void _setLastMementoUndoRedrawNormal(pMemento pm)
         y = pm->mvtEnd.column;
         coefRow = pm->mvtBetween.row - pm->mvtStart.row;
         coefColumn = pm->mvtBetween.column - pm->mvtStart.column;
-        GtkWidget *imgPegDelete = gtk_image_new_from_file(IMG_PEG_DELETE); // blanc
-        GtkWidget *imgPegMove_2 = gtk_image_new_from_file(IMG_PEG_MOVE);   // gold
-        GtkWidget *imgPegMove_3 = gtk_image_new_from_file(IMG_PEG_MOVE);   // gold
-        if (/*pegUndo.x != -1 && pegUndo.y != -1*/ pMementoLastUndo != NULL)
+        GtkWidget *imgPegDelete = gtk_image_new_from_file(IMG_PEG_DELETE);
+        GtkWidget *imgPegMove_2 = gtk_image_new_from_file(IMG_PEG_MOVE);
+        GtkWidget *imgPegMove_3 = gtk_image_new_from_file(IMG_PEG_MOVE);
+        if (pMementoLastUndo != NULL)
         {
             gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtEnd.column, pMementoLastUndo->mvtEnd.row));
             gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtBetween.row, pMementoLastUndo->mvtBetween.row));
@@ -1135,27 +1065,19 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData)
     gint response = _g_display_box_menu_new_game(NULL);
     if (response != GTK_RESPONSE_CANCEL)
     {
-        // _g_erase_displayMatrix();
         scoreResetBonusTimeScore();
-        // char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), currentMatrixOfBoard.name);
-        // gtk_label_set_markup(GTK_LABEL(plbComments), markup);
-        // g_free(markup);
         gtk_label_set_label(GTK_LABEL(plbComments), currentMatrixOfBoard.name);
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
-        // _g_labelSet(plbValuesValue[LABEL_PEG], GINT_TO_POINTER(0));
+
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", 0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-        // _g_labelSet(plbValuesValue[LABEL_BONUS], GINT_TO_POINTER(0));
+
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", 0.0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
-        // _g_labelSet(plbValuesValue[LABEL_TIME], GINT_TO_POINTER(0));
+
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_TIME]), g_strdup_printf("%4d", 0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_TIME]), "value-values-label");
 
-        // _g_display_box_menu(NULL); // Choix de la matrice
-        // _g_new_GridMatrix(); // Grille du Senku
-        //  _g_displayMatrix(pMatrixLoad);
-        // _g_labelSet(plbValuesValue[LABEL_PEG], GINT_TO_POINTER(matrixCountRemainPeg()));
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
         caretakerNew();
@@ -1182,27 +1104,20 @@ void _g_displayAllMatrix()
         for (int column = 0; column < VER_MAX; column++)
         {
             imgPegStatus = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), column, row);
-            // imgPegStatus = gtk_image_new_from_file(IMG_PEG_TRANSPARENT);
-
             if (pMatrixLoad[row][column] == 1)
             {
-                // imgPegStatus = gtk_image_new_from_file(IMG_PEG_MOVE);
                 gtk_style_context_remove_class(gtk_widget_get_style_context(imgPegStatus), "peg-delete");
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPegStatus), "peg-move");
             }
             else if (pMatrixLoad[row][column] == 0)
             {
-                // imgPegStatus = gtk_image_new_from_file(IMG_PEG_DELETE);
                 gtk_style_context_remove_class(gtk_widget_get_style_context(imgPegStatus), "peg-move");
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPegStatus), "peg-delete");
             }
             else
             {
-                // imgPegStatus = gtk_image_new_from_file(IMG_PEG_BOARD);
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPegStatus), "peg-board");
             }
-            // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), column, row));
-            // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegStatus, column, row, 1, 1);
         }
     }
     gtk_widget_show_all(GTK_WIDGET(pGridMatrix));
@@ -1212,8 +1127,6 @@ void _g_new_GridMatrix()
 {
     pGridMatrix = gtk_grid_new();
     gtk_grid_attach(GTK_GRID(pGridMain), pGridMatrix, 0, 0, 1, 1);
-    // gtk_grid_set_row_spacing(GTK_GRID(pGridMatrix), 0);
-    // gtk_grid_set_column_spacing(GTK_GRID(pGridMatrix), 0);
     gtk_widget_set_halign(GTK_WIDGET(pGridMatrix), GTK_ALIGN_CENTER);
     gtk_widget_set_name(pGridMatrix, "gridMatrix");
 }
@@ -1223,52 +1136,21 @@ void _g_displayUndoMatrix(pMemento pm)
     int coefRow = 0, coefColumn = 0, x = 0, y = 0;
     if (pm)
     {
-        //        g_print("\nDEBUG :: x depart %d | y depart %d | x arrive %d | y arrive %d",
-        //                pm->mvtStart.row,
-        //                pm->mvtStart.column,
-        //                pm->mvtEnd.row,
-        //                pm->mvtEnd.column);
-        /*
-         * DEBUG FROZEN VERSION
-         */
-        //        GtkWidget *imgPegDeleteUndo = gtk_image_new_from_file( IMG_PEG_DELETE_UNDO ) ;      //blanc cross
-        //        GtkWidget *imgPegMove_1 =     gtk_image_new_from_file( IMG_PEG_MOVE ) ;             //gold
-        //        GtkWidget *imgPegUndo   =     gtk_image_new_from_file( IMG_PEG_UNDO ) ;             //gold point
-        /*
-         * END DEBUG FROZEN VERSION
-         */
-        // GtkWidget *imgPegDeleteUndo = gtk_image_new_from_file(IMG_PEG_DELETE); // blanc
-        // GtkWidget *imgPegMove_1 = gtk_image_new_from_file(IMG_PEG_MOVE);       // gold
-        // GtkWidget *imgPegUndo = gtk_image_new_from_file(IMG_PEG_MOVE);         // gold
-
         matrixUpdate(UNDO);
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDeleteUndo, y, x, 1, 1);
-        // GtkWidget * imgPegDeleteUndo = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x);
         _firstSelectPeg("set", TRUE);
         x = pm->mvtEnd.row;
         y = pm->mvtEnd.column;
         coefRow = pm->mvtBetween.row - pm->mvtStart.row;
         coefColumn = pm->mvtBetween.column - pm->mvtStart.column;
 
-        // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x));
-        // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 1 * coefColumn, x - 1 * coefRow));
-        // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 2 * coefColumn, x - 2 * coefRow));
-
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDeleteUndo, y, x, 1, 1);
         GtkWidget *imgPegDeleteUndo = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x);
-        // gchar * class;
-        // gtk_style_context_get_style(gtk_widget_get_style_context(imgPegDeleteUndo), "peg-move", class, NULL);
-        // g_printf("DEBUG");
-        // g_printf("value class: %s\n", class); //DEBUG
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPegDeleteUndo), "peg-move");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPegDeleteUndo), "peg-delete");
 
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove_1, y - 1 * coefColumn, x - 1 * coefRow, 1, 1);
         GtkWidget *imgPegMove_1 = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 1 * coefColumn, x - 1 * coefRow);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPegMove_1), "peg-delete");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPegMove_1), "peg-move");
 
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegUndo, y - 2 * coefColumn, x - 2 * coefRow, 1, 1);
         GtkWidget *imgPegUndo = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 2 * coefColumn, x - 2 * coefRow);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPegUndo), "peg-delete");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPegUndo), "peg-move");
@@ -1303,7 +1185,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     size_t size = sizeof(Coord);
     Coord *p = (Coord *)g_malloc(size);
     p = (Coord *)pData;
-    // _g_labelSet(plbValuesValue[LABEL_PEG], GINT_TO_POINTER(matrixCountRemainPeg()));
+
     gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
     gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
     //    g_print( "\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y ) ;
@@ -1354,7 +1236,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     if (matrixUpdate(action))
                     {
                         _g_displayUpdateMatrix(action, p->x, p->y);
-                        // _g_labelSet(plbValuesValue[LABEL_PEG], GINT_TO_POINTER(matrixCountRemainPeg()));
+
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
 
@@ -1367,19 +1249,10 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
                         }
                         scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
-
-                        //_g_labelSet(plbValuesValue[LABEL_BONUS], GINT_TO_POINTER(scoreGetBonusTimeScore()));
-                        //_g_labelSet(plbValuesValue[LABEL_BONUS],
                         // printf("%.0f\n", scoreGetBonusTimeScore()); //DEBUG
-
-                        /* char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, .0f),
-                                                               scoreGetBonusTimeScore());
-                        gtk_label_set_markup(GTK_LABEL(plbValuesValue[LABEL_BONUS]), markup); */
 
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", scoreGetBonusTimeScore()));
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
-                        // g_free(markup);
-                        // gtk_label_set_use_markup(GTK_LABEL(plbValuesValue[LABEL_BONUS]), TRUE);
                     }
                     else if (matrixSelectPeg(p->x, p->y))
                     { // clique changement d'avis avec prise
@@ -1398,9 +1271,6 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     {
                         remainingPeg = matrixCountRemainPeg();
                         scoreSetRemainingPeg(remainingPeg);
-                        // char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), NO_MORE_MOVE);
-                        // gtk_label_set_markup(GTK_LABEL(plbComments), markup);
-                        // g_free(markup);
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
                         gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         timerStopClock();
@@ -1455,37 +1325,24 @@ void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)
     gint coefRow = 0, coefColumn = 0; // coefficient d'effacement
 
     GtkWidget *imgPeg = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x);
-    /*
-        GtkWidget *imgPegDelete_1 = gtk_image_new_from_file(IMG_PEG_DELETE);
-        GtkWidget *imgPegDelete_2 = gtk_image_new_from_file(IMG_PEG_DELETE);
-        GtkWidget *imgPegMove = gtk_image_new_from_file(IMG_PEG_MOVE);
-        GtkWidget *imgPegUnselect = gtk_image_new_from_file(IMG_PEG_MOVE);
-        GtkWidget *imgPegSelect = gtk_image_new_from_file(IMG_PEG_SELECT);
-    */
     // GList *listClass = gtk_style_context_list_classes(gtk_widget_get_style_context(imgPeg));
     // GList *l;
     // for (l = listClass; l != NULL; l = l->next)
     // {
     //     g_printf("Class : %s X : %d Y : %d\n", (char *)l->data, x, y);
     //     ;
-
     // }
-
     // g_list_free(listClass);
 
     switch (action)
     {
     case ACTION_SELECT_PEG:
-        // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x));
-        // gtk_grid_attach(GTK_GRID(pGridMatri1x), imgPegSelect, y, x, 1, 1);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-hover");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-delete");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-move");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-select");
         break;
     case ACTION_SELECT_UNSELECT_PEG:
-        // gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x));
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegUnselect, y, x, 1, 1);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-hover");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-delete");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-select");
@@ -1512,26 +1369,18 @@ void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)
     }
     if (action != ACTION_SELECT_PEG && action != ACTION_SELECT_UNSELECT_PEG && action)
     {
-        /*
-        gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x));
-        gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 1 * coefColumn, x - 1 * coefRow));
-        gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 2 * coefColumn, x - 2 * coefRow));
-        */
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove, y, x, 1, 1);
         imgPeg = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y, x);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-hover");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-delete");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-select");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-move");
 
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDelete_1, y - 1 * coefColumn, x - 1 * coefRow, 1, 1);
         imgPeg = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 1 * coefColumn, x - 1 * coefRow);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-hover");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-select");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-move");
         gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-delete");
 
-        // gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDelete_2, y - 2 * coefColumn, x - 2 * coefRow, 1, 1);
         imgPeg = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), y - 2 * coefColumn, x - 2 * coefRow);
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-hover");
         gtk_style_context_remove_class(gtk_widget_get_style_context(imgPeg), "peg-select");
@@ -1541,42 +1390,33 @@ void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)
 }
 
 void OnPlay(GtkWidget *pWidget, gpointer pData)
-{
-    // GtkWidget *pWindow = gtk_widget_get_toplevel(GTK_WIDGET(pData));
-    // GtkRadioButton *radio = GTK_RADIO_BUTTON(pData);
-    // equivalent while (!matrixLoad( num = __getMenuChoice( ) )) ;
+{ // equivalent while (!matrixLoad( num = __getMenuChoice( ) )) ;
     gtk_style_context_remove_class(gtk_widget_get_style_context(pGridMatrix), "logo");
     gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-    // which_radio_is_selected(gtk_radio_button_get_group(GTK_RADIO_BUTTON(pData)))
+
     if (matrixLoad(GPOINTER_TO_INT(pData)))
     {
         _g_displayMatrix(pMatrixLoad);
-        // gtk_widget_show_all(pWindowMain);
         onlyOneBoard.set = &currentMatrixOfBoard;
         caretakerNew(); // pattern memento du mecanisme pour le Undo
         scoreResetBonusTimeScore();
         timerStartClock();
-        // _g_labelSet(plbValuesValue[LABEL_PEG], GINT_TO_POINTER(matrixCountRemainPeg()));
+
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-        /*  char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), currentMatrixOfBoard.name);
-         gtk_label_set_markup(GTK_LABEL(plbComments), markup);
-         g_free(markup); */
+
         gtk_label_set_label(GTK_LABEL(plbComments), currentMatrixOfBoard.name);
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
         if (handleTimeout)
         {
             g_source_remove(handleTimeout);
             g_timeout_add(TIMER_DELAY, _g_display_time, GINT_TO_POINTER(FALSE));
-            // _g_labelSet(plbValuesValue[LABEL_TIME], GINT_TO_POINTER(0));
             gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_TIME]), g_strdup_printf("%4d", 0));
             gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_TIME]), "value-values-label");
         }
         handleTimeout = g_timeout_add(TIMER_DELAY, _g_display_time, GINT_TO_POINTER(TRUE));
         gtk_widget_show_all(pWindowMain);
     }
-    // gtk_widget_destroy(GTK_WIDGET(radio));
-    // gtk_widget_destroy(pWindow);
 }
 
 gboolean
@@ -1586,7 +1426,6 @@ _g_display_time(gpointer pData)
     gboolean start = GPOINTER_TO_INT(pData);
     if (start)
     {
-        // _g_labelSet(plbValuesValue[LABEL_TIME], GINT_TO_POINTER(i++));
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_TIME]), g_strdup_printf("%4d", i++));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_TIME]), "value-values-label");
     }
@@ -1597,9 +1436,6 @@ _g_display_time(gpointer pData)
 
 int OnRadioToggled(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 {
-    //    GtkRadioButton *radioBtn =  pData ; /* we passed a radio button as data */
-    //    which_radio_is_selected( gtk_radio_button_get_group(GTK_RADIO_BUTTON(radioBtn) ) ) ;
-    //    return FALSE ;
     return 0;
 }
 
@@ -1622,8 +1458,6 @@ int which_radio_is_selected(GSList *group)
 
 void _g_erase_displayMatrix()
 {
-    //    g_print( "\nDEBUG :: _g_displayMatrix ERASE" ) ;
-    // gtk_widget_destroy(GTK_WIDGET(pGridMatrix));
     gtk_widget_destroy(GTK_WIDGET(pGridMatrix));
 }
 
@@ -1653,15 +1487,12 @@ void _g_displayMatrix(Matrix matrix)
             {
             case -1:
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-board");
-                // imgPeg = gtk_image_new_from_file(IMG_PEG_BOARD);
                 break;
             case 0:
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-delete");
-                // imgPeg = gtk_image_new_from_file(IMG_PEG_DELETE);
                 break;
             case 1:
                 gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg-move");
-                // imgPeg = gtk_image_new_from_file(IMG_PEG_MOVE);
                 break;
             default:;
             }
@@ -1670,10 +1501,6 @@ void _g_displayMatrix(Matrix matrix)
             gtk_grid_attach(GTK_GRID(pGridMatrix), GTK_WIDGET(imgPeg), i, k, 1, 1);
             pEventCoord->x = k;
             pEventCoord->y = i;
-            // gtk_event_box_set_visible_window(GTK_EVENT_BOX(pMatrix_event[k][i]), TRUE);
-            // gtk_style_context_add_class(gtk_widget_get_style_context(imgPeg), "peg");
-            // gtk_widget_set_can_focus(GTK_WIDGET(imgPeg), TRUE);
-            // gtk_widget_set_events(GTK_WIDGET(imgPeg), GDK_KEY_PRESS_MASK||GDK_POINTER_MOTION_MASK || GDK_FOCUS_CHANGE_MASK); //GDK_POINTER_MOTION_MASK
             g_signal_connect(G_OBJECT(pMatrix_event[k][i]), "button_press_event", G_CALLBACK(OnSelect), (gpointer)pEventCoord);
             // g_signal_connect(G_OBJECT(pMatrix_event[k][i]), "enter_notify_event", G_CALLBACK(OnEnter), (gpointer)pEventCoord);
             // g_signal_connect(G_OBJECT(pMatrix_event[k][i]), "leave_notify_event", G_CALLBACK(OnLeave), (gpointer)pEventCoord);
@@ -1691,7 +1518,7 @@ void _g_display_get_name(int rank)
     GtkWidget *pGridGetName = NULL;
     const char *labelNom = "";
     char *labelMessage = "\nCongratulations, ";
-    const char *labelInsideEntry = "your user name";
+    const char *labelInsideEntry = "Username";
     score *findRecord = (score *)scoreGetSortScore(rank);
     const char *title = "Saving score";
     const char *msgAdd;
@@ -1707,25 +1534,16 @@ void _g_display_get_name(int rank)
     pLabelMessage = gtk_label_new(labelMessage);
     pWindowGetName = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_name(pWindowGetName, "windowGetName");
-    /* gtk_container_set_border_width(GTK_CONTAINER(pWindowGetName), APPLICATION_BORDER_WIDTH);
-    gtk_window_set_default_size(GTK_WINDOW(pWindowGetName), 200, 150);*/
     gtk_window_set_resizable(GTK_WINDOW(pWindowGetName), FALSE);
     gtk_window_set_deletable(GTK_WINDOW(pWindowGetName), FALSE);
     gtk_window_set_title(GTK_WINDOW(pWindowGetName), title);
     pGridGetName = gtk_grid_new();
-    /* gtk_widget_set_margin_top(GTK_WIDGET(pGridGetName), 5);
-    gtk_widget_set_margin_end(GTK_WIDGET(pGridGetName), 5);
-    gtk_widget_set_margin_bottom(GTK_WIDGET(pGridGetName), 5);
-    gtk_widget_set_margin_start(GTK_WIDGET(pGridGetName), 5);
-    gtk_grid_set_column_spacing(GTK_GRID(pGridGetName), 10);
-    gtk_grid_set_row_spacing(GTK_GRID(pGridGetName), 10);
-    gtk_grid_set_row_homogeneous(GTK_GRID(pGridGetName), FALSE); */
     pButtonOk = gtk_button_new_with_label("Register");
     gtk_widget_set_can_default(GTK_WIDGET(pButtonOk), TRUE);
     gtk_window_set_default(GTK_WINDOW(pWindowGetName), GTK_WIDGET(pButtonOk));
     pEntryName = gtk_entry_new();
     gtk_entry_set_text(GTK_ENTRY(pEntryName), ""); // labelInsideEntry
-    gtk_entry_set_placeholder_text(GTK_ENTRY(pEntryName), "Username");
+    gtk_entry_set_placeholder_text(GTK_ENTRY(pEntryName), labelInsideEntry);
     gtk_entry_set_max_length(GTK_ENTRY(pEntryName), MAX_CAR_NAME - 1);
     gtk_entry_set_input_purpose(GTK_ENTRY(pEntryName), GTK_INPUT_PURPOSE_NAME);
     gtk_entry_set_activates_default(GTK_ENTRY(pEntryName), TRUE);
@@ -1756,7 +1574,7 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
     const gchar *sName = gtk_entry_get_text(GTK_ENTRY(pData->pWidgetName));
     scoreSetNamePlayer(sName, rank);
     ;
-    scoreSetNameMatrix(g_strdup_printf("%10s",currentMatrixOfBoard.name), rank);
+    scoreSetNameMatrix(g_strdup_printf("%10s", currentMatrixOfBoard.name), rank);
     pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
     if (resultScore)
     {
@@ -1764,9 +1582,7 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
         _g_display_box_score(resultScore, rank);
     }
     else
-        free(resultScore);
-    // g_free(resultScore);
-    // g_free(pWindowGetName);
+        g_free(resultScore);
     gtk_widget_destroy(pWindowGetName);
 }
 
@@ -1781,11 +1597,6 @@ void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
 
 void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)
 {
-    //    pScore resultScore = (score*) malloc( SCORE_BEST_OF * sizeof (score) ) ;
-    //    int rank = GPOINTER_TO_INT(pData) ;
-    //    if(resultScore)resultScore = (pScore)scoreGetSortScore( ) ;
-    //    _g_display_box_score(resultScore,rank) ;
-    //    g_free(resultScore) ;
 }
 
 void OnEnter(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
@@ -1797,20 +1608,16 @@ void OnEnter(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     gtk_image_set_from_file(GTK_IMAGE(pPeg), IMG_PEG_TRANSPARENT);
     if (pMatrixLoad[p->y][p->x] == 1)
     {
-        // gtk_style_context_remove_class(gtk_widget_get_style_context(pPeg), "peg-delete");
         gtk_style_context_add_class(gtk_widget_get_style_context(pPeg), "peg-hover");
     }
     else if (pMatrixLoad[p->y][p->x] == 0)
     {
-        // gtk_style_context_remove_class(gtk_widget_get_style_context(pPeg), "peg-move");
         gtk_style_context_add_class(gtk_widget_get_style_context(pPeg), "peg-delete");
     }
 }
 
 void OnLeave(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 {
-    // size_t size = sizeof(Coord);
-    // Coord * p = g_malloc(size);
     Coord *p = pData;
     GtkWidget *pPeg = gtk_grid_get_child_at(GTK_GRID(pGridMatrix), p->y, p->x);
     // printf("pPeg: %s x: %d y: %d\n", gtk_widget_get_name(pPeg), p->x, p->y);
@@ -1833,10 +1640,9 @@ void OnLeave(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 void _g_display_box_score(pScore ps, const int rank)
 {
     int i, k;
-    char *r = "";
     char *scoreTitle[] = {"RANK", "PLAYER", "PEG", "SCORE", "SHAPE"};
     int sizeArray = 0;
-    // char *markup;
+
     GtkWidget *pButtonOk = NULL;
     GtkWidget *plbScoreOrder = NULL;
     GtkWidget *plbScorePlayer = NULL;
@@ -1850,10 +1656,8 @@ void _g_display_box_score(pScore ps, const int rank)
     gtk_window_set_title(GTK_WINDOW(pBoxScore), BOX_SCORE_TITLE);
     gtk_window_set_modal(GTK_WINDOW(pBoxScore), TRUE);
     gtk_window_set_position(GTK_WINDOW(pBoxScore), GTK_WIN_POS_CENTER_ALWAYS);
-    // gtk_window_set_decorated(GTK_WINDOW(pBoxScore), TRUE);
     gtk_window_set_deletable(GTK_WINDOW(pBoxScore), FALSE);
     gtk_window_set_transient_for(GTK_WINDOW(pBoxScore), GTK_WINDOW(pWindowMain));
-    // gtk_window_resize(GTK_WINDOW(pBoxScore), 280, 300);
     gtk_window_set_resizable(GTK_WINDOW(pBoxScore), FALSE);
     gtk_container_set_border_width(GTK_CONTAINER(pBoxScore), APPLICATION_BORDER_WIDTH);
     /**
@@ -1861,42 +1665,26 @@ void _g_display_box_score(pScore ps, const int rank)
      */
     pGridScore = gtk_grid_new();
     gtk_container_add(GTK_CONTAINER(pBoxScore), pGridScore);
-    // gtk_grid_set_row_spacing(GTK_GRID(pGridScore), 5);
-    // gtk_grid_set_column_spacing(GTK_GRID(pGridScore), 7);
-    // gtk_grid_set_column_homogeneous(GTK_GRID(pGridScore), FALSE);
+
     for (k = 0; k < sizeArray; k++)
     {
         lbScore[k] = gtk_label_new(scoreTitle[k]);
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TITLE, s), scoreTitle[k]);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[k]), markup);
     }
     gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1); // plbScoreOrder
     for (k = 0; k < sizeArray - 1; k++)
         gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
     for (i = 1; i <= SCORE_BEST_OF; i++)
     {
-        r = (i == rank) ? "<=-" : "";
         lbScore[0] = gtk_label_new(g_strdup_printf("%d", i));
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), i);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[0]), markup);
         lbScore[1] = gtk_label_new(ps->namePlayer);
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, s), ps->namePlayer);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[1]), markup);
         lbScore[2] = gtk_label_new(g_strdup_printf("%d", ps->remainingPeg));
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), ps->remainingPeg);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[2]), markup);
         lbScore[3] = gtk_label_new(g_strdup_printf("%.f", ps->scoreGame));
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, .f), ps->scoreGame);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[3]), markup);
         for (int j = 0; j < 4; j++)
         {
             (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
                         : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
         }
-
         lbScore[4] = gtk_label_new(ps->nameMatrix);
-        // markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TITLE, s), r);
-        // gtk_label_set_markup(GTK_LABEL(lbScore[4]), markup);
         gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
         for (k = 0; k < sizeArray - 1; k++)
             gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
@@ -1905,9 +1693,7 @@ void _g_display_box_score(pScore ps, const int rank)
     pButtonOk = gtk_button_new_with_label("Close");
     gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
     g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
-    // g_free(markup);
     gtk_widget_show_all(pBoxScore);
-    // g_free(pBoxScore);
 }
 
 void OnCloseBoxScore(GtkWidget *pWidget, gpointer pData)
