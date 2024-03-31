@@ -49,7 +49,7 @@
 int main(int argc, char *argv[])
 {
     // gtk_init(&argc, &argv);
-    if (boardInitNew()) //boardInit()
+    if (boardInitNew())
         exit(EXIT_SUCCESS);
     //            g_print( "\nGood bye! Thanks for playing this game ;)\n" ) ;
     else

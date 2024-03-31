@@ -14,7 +14,6 @@ typedef struct s_Board
     matrixOfBoard *set;
 } Board;
 
-int boardInit();
 int boardInitNew();
 int boardPlay();
 #endif
