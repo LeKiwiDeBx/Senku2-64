@@ -1,0 +1,551 @@
+0	.vscode/c_cpp_properties.json	/^                    "${workspaceFolder}"$/;"	s	array:configurations.0.browse.path
+0	.vscode/c_cpp_properties.json	/^                "${workspaceFolder}\/**",$/;"	s	array:configurations.0.includePath
+0	.vscode/c_cpp_properties.json	/^        {$/;"	o	array:configurations
+1	.vscode/c_cpp_properties.json	/^                "\/usr\/include\/**"$/;"	s	array:configurations.0.includePath
+browse	.vscode/c_cpp_properties.json	/^            "browse": {$/;"	o	object:configurations.0
+cStandard	.vscode/c_cpp_properties.json	/^            "cStandard": "c11",$/;"	s	object:configurations.0
+compilerPath	.vscode/c_cpp_properties.json	/^            "compilerPath": "\/usr\/bin\/gcc",$/;"	s	object:configurations.0
+configurations	.vscode/c_cpp_properties.json	/^    "configurations": [$/;"	a
+cppStandard	.vscode/c_cpp_properties.json	/^            "cppStandard": "c++14",$/;"	s	object:configurations.0
+defines	.vscode/c_cpp_properties.json	/^            "defines": [],$/;"	a	object:configurations.0
+includePath	.vscode/c_cpp_properties.json	/^            "includePath": [$/;"	a	object:configurations.0
+intelliSenseMode	.vscode/c_cpp_properties.json	/^            "intelliSenseMode": "${default}",$/;"	s	object:configurations.0
+limitSymbolsToIncludedHeaders	.vscode/c_cpp_properties.json	/^                "limitSymbolsToIncludedHeaders": true$/;"	b	object:configurations.0.browse
+mergeConfigurations	.vscode/c_cpp_properties.json	/^            "mergeConfigurations": true$/;"	b	object:configurations.0
+name	.vscode/c_cpp_properties.json	/^            "name": "Linux",$/;"	s	object:configurations.0
+path	.vscode/c_cpp_properties.json	/^                "path": [$/;"	a	object:configurations.0.browse
+version	.vscode/c_cpp_properties.json	/^    "version": 4$/;"	n
+0	.vscode/launch.json	/^                {$/;"	o	array:configurations.0.setupCommands
+0	.vscode/launch.json	/^                {$/;"	o	array:configurations.1.setupCommands
+0	.vscode/launch.json	/^        {$/;"	o	array:configurations
+1	.vscode/launch.json	/^        {$/;"	o	array:configurations
+MIMode	.vscode/launch.json	/^            "MIMode": "gdb",$/;"	s	object:configurations.0
+MIMode	.vscode/launch.json	/^            "MIMode": "lldb",$/;"	s	object:configurations.1
+args	.vscode/launch.json	/^            "args": [],$/;"	a	object:configurations.0
+args	.vscode/launch.json	/^            "args": [],$/;"	a	object:configurations.1
+configurations	.vscode/launch.json	/^    "configurations": [$/;"	a
+cwd	.vscode/launch.json	/^            "cwd": "${fileDirname}",$/;"	s	object:configurations.0
+cwd	.vscode/launch.json	/^            "cwd": "\/home\/jean\/Senku2-64\/",$/;"	s	object:configurations.1
+description	.vscode/launch.json	/^                    "description": "Activer l'impression en mode Pretty pour gdb",$/;"	s	object:configurations.0.setupCommands.0
+description	.vscode/launch.json	/^                    "description": "Activer l'impression en mode Pretty pour gdb",$/;"	s	object:configurations.1.setupCommands.0
+environment	.vscode/launch.json	/^            "environment": [],$/;"	a	object:configurations.0
+environment	.vscode/launch.json	/^            "environment": [],$/;"	a	object:configurations.1
+externalConsole	.vscode/launch.json	/^            "externalConsole": false,$/;"	b	object:configurations.0
+externalConsole	.vscode/launch.json	/^            "externalConsole": false,$/;"	b	object:configurations.1
+ignoreFailures	.vscode/launch.json	/^                    "ignoreFailures": true$/;"	b	object:configurations.0.setupCommands.0
+ignoreFailures	.vscode/launch.json	/^                    "ignoreFailures": true$/;"	b	object:configurations.1.setupCommands.0
+miDebuggerPath	.vscode/launch.json	/^            "miDebuggerPath": "\/usr\/bin\/lldb-mi-6.0"$/;"	s	object:configurations.1
+name	.vscode/launch.json	/^            "name": "(gdb) Lancer",$/;"	s	object:configurations.0
+name	.vscode/launch.json	/^            "name": "clang-6.0 - Générer et déboguer le fichier actif",$/;"	s	object:configurations.1
+preLaunchTask	.vscode/launch.json	/^            "preLaunchTask": "C\/C++: clang-6.0 générer le fichier actif",$/;"	s	object:configurations.1
+program	.vscode/launch.json	/^            "program": "\/home\/jean\/Senku2-64\/senku",$/;"	s	object:configurations.0
+program	.vscode/launch.json	/^            "program": "\/home\/jean\/Senku2-64\/senku",$/;"	s	object:configurations.1
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.0
+request	.vscode/launch.json	/^            "request": "launch",$/;"	s	object:configurations.1
+setupCommands	.vscode/launch.json	/^            "setupCommands": [$/;"	a	object:configurations.0
+setupCommands	.vscode/launch.json	/^            "setupCommands": [$/;"	a	object:configurations.1
+stopAtEntry	.vscode/launch.json	/^            "stopAtEntry": false,$/;"	b	object:configurations.0
+stopAtEntry	.vscode/launch.json	/^            "stopAtEntry": false,$/;"	b	object:configurations.1
+text	.vscode/launch.json	/^                    "text": "-enable-pretty-printing",$/;"	s	object:configurations.0.setupCommands.0
+text	.vscode/launch.json	/^                    "text": "-enable-pretty-printing",$/;"	s	object:configurations.1.setupCommands.0
+type	.vscode/launch.json	/^            "type": "cppdbg",$/;"	s	object:configurations.0
+type	.vscode/launch.json	/^            "type": "cppdbg",$/;"	s	object:configurations.1
+C_Cpp.default.browse.path	.vscode/settings.json	/^    "C_Cpp.default.browse.path": [],$/;"	a
+C_Cpp.errorSquiggles	.vscode/settings.json	/^    "C_Cpp.errorSquiggles": "Disabled",$/;"	s
+editor.bracketPairColorization.enabled	.vscode/settings.json	/^    "editor.bracketPairColorization.enabled": true,$/;"	b
+editor.columnSelection	.vscode/settings.json	/^    "editor.columnSelection": true$/;"	b
+editor.guides.bracketPairs	.vscode/settings.json	/^    "editor.guides.bracketPairs": "active",$/;"	s
+0	.vscode/tasks.json	/^                "$gcc"$/;"	s	array:tasks.0.problemMatcher
+0	.vscode/tasks.json	/^                "-fdiagnostics-color=always",$/;"	s	array:tasks.0.args
+0	.vscode/tasks.json	/^        {$/;"	o	array:tasks
+1	.vscode/tasks.json	/^                "-g",$/;"	s	array:tasks.0.args
+2	.vscode/tasks.json	/^                "${file}",$/;"	s	array:tasks.0.args
+3	.vscode/tasks.json	/^                "-o",$/;"	s	array:tasks.0.args
+4	.vscode/tasks.json	/^                "${fileDirname}\/${fileBasenameNoExtension}"$/;"	s	array:tasks.0.args
+args	.vscode/tasks.json	/^            "args": [$/;"	a	object:tasks.0
+command	.vscode/tasks.json	/^            "command": "\/usr\/bin\/clang-6.0",$/;"	s	object:tasks.0
+cwd	.vscode/tasks.json	/^                "cwd": "${fileDirname}"$/;"	s	object:tasks.0.options
+detail	.vscode/tasks.json	/^            "detail": "Tâche générée par le débogueur."$/;"	s	object:tasks.0
+group	.vscode/tasks.json	/^            "group": {$/;"	o	object:tasks.0
+isDefault	.vscode/tasks.json	/^                "isDefault": true$/;"	b	object:tasks.0.group
+kind	.vscode/tasks.json	/^                "kind": "build",$/;"	s	object:tasks.0.group
+label	.vscode/tasks.json	/^            "label": "C\/C++: clang-6.0 générer le fichier actif",$/;"	s	object:tasks.0
+options	.vscode/tasks.json	/^            "options": {$/;"	o	object:tasks.0
+problemMatcher	.vscode/tasks.json	/^            "problemMatcher": [$/;"	a	object:tasks.0
+tasks	.vscode/tasks.json	/^    "tasks": [$/;"	a
+type	.vscode/tasks.json	/^            "type": "cppbuild",$/;"	s	object:tasks.0
+version	.vscode/tasks.json	/^    "version": "2.0.0"$/;"	s
+$(PROG)	Makefile	/^$(PROG): $(OBJECTS)$/;"	t
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS =  -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subs/;"	m
+LDFLAGS	Makefile	/^LDFLAGS= # -mwindows$/;"	m
+OBJECTS	Makefile	/^OBJECTS =   main.o board.o matrix.o peg.o timer.o score.o memento.o$/;"	m
+PKG_CONFIG	Makefile	/^PKG_CONFIG = `pkg-config --cflags --libs gtk+-3.0`$/;"	m
+PROG	Makefile	/^PROG = senku$/;"	m
+all	Makefile	/^all: $(PROG)$/;"	t
+board.o	Makefile	/^board.o: board.c  board.h #timer.h score.h$/;"	t
+clean	Makefile	/^clean:$/;"	t
+install	Makefile	/^install: all$/;"	t
+main.o	Makefile	/^main.o: main.c # board.h # matrix.h$/;"	t
+matrix.o	Makefile	/^matrix.o: matrix.c matrix.h #peg.h memento.h$/;"	t
+memento.o	Makefile	/^memento.o: memento.c memento.h #peg.h$/;"	t
+peg.o	Makefile	/^peg.o: peg.c peg.h$/;"	t
+score.o	Makefile	/^score.o: score.c score.h$/;"	t
+timer.o	Makefile	/^timer.o: timer.c timer.h$/;"	t
+Senku	README.md	/^# Senku$/;"	c
+ACTION_SELECT_PEG	board.c	/^    ACTION_SELECT_PEG,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_EAST	board.c	/^    ACTION_SELECT_TAKE_EAST,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_NORTH	board.c	/^    ACTION_SELECT_TAKE_NORTH,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_SOUTH	board.c	/^    ACTION_SELECT_TAKE_SOUTH,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_TAKE_WEST	board.c	/^    ACTION_SELECT_TAKE_WEST,$/;"	e	enum:e_actionSelect	file:
+ACTION_SELECT_UNSELECT_PEG	board.c	/^    ACTION_SELECT_UNSELECT_PEG = 10,$/;"	e	enum:e_actionSelect	file:
+ACTION_UNDO	board.c	/^#define ACTION_UNDO /;"	d	file:
+APPLICATION_BORDER_WIDTH	board.c	/^#define APPLICATION_BORDER_WIDTH /;"	d	file:
+APPLICATION_SIZE_HEIGHT	board.c	/^#define APPLICATION_SIZE_HEIGHT /;"	d	file:
+APPLICATION_SIZE_WIDTH	board.c	/^#define APPLICATION_SIZE_WIDTH /;"	d	file:
+APPLICATION_TITLE	board.c	/^#define APPLICATION_TITLE /;"	d	file:
+BLANK	board.c	/^#define BLANK /;"	d	file:
+BOX_SCORE_TITLE	board.c	/^#define BOX_SCORE_TITLE /;"	d	file:
+Coord	board.c	/^} Coord;$/;"	t	typeref:struct:s_coord	file:
+IMG_BUTTON_NEW_GAME	board.c	/^#define IMG_BUTTON_NEW_GAME /;"	d	file:
+IMG_PEG_BOARD	board.c	/^#define IMG_PEG_BOARD /;"	d	file:
+IMG_PEG_DELETE	board.c	/^#define IMG_PEG_DELETE /;"	d	file:
+IMG_PEG_DELETE_UNDO	board.c	/^#define IMG_PEG_DELETE_UNDO /;"	d	file:
+IMG_PEG_MOVE	board.c	/^#define IMG_PEG_MOVE /;"	d	file:
+IMG_PEG_SELECT	board.c	/^#define IMG_PEG_SELECT /;"	d	file:
+IMG_PEG_TRANSPARENT	board.c	/^#define IMG_PEG_TRANSPARENT /;"	d	file:
+IMG_PEG_UNDO	board.c	/^#define IMG_PEG_UNDO /;"	d	file:
+LABEL_BONUS	board.c	/^    LABEL_BONUS,$/;"	e	enum:typeLabel	file:
+LABEL_BONUS_TEXT	board.c	/^#define LABEL_BONUS_TEXT /;"	d	file:
+LABEL_COLOR_BG_LOGO	board.c	/^#define LABEL_COLOR_BG_LOGO /;"	d	file:
+LABEL_COLOR_LOGO	board.c	/^#define LABEL_COLOR_LOGO /;"	d	file:
+LABEL_COLOR_TEXT	board.c	/^#define LABEL_COLOR_TEXT /;"	d	file:
+LABEL_COLOR_TITLE	board.c	/^#define LABEL_COLOR_TITLE /;"	d	file:
+LABEL_LOGO	board.c	/^#define LABEL_LOGO /;"	d	file:
+LABEL_PEG	board.c	/^    LABEL_PEG,$/;"	e	enum:typeLabel	file:
+LABEL_PEG_TEXT	board.c	/^#define LABEL_PEG_TEXT /;"	d	file:
+LABEL_TIME	board.c	/^    LABEL_TIME,$/;"	e	enum:typeLabel	file:
+LABEL_TIME_TEXT	board.c	/^#define LABEL_TIME_TEXT /;"	d	file:
+MAX_LABEL	board.c	/^#define MAX_LABEL /;"	d	file:
+NO_ACTION_UNDO	board.c	/^#define NO_ACTION_UNDO /;"	d	file:
+NO_MORE_MOVE	board.c	/^#define NO_MORE_MOVE /;"	d	file:
+OnCloseBoxScore	board.c	/^void OnCloseBoxScore(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnDestroy	board.c	/^void OnDestroy(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnDestroyGetName	board.c	/^void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnDisplayScore	board.c	/^void OnDisplayScore(GtkWidget *pWidget, dataName *pData)$/;"	f	typeref:typename:void
+OnEnter	board.c	/^void OnEnter(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f	typeref:typename:void
+OnLeave	board.c	/^void OnLeave(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f	typeref:typename:void
+OnNewGame	board.c	/^void OnNewGame(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnPlay	board.c	/^void OnPlay(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnQueryTooltip	board.c	/^void OnQueryTooltip(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f	typeref:typename:void
+OnRadioToggled	board.c	/^int OnRadioToggled(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f	typeref:typename:int
+OnRotate	board.c	/^void OnRotate(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+OnSelect	board.c	/^void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)$/;"	f	typeref:typename:void
+OnSetName	board.c	/^void OnSetName(GtkWidget *pWidget, dataName *pData)$/;"	f	typeref:typename:void
+OnUndo	board.c	/^void OnUndo(GtkWidget *pWidget, gpointer pData)$/;"	f	typeref:typename:void
+SENKU_ABS	board.c	/^#define SENKU_ABS(/;"	d	file:
+SENKU_PANGO_CONCAT_STR	board.c	/^#define SENKU_PANGO_CONCAT_STR(/;"	d	file:
+SENKU_PANGO_MARKUP_LABEL	board.c	/^#define SENKU_PANGO_MARKUP_LABEL(/;"	d	file:
+SENKU_THEME_FILE	board.c	/^#define SENKU_THEME_FILE /;"	d	file:
+SENKU_THEME_PATH	board.c	/^#define SENKU_THEME_PATH /;"	d	file:
+TIMER_DELAY	board.c	/^#define TIMER_DELAY /;"	d	file:
+TITLE_MAIN	board.c	/^#define TITLE_MAIN /;"	d	file:
+TITLE_MENU	board.c	/^#define TITLE_MENU /;"	d	file:
+_LINUX_	board.c	/^#define _LINUX_ /;"	d	file:
+_firstSelectPeg	board.c	/^_firstSelectPeg(char *action, gboolean value)$/;"	f	typeref:typename:gboolean
+_g_displayAllMatrix	board.c	/^void _g_displayAllMatrix()$/;"	f	typeref:typename:void
+_g_displayMatrix	board.c	/^void _g_displayMatrix(Matrix matrix)$/;"	f	typeref:typename:void
+_g_displayUndoMatrix	board.c	/^void _g_displayUndoMatrix(pMemento pm)$/;"	f	typeref:typename:void
+_g_displayUpdateMatrix	board.c	/^void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)$/;"	f	typeref:typename:void
+_g_display_box_menu	board.c	/^void _g_display_box_menu(gpointer pData)$/;"	f	typeref:typename:void
+_g_display_box_menu_new_game	board.c	/^int _g_display_box_menu_new_game(gpointer pData)$/;"	f	typeref:typename:int
+_g_display_box_score	board.c	/^void _g_display_box_score(pScore ps, const int rank)$/;"	f	typeref:typename:void
+_g_display_get_name	board.c	/^void _g_display_get_name(int rank)$/;"	f	typeref:typename:void
+_g_display_time	board.c	/^_g_display_time(gpointer pData)$/;"	f	typeref:typename:gboolean
+_g_erase_displayMatrix	board.c	/^void _g_erase_displayMatrix()$/;"	f	typeref:typename:void
+_g_labelSet	board.c	/^void _g_labelSet(GtkWidget *pWidget, gpointer pData) \/\/\/\/ DO NOT USE THIS  -- USING CSS STYL/;"	f	typeref:typename:void
+_g_new_GridMatrix	board.c	/^void _g_new_GridMatrix()$/;"	f	typeref:typename:void
+_setLastMementoUndoRedrawNormal	board.c	/^void _setLastMementoUndoRedrawNormal(pMemento pm)$/;"	f	typeref:typename:void
+actionSelect	board.c	/^} actionSelect;$/;"	t	typeref:enum:e_actionSelect	file:
+activate	board.c	/^activate(GtkApplication *app,$/;"	f	typeref:typename:void	file:
+app	board.c	/^GtkApplication *app;$/;"	v	typeref:typename:GtkApplication *
+boardInitNew	board.c	/^int boardInitNew()$/;"	f	typeref:typename:int
+dataName	board.c	/^} dataName;$/;"	t	typeref:struct:s_dataName	file:
+e_actionSelect	board.c	/^typedef enum e_actionSelect$/;"	g	file:
+eventCoord	board.c	/^Coord eventCoord, *pEventCoord;$/;"	v	typeref:typename:Coord
+handleTimeout	board.c	/^static guint handleTimeout = 0;          \/\/ handle de la fonction g_timeout_add()$/;"	v	typeref:typename:guint	file:
+onlyOneBoard	board.c	/^Board onlyOneBoard;$/;"	v	typeref:typename:Board
+pBoxMenu	board.c	/^GtkWidget *pBoxMenu = NULL;$/;"	v	typeref:typename:GtkWidget *
+pBoxMenuButton	board.c	/^GtkWidget *pBoxMenuButton = NULL;$/;"	v	typeref:typename:GtkWidget *
+pBoxMenuOption	board.c	/^GtkWidget *pBoxMenuOption = NULL;$/;"	v	typeref:typename:GtkWidget *
+pBoxScore	board.c	/^GtkWidget *pBoxScore = NULL;$/;"	v	typeref:typename:GtkWidget *
+pBtnMenuPlay	board.c	/^GtkWidget *pBtnMenuPlay = NULL;$/;"	v	typeref:typename:GtkWidget *
+pBtnMenuQuit	board.c	/^GtkWidget *pBtnMenuQuit = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonNewGame	board.c	/^GtkWidget *pButtonNewGame = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonQuit	board.c	/^GtkWidget *pButtonQuit = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonRotateLeft	board.c	/^GtkWidget *pButtonRotateLeft = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonRotateRight	board.c	/^GtkWidget *pButtonRotateRight = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonScore	board.c	/^GtkWidget *pButtonScore = NULL;$/;"	v	typeref:typename:GtkWidget *
+pButtonUndo	board.c	/^GtkWidget *pButtonUndo = NULL;$/;"	v	typeref:typename:GtkWidget *
+pDataName	board.c	/^dataName *pDataName;$/;"	v	typeref:typename:dataName *
+pDialogBoxQuit	board.c	/^GtkWidget *pDialogBoxQuit = NULL;$/;"	v	typeref:typename:GtkWidget *
+pEventCoord	board.c	/^Coord eventCoord, *pEventCoord;$/;"	v	typeref:typename:Coord *
+pGridMain	board.c	/^GtkWidget *pGridMain;$/;"	v	typeref:typename:GtkWidget *
+pGridMatrix	board.c	/^GtkWidget *pGridMatrix;$/;"	v	typeref:typename:GtkWidget *
+pGridScore	board.c	/^GtkWidget *pGridScore = NULL;$/;"	v	typeref:typename:GtkWidget *
+pHbox	board.c	/^GtkWidget *pHbox = NULL;$/;"	v	typeref:typename:GtkWidget *
+pMementoLastUndo	board.c	/^static pMemento pMementoLastUndo = NULL; \/\/ retiens le dernier undo$/;"	v	typeref:typename:pMemento	file:
+pVbox	board.c	/^GtkWidget *pVbox;$/;"	v	typeref:typename:GtkWidget *
+pWidgetName	board.c	/^    GtkWidget *pWidgetName;$/;"	m	struct:s_dataName	typeref:typename:GtkWidget *	file:
+pWindowGetName	board.c	/^GtkWidget *pWindowGetName = NULL;$/;"	v	typeref:typename:GtkWidget *
+pWindowMain	board.c	/^GtkWidget *pWindowMain;$/;"	v	typeref:typename:GtkWidget *
+pfrComments	board.c	/^GtkWidget *pfrComments = NULL;$/;"	v	typeref:typename:GtkWidget *
+pfrTitle	board.c	/^GtkWidget *pfrTitle = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbBonus	board.c	/^GtkWidget *plbBonus = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbBonusValue	board.c	/^GtkWidget *plbBonusValue = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbComments	board.c	/^GtkWidget *plbComments = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbLogo	board.c	/^GtkWidget *plbLogo = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbPegs	board.c	/^GtkWidget *plbPegs = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbPegsValue	board.c	/^GtkWidget *plbPegsValue = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbTime	board.c	/^GtkWidget *plbTime = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbTimeValue	board.c	/^GtkWidget *plbTimeValue = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbTitle	board.c	/^GtkWidget *plbTitle = NULL;$/;"	v	typeref:typename:GtkWidget *
+plbValues	board.c	/^GtkWidget *plbValues[MAX_LABEL];$/;"	v	typeref:typename:GtkWidget * []
+plbValuesValue	board.c	/^GtkWidget *plbValuesValue[MAX_LABEL];$/;"	v	typeref:typename:GtkWidget * []
+radio	board.c	/^GtkWidget *radio = NULL;$/;"	v	typeref:typename:GtkWidget *
+rang	board.c	/^    int rang;$/;"	m	struct:s_dataName	typeref:typename:int	file:
+s_coord	board.c	/^typedef struct s_coord$/;"	s	file:
+s_dataName	board.c	/^typedef struct s_dataName$/;"	s	file:
+typeLabel	board.c	/^enum typeLabel$/;"	g	file:
+which_radio_is_selected	board.c	/^int which_radio_is_selected(GSList *group)$/;"	f	typeref:typename:int
+x	board.c	/^    gchar x;$/;"	m	struct:s_coord	typeref:typename:gchar	file:
+y	board.c	/^    gchar y;$/;"	m	struct:s_coord	typeref:typename:gchar	file:
+Board	board.h	/^} Board;$/;"	t	typeref:struct:s_Board
+_BOARD_H_	board.h	/^#define _BOARD_H_$/;"	d
+s_Board	board.h	/^typedef struct s_Board$/;"	s
+set	board.h	/^    matrixOfBoard *set;$/;"	m	struct:s_Board	typeref:typename:matrixOfBoard *
+defs3	image/img_button_new_game.svg	/^     id="defs3" \/>$/;"	i
+inkscape	image/img_button_new_game.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview3	image/img_button_new_game.svg	/^     inkscape:deskcolor="#d1d1d1" \/>$/;"	i
+nsd936ba0f0101	image/img_button_new_game.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/img_button_new_game.svg	/^     id="path1" \/>$/;"	i
+path2	image/img_button_new_game.svg	/^     id="path2" \/>$/;"	i
+sodipodi	image/img_button_new_game.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/img_button_new_game.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg3	image/img_button_new_game.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text2	image/img_button_new_game.svg	/^     id="text2">Created by Mas Dhimas<\/text>$/;"	i
+text3	image/img_button_new_game.svg	/^     id="text3">from the Noun Project<\/text>$/;"	i
+title1	image/img_button_new_game.svg	/^     id="title1">Icon<\/title>$/;"	i
+defs3	image/noun-add-3861664.svg	/^     id="defs3" \/>$/;"	i
+inkscape	image/noun-add-3861664.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview3	image/noun-add-3861664.svg	/^     inkscape:current-layer="svg3" \/>$/;"	i
+ns1214ce4a0101	image/noun-add-3861664.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-add-3861664.svg	/^     inkscape:export-ydpi="332.10809" \/>$/;"	i
+path2	image/noun-add-3861664.svg	/^     id="path2" \/>$/;"	i
+sodipodi	image/noun-add-3861664.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-add-3861664.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg3	image/noun-add-3861664.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text2	image/noun-add-3861664.svg	/^     id="text2">Created by Mas Dhimas<\/text>$/;"	i
+text3	image/noun-add-3861664.svg	/^     id="text3">from the Noun Project<\/text>$/;"	i
+title1	image/noun-add-3861664.svg	/^     id="title1">Icon<\/title>$/;"	i
+defs4	image/noun-check-mark-496575.svg	/^     id="defs4" \/><sodipodi:namedview$/;"	i
+g2	image/noun-check-mark-496575.svg	/^       id="g2"><path$/;"	i
+g3	image/noun-check-mark-496575.svg	/^     inkscape:export-ydpi="118.15385"><g$/;"	i
+inkscape	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+metadata1	image/noun-check-mark-496575.svg	/^     id="metadata1"><ns:sfw><ns:slices \/><ns:sliceSourceBounds$/;"	i
+namedview4	image/noun-check-mark-496575.svg	/^     inkscape:current-layer="svg4" \/><metadata$/;"	i
+ns	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	n	uri:http://ns.adobe.com/SaveForWeb/1.0/
+nsaa4ba8690101	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-check-mark-496575.svg	/^         id="path1" \/><path$/;"	i
+path2	image/noun-check-mark-496575.svg	/^         id="path2" \/><\/g><\/g><text$/;"	i
+sodipodi	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+svg4	image/noun-check-mark-496575.svg	/^   xmlns:ns="http:\/\/ns.adobe.com\/SaveForWeb\/1.0\/"><defs$/;"	i
+text3	image/noun-check-mark-496575.svg	/^     id="text3">Created by Ralf Schmitzer<\/text><text$/;"	i
+text4	image/noun-check-mark-496575.svg	/^     id="text4">from the Noun Project<\/text><\/svg>$/;"	i
+defs3	image/noun-clockwise-3553040.svg	/^     id="defs3" \/>$/;"	i
+g2	image/noun-clockwise-3553040.svg	/^     transform="matrix(-1,0,0,1,99.35,0)">$/;"	i
+inkscape	image/noun-clockwise-3553040.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview3	image/noun-clockwise-3553040.svg	/^     inkscape:current-layer="svg3" \/>$/;"	i
+ns0ab1fa970101	image/noun-clockwise-3553040.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-clockwise-3553040.svg	/^       id="path1" \/>$/;"	i
+path2	image/noun-clockwise-3553040.svg	/^       id="path2" \/>$/;"	i
+sodipodi	image/noun-clockwise-3553040.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-clockwise-3553040.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg3	image/noun-clockwise-3553040.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text2	image/noun-clockwise-3553040.svg	/^     id="text2">Created by Gregor Cresnar<\/text>$/;"	i
+text3	image/noun-clockwise-3553040.svg	/^     id="text3">from the Noun Project<\/text>$/;"	i
+title1	image/noun-clockwise-3553040.svg	/^     id="title1">Artboard 94<\/title>$/;"	i
+defs3	image/noun-left-turn-118738.svg	/^     id="defs3" \/><sodipodi:namedview$/;"	i
+g2	image/noun-left-turn-118738.svg	/^     inkscape:export-ydpi="74.472725"><path$/;"	i
+inkscape	image/noun-left-turn-118738.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview3	image/noun-left-turn-118738.svg	/^     inkscape:current-layer="svg3" \/><g$/;"	i
+nsf2c809cc0101	image/noun-left-turn-118738.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-left-turn-118738.svg	/^       id="path1" \/><path$/;"	i
+path2	image/noun-left-turn-118738.svg	/^       id="path2" \/><\/g><text$/;"	i
+sodipodi	image/noun-left-turn-118738.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-left-turn-118738.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+svg3	image/noun-left-turn-118738.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	i
+text2	image/noun-left-turn-118738.svg	/^     id="text2">Created by Jonathan Li<\/text><text$/;"	i
+text3	image/noun-left-turn-118738.svg	/^     id="text3">from the Noun Project<\/text><\/svg>$/;"	i
+defs2	image/noun-next-5014983.svg	/^     id="defs2" \/>$/;"	i
+g1	image/noun-next-5014983.svg	/^     inkscape:export-ydpi="204.8">$/;"	i
+inkscape	image/noun-next-5014983.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview2	image/noun-next-5014983.svg	/^     inkscape:current-layer="svg2" \/>$/;"	i
+ns84f3a73c0101	image/noun-next-5014983.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-next-5014983.svg	/^       id="path1" \/>$/;"	i
+sodipodi	image/noun-next-5014983.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-next-5014983.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg2	image/noun-next-5014983.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text1	image/noun-next-5014983.svg	/^     id="text1">Created by Ricons<\/text>$/;"	i
+text2	image/noun-next-5014983.svg	/^     id="text2">from the Noun Project<\/text>$/;"	i
+title1	image/noun-next-5014983.svg	/^     id="title1">16 Forward<\/title>$/;"	i
+nsc1b3fbf20101	image/noun-power-3389465.svg	/^<svg xmlns="http:\/\/www.w3.org\/2000\/svg" viewBox="0 0 27 41.25" fill="none" x="0px" y="0px"></;"	n	uri:http://www.w3.org/2000/svg
+defs2	image/noun-power-3389493.svg	/^     id="defs2" \/>$/;"	i
+inkscape	image/noun-power-3389493.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview2	image/noun-power-3389493.svg	/^     inkscape:current-layer="svg2" \/>$/;"	i
+nsc88f44d30101	image/noun-power-3389493.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-power-3389493.svg	/^     inkscape:export-ydpi="74.926865" \/>$/;"	i
+sodipodi	image/noun-power-3389493.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-power-3389493.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg2	image/noun-power-3389493.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text1	image/noun-power-3389493.svg	/^     id="text1">Created by Anitha Jagathish<\/text>$/;"	i
+text2	image/noun-power-3389493.svg	/^     id="text2">from the Noun Project<\/text>$/;"	i
+defs2	image/noun-previous-5014982.svg	/^     id="defs2" \/>$/;"	i
+g1	image/noun-previous-5014982.svg	/^     inkscape:export-ydpi="204.8">$/;"	i
+inkscape	image/noun-previous-5014982.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview2	image/noun-previous-5014982.svg	/^     inkscape:current-layer="svg2" \/>$/;"	i
+nsfec31d590101	image/noun-previous-5014982.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-previous-5014982.svg	/^       id="path1" \/>$/;"	i
+sodipodi	image/noun-previous-5014982.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-previous-5014982.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	n	uri:http://www.w3.org/2000/svg
+svg2	image/noun-previous-5014982.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg">$/;"	i
+text1	image/noun-previous-5014982.svg	/^     id="text1">Created by Ricons<\/text>$/;"	i
+text2	image/noun-previous-5014982.svg	/^     id="text2">from the Noun Project<\/text>$/;"	i
+title1	image/noun-previous-5014982.svg	/^     id="title1">21 Previous<\/title>$/;"	i
+cc	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://creativecommons.org/ns#
+dc	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://purl.org/dc/elements/1.1/
+inkscape	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+nsa5703f0a0101	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://www.w3.org/2000/svg
+rdf	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+sodipodi	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-refresh-1854073.svg	/^<svg xmlns:dc="http:\/\/purl.org\/dc\/elements\/1.1\/" xmlns:cc="http:\/\/creativecommons.org\/n/;"	n	uri:http://www.w3.org/2000/svg
+defs3	image/noun-undo-3617628.svg	/^     id="defs3" \/><sodipodi:namedview$/;"	i
+g2	image/noun-undo-3617628.svg	/^     inkscape:export-ydpi="76.800003"><path$/;"	i
+inkscape	image/noun-undo-3617628.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.inkscape.org/namespaces/inkscape
+namedview3	image/noun-undo-3617628.svg	/^     inkscape:current-layer="svg3" \/><g$/;"	i
+ns47c327760101	image/noun-undo-3617628.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+path1	image/noun-undo-3617628.svg	/^       id="path1" \/><path$/;"	i
+path2	image/noun-undo-3617628.svg	/^       id="path2" \/><\/g><text$/;"	i
+sodipodi	image/noun-undo-3617628.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd
+svg	image/noun-undo-3617628.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	n	uri:http://www.w3.org/2000/svg
+svg3	image/noun-undo-3617628.svg	/^   xmlns:svg="http:\/\/www.w3.org\/2000\/svg"><defs$/;"	i
+text2	image/noun-undo-3617628.svg	/^     id="text2">Created by Kick<\/text><text$/;"	i
+text3	image/noun-undo-3617628.svg	/^     id="text3">from the Noun Project<\/text><\/svg>$/;"	i
+main	main.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+__displayMatrix	matrix.c	/^void __displayMatrix(Matrix matrix)$/;"	f	typeref:typename:void
+__getCoordPegWhereWeGo	matrix.c	/^int __getCoordPegWhereWeGo(int where)$/;"	f	typeref:typename:int
+__selectItem	matrix.c	/^char *__selectItem(int item)$/;"	f	typeref:typename:char *
+currentMatrixOfBoard	matrix.c	/^matrixOfBoard currentMatrixOfBoard;$/;"	v	typeref:typename:matrixOfBoard
+matrixCanMovePeg	matrix.c	/^int matrixCanMovePeg()$/;"	f	typeref:typename:int
+matrixCopy	matrix.c	/^Matrix matrixCopy;$/;"	v	typeref:typename:Matrix
+matrixCountRemainPeg	matrix.c	/^int matrixCountRemainPeg()$/;"	f	typeref:typename:int
+matrixDiamond	matrix.c	/^Matrix matrixDiamond = {$/;"	v	typeref:typename:Matrix
+matrixEnglish	matrix.c	/^Matrix matrixEnglish = {$/;"	v	typeref:typename:Matrix
+matrixGerman	matrix.c	/^Matrix matrixGerman = {$/;"	v	typeref:typename:Matrix
+matrixLoad	matrix.c	/^int matrixLoad(int choice)$/;"	f	typeref:typename:int
+matrixRotate	matrix.c	/^int matrixRotate(theta where)$/;"	f	typeref:typename:int
+matrixSelectPeg	matrix.c	/^int matrixSelectPeg(int row, int column)$/;"	f	typeref:typename:int
+matrixUpdate	matrix.c	/^int matrixUpdate(Peg_Direction where)$/;"	f	typeref:typename:int
+pMatrixLoad	matrix.c	/^char (*pMatrixLoad)[VER_MAX] = NULL;$/;"	v	typeref:typename:char (*)[]
+HOR_MAX	matrix.h	/^#define HOR_MAX /;"	d
+Matrix	matrix.h	/^typedef char Matrix[HOR_MAX][VER_MAX];$/;"	t	typeref:typename:char[HOR_MAX][VER_MAX]
+THETA_CLOCKWISE	matrix.h	/^    THETA_CLOCKWISE$/;"	e	enum:e_theta
+THETA_COUNTER_CLOCKWISE	matrix.h	/^    THETA_COUNTER_CLOCKWISE,$/;"	e	enum:e_theta
+VER_MAX	matrix.h	/^#define VER_MAX /;"	d
+_MATRIX_H_	matrix.h	/^#define _MATRIX_H_$/;"	d
+e_theta	matrix.h	/^typedef enum e_theta$/;"	g
+id	matrix.h	/^    int id;$/;"	m	struct:s_matrixOfBoard	typeref:typename:int
+matrixOfBoard	matrix.h	/^} matrixOfBoard;$/;"	t	typeref:struct:s_matrixOfBoard
+name	matrix.h	/^    char *name;$/;"	m	struct:s_matrixOfBoard	typeref:typename:char *
+pShape	matrix.h	/^    Matrix *pShape;$/;"	m	struct:s_matrixOfBoard	typeref:typename:Matrix *
+s_matrixOfBoard	matrix.h	/^typedef struct s_matrixOfBoard$/;"	s
+theta	matrix.h	/^} theta;$/;"	t	typeref:enum:e_theta
+SIZE_TAB	memento.c	/^#define SIZE_TAB(/;"	d	file:
+caretakerAddMemento	memento.c	/^void caretakerAddMemento(pMemento pmArray)$/;"	f	typeref:typename:void
+caretakerGetMemento	memento.c	/^caretakerGetMemento(int undo)$/;"	f	typeref:typename:pMemento
+caretakerNew	memento.c	/^void caretakerNew()$/;"	f	typeref:typename:void
+mArrayList	memento.c	/^static mementoArrayList mArrayList = {NULL}; \/\/ tableau de pointeur de memento$/;"	v	typeref:typename:mementoArrayList	file:
+mementoGetSaveState	memento.c	/^mementoGetSaveState(pMemento pm)$/;"	f	typeref:typename:Peg_Memento
+mementoIsEmpty	memento.c	/^int mementoIsEmpty()$/;"	f	typeref:typename:int
+mementoNew	memento.c	/^mementoNew(mvt mvtStart, mvt mvtBetween, mvt mvtEnd)$/;"	f	typeref:typename:pMemento
+mementoTransformRotate	memento.c	/^mementoTransformRotate( int rotation ) $/;"	f	typeref:typename:void
+originatorRestoreFromMemento	memento.c	/^int originatorRestoreFromMemento(pMemento pm)$/;"	f	typeref:typename:int
+originatorSaveToMemento	memento.c	/^originatorSaveToMemento()$/;"	f	typeref:typename:pMemento
+originatorSet	memento.c	/^void originatorSet(Peg_Memento state)$/;"	f	typeref:typename:void
+pm	memento.c	/^static pMemento pm;$/;"	v	typeref:typename:pMemento	file:
+statePeg	memento.c	/^static Peg_Memento statePeg;$/;"	v	typeref:typename:Peg_Memento	file:
+MEMENTO_H	memento.h	/^#define MEMENTO_H$/;"	d
+NB_UNDO	memento.h	/^#define NB_UNDO /;"	d
+column	memento.h	/^    int column;$/;"	m	struct:s_mvt	typeref:typename:int
+idRollback	memento.h	/^    int idRollback; \/\/ identifiant du mouvement$/;"	m	struct:s_memento	typeref:typename:int
+memento	memento.h	/^} memento;$/;"	t	typeref:struct:s_memento
+mementoArrayList	memento.h	/^typedef pMemento mementoArrayList[NB_UNDO]; \/\/ typedef pMemento mementoArrayList[NB_UNDO]<br\//;"	t	typeref:typename:pMemento[NB_UNDO]
+mvt	memento.h	/^} mvt;$/;"	t	typeref:struct:s_mvt
+mvtBetween	memento.h	/^    mvt mvtBetween; \/\/ coord intermediaire du mouvement$/;"	m	struct:s_memento	typeref:typename:mvt
+mvtEnd	memento.h	/^    mvt mvtEnd;     \/\/ coord arrivée du mouvement$/;"	m	struct:s_memento	typeref:typename:mvt
+mvtStart	memento.h	/^    mvt mvtStart;   \/\/ coord depart du mouvement$/;"	m	struct:s_memento	typeref:typename:mvt
+pMemento	memento.h	/^typedef memento *pMemento;$/;"	t	typeref:typename:memento *
+row	memento.h	/^    int row;$/;"	m	struct:s_mvt	typeref:typename:int
+s_memento	memento.h	/^typedef struct s_memento$/;"	s
+s_mvt	memento.h	/^typedef struct s_mvt$/;"	s
+pegBuildPeg	peg.c	/^pegBuildPeg( int row, int column, Peg_Direction direction ) {$/;"	f	typeref:typename:int
+pegFirstPeg	peg.c	/^pegFirstPeg( int row, int column ) {$/;"	f	typeref:typename:void
+pegFlushPeg	peg.c	/^pegFlushPeg( ) {$/;"	f	typeref:typename:void
+pegReturnDefaultPeg	peg.c	/^pegReturnDefaultPeg( ) {$/;"	f	typeref:typename:int
+tab_Peg	peg.c	/^Peg tab_Peg[MAX_STRUCT_PEG] = {$/;"	v	typeref:typename:Peg[]
+CENTER	peg.h	/^    CENTER,      \/* 0 Peg central par rapport aux 4 directions *\/$/;"	e	enum:e_Peg_Direction
+DEFAULT	peg.h	/^    DEFAULT,     \/* 5 emplacement par defaut *\/$/;"	e	enum:e_Peg_Direction
+EAST	peg.h	/^    EAST,        \/* 2 					*\/$/;"	e	enum:e_Peg_Direction
+MAX_STRUCT_PEG	peg.h	/^#define MAX_STRUCT_PEG /;"	d
+NORTH	peg.h	/^    NORTH,       \/* 1 direction où aller *\/$/;"	e	enum:e_Peg_Direction
+NO_MOVE	peg.h	/^    NO_MOVE = 10 \/* on reclique sur le meme Peg (GDK) *\/$/;"	e	enum:e_Peg_Direction
+Peg	peg.h	/^} Peg;$/;"	t	typeref:struct:s_Peg
+Peg_Coord	peg.h	/^} Peg_Coord;$/;"	t	typeref:struct:s_Peg_Coord
+Peg_Direction	peg.h	/^} Peg_Direction;$/;"	t	typeref:enum:e_Peg_Direction
+Peg_Memento	peg.h	/^} Peg_Memento;$/;"	t	typeref:struct:s_Peg_Memento
+SOUTH	peg.h	/^    SOUTH,       \/* 3 					*\/$/;"	e	enum:e_Peg_Direction
+UNDO	peg.h	/^    UNDO = 666,  \/* 666 Devil Number =:> Peg à undo *\/$/;"	e	enum:e_Peg_Direction
+WEST	peg.h	/^    WEST,        \/* 4 					*\/$/;"	e	enum:e_Peg_Direction
+_PEG_H_	peg.h	/^#define _PEG_H_$/;"	d
+bydefault	peg.h	/^    int bydefault;$/;"	m	struct:s_Peg	typeref:typename:int
+column	peg.h	/^    int column;$/;"	m	struct:s_Peg_Coord	typeref:typename:int
+coord	peg.h	/^    Peg_Coord coord;$/;"	m	struct:s_Peg	typeref:typename:Peg_Coord
+coordBetween	peg.h	/^    Peg_Coord coordBetween;$/;"	m	struct:s_Peg_Memento	typeref:typename:Peg_Coord
+coordEnd	peg.h	/^    Peg_Coord coordEnd;$/;"	m	struct:s_Peg_Memento	typeref:typename:Peg_Coord
+coordStart	peg.h	/^    Peg_Coord coordStart;$/;"	m	struct:s_Peg_Memento	typeref:typename:Peg_Coord
+direction	peg.h	/^    Peg_Direction direction;$/;"	m	struct:s_Peg	typeref:typename:Peg_Direction
+e_Peg_Direction	peg.h	/^typedef enum e_Peg_Direction$/;"	g
+row	peg.h	/^    int row;$/;"	m	struct:s_Peg_Coord	typeref:typename:int
+s_Peg	peg.h	/^typedef struct s_Peg$/;"	s
+s_Peg_Coord	peg.h	/^typedef struct s_Peg_Coord$/;"	s
+s_Peg_Memento	peg.h	/^typedef struct s_Peg_Memento$/;"	s
+PEG	score.c	/^    PEG,$/;"	e	enum:e_typeSort	file:
+PRN	score.c	/^#define PRN /;"	d	file:
+SCORE	score.c	/^    SCORE$/;"	e	enum:e_typeSort	file:
+TIME	score.c	/^    TIME,$/;"	e	enum:e_typeSort	file:
+__addBegin	score.c	/^__addBegin()$/;"	f	typeref:typename:void	file:
+__addEnd	score.c	/^__addEnd()$/;"	f	typeref:typename:int	file:
+__addInside	score.c	/^__addInside(int posInsert)$/;"	f	typeref:typename:void	file:
+__calculateScore	score.c	/^__calculateScore(const int remainPeg, const double timeBonus)$/;"	f	typeref:typename:double	file:
+__insertRecord	score.c	/^__insertRecord(score *inputScore)$/;"	f	typeref:typename:int	file:
+__setBonusElapseTime	score.c	/^__setBonusElapseTime(int bonus)$/;"	f	typeref:typename:void	file:
+__setIdScore	score.c	/^__setIdScore(int idScore)$/;"	f	typeref:typename:void	file:
+__setRemainingPeg	score.c	/^__setRemainingPeg(int remainPeg)$/;"	f	typeref:typename:void	file:
+__setScoreGame	score.c	/^__setScoreGame(int scoreGame)$/;"	f	typeref:typename:void	file:
+__updateCursorScore	score.c	/^__updateCursorScore(const score *inputScore)$/;"	f	typeref:typename:void	file:
+bonusTimeScore	score.c	/^static double bonusTimeScore = 0;$/;"	v	typeref:typename:double	file:
+cursorCurrentScore	score.c	/^static score cursorCurrentScore;$/;"	v	typeref:typename:score	file:
+cursorScore	score.c	/^static pScore cursorScore;$/;"	v	typeref:typename:pScore	file:
+e_typeSort	score.c	/^typedef enum e_typeSort$/;"	g	file:
+inputScore	score.c	/^static score inputScore;$/;"	v	typeref:typename:score	file:
+remainingPeg	score.c	/^static int remainingPeg = 0;$/;"	v	typeref:typename:int	file:
+scoreGetBonusTimeScore	score.c	/^scoreGetBonusTimeScore()$/;"	f	typeref:typename:double
+scoreGetSortScore	score.c	/^scoreGetSortScore(int rank)$/;"	f	typeref:typename:tabScore *
+scoreInit	score.c	/^void scoreInit()$/;"	f	typeref:typename:void
+scoreNew	score.c	/^int scoreNew()$/;"	f	typeref:typename:int
+scoreResetBonusTimeScore	score.c	/^void scoreResetBonusTimeScore()$/;"	f	typeref:typename:void
+scoreSetCalculateBonusElapseTimer	score.c	/^void scoreSetCalculateBonusElapseTimer(double elapseTimer)$/;"	f	typeref:typename:void
+scoreSetNameMatrix	score.c	/^void scoreSetNameMatrix(const char *sName, int rank)$/;"	f	typeref:typename:void
+scoreSetNamePlayer	score.c	/^void scoreSetNamePlayer(const char *sName, int rank)$/;"	f	typeref:typename:void
+scoreSetRemainingPeg	score.c	/^void scoreSetRemainingPeg(int number)$/;"	f	typeref:typename:void
+tabSortScore	score.c	/^static tabScore tabSortScore;$/;"	v	typeref:typename:tabScore	file:
+typeSort	score.c	/^} typeSort;$/;"	t	typeref:enum:e_typeSort	file:
+MAX_CAR_NAME	score.h	/^#define MAX_CAR_NAME /;"	d
+MAX_SEC_BONUS	score.h	/^#define MAX_SEC_BONUS /;"	d
+MIN_SEC_BONUS	score.h	/^#define MIN_SEC_BONUS /;"	d
+SCORE_BEST_OF	score.h	/^#define SCORE_BEST_OF /;"	d
+UNKNOWN	score.h	/^#define UNKNOWN /;"	d
+_SCORE_H_	score.h	/^#define _SCORE_H_$/;"	d
+bonusElapseTime	score.h	/^    double bonusElapseTime;$/;"	m	struct:s_Score	typeref:typename:double
+idScore	score.h	/^    int idScore;$/;"	m	struct:s_Score	typeref:typename:int
+nameMatrix	score.h	/^    char nameMatrix[MAX_CAR_NAME];$/;"	m	struct:s_Score	typeref:typename:char[]
+namePlayer	score.h	/^    char namePlayer[MAX_CAR_NAME];$/;"	m	struct:s_Score	typeref:typename:char[]
+pScore	score.h	/^typedef score *pScore;$/;"	t	typeref:typename:score *
+remainingPeg	score.h	/^    int remainingPeg;$/;"	m	struct:s_Score	typeref:typename:int
+s_Score	score.h	/^typedef struct s_Score {$/;"	s
+score	score.h	/^} score;$/;"	t	typeref:struct:s_Score
+scoreGame	score.h	/^    double scoreGame;$/;"	m	struct:s_Score	typeref:typename:double
+tabScore	score.h	/^typedef score tabScore[SCORE_BEST_OF];$/;"	t	typeref:typename:score[SCORE_BEST_OF]
+#boxScore .rank	theme/senku.css	/^#boxScore .rank {$/;"	c
+#boxScore grid>label	theme/senku.css	/^#boxScore grid>label {$/;"	s
+#boxScore grid>label:nth-child(-n + 5)	theme/senku.css	/^#boxScore grid>label:nth-child(-n + 5) {$/;"	s
+#boxScore grid>label:nth-child(5n + 1)	theme/senku.css	/^#boxScore grid>label:nth-child(5n + 1) {$/;"	s
+#boxScore grid>label:nth-child(5n + 2)	theme/senku.css	/^#boxScore grid>label:nth-child(5n + 2) {$/;"	s
+#boxScore grid>label:nth-last-child(5n + 3)	theme/senku.css	/^#boxScore grid>label:nth-last-child(5n + 3) {$/;"	s
+#boxScore grid>label:nth-last-child(5n + 4)	theme/senku.css	/^#boxScore grid>label:nth-last-child(5n + 4) {$/;"	s
+#buttonNewGame	theme/senku.css	/^#buttonNewGame {$/;"	i
+#buttonQuit	theme/senku.css	/^#buttonQuit {$/;"	i
+#buttonRotateLeft	theme/senku.css	/^#buttonRotateLeft {$/;"	i
+#buttonRotateRight	theme/senku.css	/^#buttonRotateRight {$/;"	i
+#buttonScore	theme/senku.css	/^#buttonScore {$/;"	i
+#buttonUndo	theme/senku.css	/^#buttonUndo {$/;"	i
+#dialogMenu	theme/senku.css	/^#dialogMenu {}$/;"	i
+#gridMatrix	theme/senku.css	/^#gridMatrix {$/;"	i
+#gridMatrix.logo	theme/senku.css	/^#gridMatrix.logo {$/;"	c
+#img_logo	theme/senku.css	/^#img_logo {$/;"	i
+#windowGetName grid>label	theme/senku.css	/^#windowGetName grid>label {$/;"	s
+#windowGetName grid>label:nth-child(even)	theme/senku.css	/^#windowGetName grid>label:nth-child(even) {$/;"	s
+#windowGetName>grid>entry	theme/senku.css	/^#windowGetName>grid>entry {$/;"	i
+#windowGetName>grid~label	theme/senku.css	/^#windowGetName>grid~label {$/;"	i
+#windowMain	theme/senku.css	/^#windowMain,$/;"	i
+.image-button	theme/senku.css	/^.image-button {$/;"	c
+.image-button:disabled	theme/senku.css	/^.image-button:disabled {$/;"	c
+.matrix-name-label	theme/senku.css	/^.matrix-name-label {$/;"	c
+.peg-board	theme/senku.css	/^.peg-board {$/;"	c
+.peg-delete	theme/senku.css	/^.peg-delete {$/;"	c
+.peg-hover	theme/senku.css	/^.peg-hover {$/;"	c
+.peg-move	theme/senku.css	/^.peg-move {$/;"	c
+.peg-select	theme/senku.css	/^.peg-select {$/;"	c
+.value-title-label	theme/senku.css	/^.value-title-label {$/;"	c
+.value-values-label	theme/senku.css	/^.value-values-label {$/;"	c
+box	theme/senku.css	/^box {}$/;"	s
+box>label	theme/senku.css	/^box>label {$/;"	s
+button	theme/senku.css	/^button,$/;"	s
+button:hover	theme/senku.css	/^button:hover {$/;"	s
+dialog	theme/senku.css	/^dialog {$/;"	s
+dialog label	theme/senku.css	/^dialog label {$/;"	s
+dialog>radiobutton	theme/senku.css	/^dialog>radiobutton {$/;"	s
+frame	theme/senku.css	/^frame {$/;"	s
+frame>label	theme/senku.css	/^frame>label {$/;"	s
+messagedialog	theme/senku.css	/^messagedialog {$/;"	s
+messagedialog	theme/senku.css	/^messagedialog,$/;"	s
+messagedialog box button label	theme/senku.css	/^messagedialog box button label {$/;"	s
+radio:checked	theme/senku.css	/^radio:checked {$/;"	s
+radio:hover	theme/senku.css	/^radio:hover {$/;"	s
+radiobutton	theme/senku.css	/^radiobutton {$/;"	s
+radiobutton>label	theme/senku.css	/^radiobutton>label {$/;"	s
+window	theme/senku.css	/^window,$/;"	s
+currentTimer	timer.c	/^static time_t currentTimer ;$/;"	v	typeref:typename:time_t	file:
+elapseTimer	timer.c	/^static double elapseTimer ;$/;"	v	typeref:typename:double	file:
+oldCurrentTimer	timer.c	/^static time_t oldCurrentTimer ;$/;"	v	typeref:typename:time_t	file:
+startClock	timer.c	/^static clock_t startClock ;$/;"	v	typeref:typename:clock_t	file:
+startTimer	timer.c	/^static time_t startTimer ;$/;"	v	typeref:typename:time_t	file:
+stopClock	timer.c	/^static clock_t stopClock ;$/;"	v	typeref:typename:clock_t	file:
+stopTimer	timer.c	/^static time_t stopTimer ;$/;"	v	typeref:typename:time_t	file:
+timerGetElapseClock	timer.c	/^timerGetElapseClock( ) {$/;"	f	typeref:typename:double
+timerGetElapseTimer	timer.c	/^timerGetElapseTimer( ) {$/;"	f	typeref:typename:double
+timerGetMktime	timer.c	/^timerGetMktime( double rawTime ) {$/;"	f	typeref:typename:pfmtTime
+timerGetTotalTimer	timer.c	/^timerGetTotalTimer( ) {$/;"	f	typeref:typename:double
+timerSetElapseTimer	timer.c	/^timerSetElapseTimer( ) {$/;"	f	typeref:typename:int
+timerSetStartTimer	timer.c	/^timerSetStartTimer( ) {$/;"	f	typeref:typename:int
+timerSetStopTimer	timer.c	/^timerSetStopTimer( ) {$/;"	f	typeref:typename:int
+timerStartClock	timer.c	/^timerStartClock( ) {$/;"	f	typeref:typename:int
+timerStopClock	timer.c	/^timerStopClock( ) {$/;"	f	typeref:typename:int
+uniqInstance	timer.c	/^static int uniqInstance = 1 ;$/;"	v	typeref:typename:int	file:
+_TIMER_H_	timer.h	/^#define _TIMER_H_$/;"	d
+fmtTime	timer.h	/^} fmtTime;$/;"	t	typeref:struct:s_fmtTime
+mkt_min	timer.h	/^    double mkt_min;$/;"	m	struct:s_fmtTime	typeref:typename:double
+mkt_sec	timer.h	/^    double mkt_sec;$/;"	m	struct:s_fmtTime	typeref:typename:double
+pfmtTime	timer.h	/^typedef fmtTime *pfmtTime;$/;"	t	typeref:typename:fmtTime *
+s_fmtTime	timer.h	/^typedef struct s_fmtTime {$/;"	s

@@ -4,11 +4,12 @@
     // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": "(gdb) Lancer",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/jean/Senku/senku",
+            "program": "/home/jean/Senku2-64/senku",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -27,10 +28,10 @@
             "name": "clang-6.0 - Générer et déboguer le fichier actif",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/home/jean/Senku/senku",
+            "program": "/home/jean/Senku2-64/senku",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "/home/jean/Senku/",
+            "cwd": "/home/jean/Senku2-64/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "lldb",

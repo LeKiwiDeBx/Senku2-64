@@ -265,7 +265,12 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData);
  * @param event   query-tooltip
  * @param pData
  */
-void OnQueryTooltip(GtkWidget *pWidget, GdkEvent *event, gpointer pData);
+void OnQueryTooltip(GtkWidget *self,
+                    gint x,
+                    gint y,
+                    gboolean keyboard_mode,
+                    GtkTooltip *tooltip,
+                    gpointer user_data);
 
 /**
  * @brief appel fermeture boite de dialogue pWindowGetName
@@ -402,27 +407,31 @@ activate(GtkApplication *app,
 
     pButtonNewGame = gtk_button_new();
     gtk_widget_set_has_tooltip(pButtonNewGame, TRUE);
-    gtk_widget_set_tooltip_text(pButtonNewGame, "New Game");
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonNewGame), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonNewGame, FALSE, FALSE, 0);
 
     pButtonUndo = gtk_button_new();
+    gtk_widget_set_has_tooltip(pButtonUndo, TRUE);
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonUndo), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonUndo, FALSE, FALSE, 0);
 
     pButtonScore = gtk_button_new();
+    gtk_widget_set_has_tooltip(pButtonScore, TRUE);
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonScore), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonScore, FALSE, FALSE, 0);
 
     pButtonRotateLeft = gtk_button_new();
+    gtk_widget_set_has_tooltip(pButtonRotateLeft, TRUE);
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonRotateLeft), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonRotateLeft, FALSE, FALSE, 0);
 
     pButtonRotateRight = gtk_button_new();
+    gtk_widget_set_has_tooltip(pButtonRotateRight, TRUE);
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonRotateRight), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonRotateRight, FALSE, FALSE, 0);
 
     pButtonQuit = gtk_button_new();
+    gtk_widget_set_has_tooltip(pButtonQuit, TRUE);
     gtk_style_context_add_class(gtk_widget_get_style_context(pButtonQuit), "image-button");
     gtk_box_pack_start(GTK_BOX(pHbox), pButtonQuit, FALSE, FALSE, 0);
 
@@ -491,13 +500,23 @@ activate(GtkApplication *app,
     gtk_style_context_add_class(gtk_widget_get_style_context(pGridMatrix), "logo");
 
     /* les signaux des boutons */
-    g_signal_connect(G_OBJECT(pButtonScore), "clicked", G_CALLBACK(OnDisplayScore), NULL);
-    g_signal_connect(G_OBJECT(pButtonQuit), "clicked", G_CALLBACK(OnDestroy), pWindowMain);
-    g_signal_connect(G_OBJECT(pButtonUndo), "clicked", G_CALLBACK(OnUndo), NULL);
     g_signal_connect(G_OBJECT(pButtonNewGame), "clicked", G_CALLBACK(OnNewGame), NULL);
-    g_signal_connect(G_OBJECT(pButtonNewGame), "query-tooltip", G_CALLBACK(OnQueryTooltip), NULL);
+    g_signal_connect(G_OBJECT(pButtonNewGame), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(1));
+
+    g_signal_connect(G_OBJECT(pButtonUndo), "clicked", G_CALLBACK(OnUndo), NULL);
+    g_signal_connect(G_OBJECT(pButtonUndo), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(2));
+
+    g_signal_connect(G_OBJECT(pButtonScore), "clicked", G_CALLBACK(OnDisplayScore), NULL);
+    g_signal_connect(G_OBJECT(pButtonScore), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(3));
+
     g_signal_connect(G_OBJECT(pButtonRotateLeft), "clicked", G_CALLBACK(OnRotate), GINT_TO_POINTER(THETA_COUNTER_CLOCKWISE));
+    g_signal_connect(G_OBJECT(pButtonRotateLeft), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(4));
+
     g_signal_connect(G_OBJECT(pButtonRotateRight), "clicked", G_CALLBACK(OnRotate), GINT_TO_POINTER(THETA_CLOCKWISE));
+    g_signal_connect(G_OBJECT(pButtonRotateRight), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(5));
+
+    g_signal_connect(G_OBJECT(pButtonQuit), "clicked", G_CALLBACK(OnDestroy), pWindowMain);
+    g_signal_connect(G_OBJECT(pButtonQuit), "query-tooltip", G_CALLBACK(OnQueryTooltip), GINT_TO_POINTER(6));
 
     onlyOneBoard.set = &currentMatrixOfBoard;
     scoreInit();
@@ -505,10 +524,15 @@ activate(GtkApplication *app,
     _g_display_box_menu_new_game(NULL);
 }
 
-void OnQueryTooltip(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
+void OnQueryTooltip(GtkWidget *self,
+                    gint x,
+                    gint y,
+                    gboolean keyboard_mode,
+                    GtkTooltip *tooltip,
+                    gpointer user_data)
 {
-    g_print("OnQueryTooltip\n");
-    gtk_widget_set_tooltip_text(pWidget, "New Game");
+    const gchar *tooltipLabel[] = {"New Game", "Undo", "Score", "Rotate Left", "Rotate Right", "Quit"};
+    gtk_widget_set_tooltip_text(self, tooltipLabel[GPOINTER_TO_INT(user_data) - 1]);
 }
 
 int boardInitNew()

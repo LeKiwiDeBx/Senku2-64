@@ -1,5 +1,5 @@
 # makefile de senku // Le Kiwi
-PROG = senku
+PROG = senku2
 
 CC = gcc
 # gcc
