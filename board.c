@@ -921,7 +921,7 @@ void OnUndo(GtkWidget *pWidget, gpointer pData)
 
 void _setLastMementoUndoRedrawNormal(pMemento pm)
 {
-    int coefRow = 0, coefColumn = 0, x = 0, y = 0;
+    // int coefRow = 0, coefColumn = 0, x = 0, y = 0;
     if (pm != NULL && pm->mvtEnd.row != 0)
     {
         /*  x = pm->mvtEnd.row; */
@@ -1464,8 +1464,8 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
         _g_display_box_score(resultScore, rank);
     }
     else
-        g_free(resultScore);
-    gtk_widget_destroy(pWindowGetName);
+        //    g_free(resultScore);
+        gtk_widget_destroy(pWindowGetName);
 }
 
 void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
@@ -1474,7 +1474,7 @@ void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
     if (resultScore)
         resultScore = (pScore)scoreGetSortScore(0); /* arg:(int) NULL */
     _g_display_box_score(resultScore, 0);
-    g_free(resultScore);
+    // g_free(resultScore);
 }
 
 void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)
