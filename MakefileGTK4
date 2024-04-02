@@ -1,16 +1,17 @@
 # makefile de senku // Le Kiwi
-PROG = senku2
+PROG = senku2Gtk4
 
 CC = gcc
 # gcc
 #pour gcc
 CFLAGS =  -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o
 
+
 LDFLAGS= #-mwindows
 
 OBJECTS =   main.o board.o matrix.o peg.o timer.o score.o memento.o
 
-PKG_CONFIG = `pkg-config --cflags --libs gtk+-3.0`
+PKG_CONFIG = `pkg-config --cflags --libs gtk4`
 
 install: all
 

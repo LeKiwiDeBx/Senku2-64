@@ -159,12 +159,14 @@ box>label {
     color: @senku_text_light;
     font-weight: bold;
     font-size: 1.5em;
+    margin: 0px 5px 10px 5px;
 }
 
 .value-values-label {
     color: @senku_value_number;
     font-weight: bold;
     font-size: 1.5em;
+    margin: 0px 5px 10px 5px;
 }
 
 /**********************************************************************************************
@@ -335,7 +337,6 @@ box {}
  *   Pour les radio button choix
  *
  * *********************************************************************************************/
-
 radiobutton>label {
     margin: 5px 5px 5px 25px;
     background-color: #F1895C;
@@ -344,7 +345,6 @@ radiobutton>label {
     padding-left: 15px;
 
 }
-
 
 radiobutton {
     margin: 20px 20px;
@@ -359,7 +359,6 @@ radiobutton {
 
 radio:checked {
     color: #F1895C;
-
 }
 
 radio:hover {
@@ -376,8 +375,8 @@ radio:hover {
     padding: 5px;
     background-image: none;
     background-repeat: no-repeat;
-    background-position: center;
-    transition: padding, background-image 0.5s ease-in-out 1s;
+    background-position: bottom;
+    transition: all, background-image 0.5s ease-in-out 100ms;
 
 }
 

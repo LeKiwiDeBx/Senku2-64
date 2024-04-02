@@ -17,6 +17,14 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <glib/gprintf.h>
+
+/**
+ * translation
+ */
+#include <libintl.h>
+#include <locale.h>
+#define _(string) gettext (string)
+
 /**
  * headers Senku project
  */
@@ -450,9 +458,8 @@ activate(GtkApplication *app,
     /* frame Values */
     GtkWidget *pfrValues = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(pfrValues), GTK_SHADOW_NONE);
-    gtk_container_set_border_width(GTK_CONTAINER(pfrValues), 0);
     gchar *plbValuesTitle[] = {LABEL_BONUS_TEXT, LABEL_PEG_TEXT, LABEL_TIME_TEXT};
-    pVbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 20);
+    pVbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_box_set_homogeneous(GTK_BOX(pVbox), TRUE);
     gtk_widget_set_halign(GTK_WIDGET(pVbox), GTK_ALIGN_CENTER);
     gtk_container_add(GTK_CONTAINER(pfrValues), pVbox);
@@ -474,6 +481,10 @@ activate(GtkApplication *app,
     gtk_box_pack_start(GTK_BOX(pVbox), plbValues[2], FALSE, FALSE, 0);
     plbValuesValue[2] = gtk_label_new("0");
     gtk_box_pack_start(GTK_BOX(pVbox), plbValuesValue[2], FALSE, FALSE, 0);
+    for (int k = 0; k < 3; k++)
+    {
+        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[k]), "value-values-label");
+    }
 
     gtk_grid_attach_next_to(GTK_GRID(pGridMain), pfrValues, pfrComments, GTK_POS_BOTTOM, 1, 1);
 
@@ -1463,8 +1474,9 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
         resultScore = (pScore)scoreGetSortScore(0); /*arg: (int) NULL */
         _g_display_box_score(resultScore, rank);
     }
-    else
-        //    g_free(resultScore);
+    else {
+        free(resultScore);
+    }
         gtk_widget_destroy(pWindowGetName);
 }
 
@@ -1474,7 +1486,6 @@ void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
     if (resultScore)
         resultScore = (pScore)scoreGetSortScore(0); /* arg:(int) NULL */
     _g_display_box_score(resultScore, 0);
-    // g_free(resultScore);
 }
 
 void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)
