@@ -551,7 +551,7 @@ void OnQueryTooltip(GtkWidget *self,
                     GtkTooltip *tooltip,
                     gpointer user_data)
 {
-    const gchar *tooltipLabel[] = {N_("New Game"),  N_("Undo"),  N_("Score"),  N_("Rotate Left"),  N_("Rotate Right"),  N_("Quit")}; // "Score", "Rotate Left", "Rotate Right", "Quit"};
+    const gchar *tooltipLabel[] = {N_("New Game"), N_("Undo"), N_("Score"), N_("Rotate Left"), N_("Rotate Right"), N_("Quit")}; // "Score", "Rotate Left", "Rotate Right", "Quit"};
     gtk_widget_set_tooltip_text(self, _(tooltipLabel[GPOINTER_TO_INT(user_data) - 1]));
 }
 
@@ -560,12 +560,12 @@ int boardInitNew()
     int status;
     app = gtk_application_new("lekiwidebx.dev.senku", G_APPLICATION_FLAGS_NONE);
     g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
-    
-    setlocale (LC_ALL, "");
+
+    setlocale(LC_ALL, "");
     textdomain(GETTEXT_DOMAIN_NAME);
-    bind_textdomain_codeset(GETTEXT_DOMAIN_NAME, "UTF-8" );
-    bindtextdomain(GETTEXT_DOMAIN_NAME, GETTEXT_DIR_NAME); 
-   
+    bind_textdomain_codeset(GETTEXT_DOMAIN_NAME, "UTF-8");
+    bindtextdomain(GETTEXT_DOMAIN_NAME, GETTEXT_DIR_NAME);
+
     status = g_application_run(G_APPLICATION(app), 0, NULL);
     return status;
 }
@@ -1491,10 +1491,11 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
         resultScore = (pScore)scoreGetSortScore(0); /*arg: (int) NULL */
         _g_display_box_score(resultScore, rank);
     }
-    else {
+    else
+    {
         free(resultScore);
     }
-        gtk_widget_destroy(pWindowGetName);
+    gtk_widget_destroy(pWindowGetName);
 }
 
 void OnDisplayScore(GtkWidget *pWidget, dataName *pData)

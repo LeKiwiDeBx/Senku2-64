@@ -23,6 +23,8 @@
 		"editor.fontLigatures": false,
 		"cSpell.words": [
 			"senku"
-		]
+		],
+		"codeium.enableSearch": true,
+		"codeium.aggressiveShutdown": true
 	}
 }
