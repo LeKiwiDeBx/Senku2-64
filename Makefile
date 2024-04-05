@@ -32,7 +32,7 @@ peg.o: peg.c peg.h
 	$(CC) $(CFLAGS) peg.o -c peg.c
 
 score.o: score.c score.h
-	$(CC) $(CFLAGS) score.o -c score.c
+	$(CC) $(CFLAGS) score.o -c score.c $(PKG_CONFIG)
 
 timer.o: timer.c timer.h
 	$(CC) $(CFLAGS) timer.o -c timer.c

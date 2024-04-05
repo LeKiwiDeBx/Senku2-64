@@ -1,0 +1,58 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: senku\n"
+"POT-Creation-Date: 2024-04-04 14:26+0200\n"
+"PO-Revision-Date: 2024-04-04 14:09+0200\n"
+"Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
+"Language-Team: LeKiwiDeBx\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;__;_N;TRANSLATORS:\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: board.c:57
+msgid "Shapes choice"
+msgstr ""
+
+#: board.c:70
+msgid "No more move!"
+msgstr ""
+
+#: board.c:71
+msgid "Nothing to [Undo]"
+msgstr ""
+
+#: board.c:72
+msgid "[Undo] the previous move"
+msgstr ""
+
+#: board.c:74
+msgid "Scoring"
+msgstr ""
+
+#: board.c:75
+msgid "Senku 2.2.0 Beta"
+msgstr ""
+
+#: board.c:80
+msgid "Bonus"
+msgstr ""
+
+#: board.c:81
+msgid "Pegs"
+msgstr ""
+
+#: board.c:82
+msgid "Time"
+msgstr ""
+
+#: board.c:461
+msgid "Initializing ..."
+msgstr ""

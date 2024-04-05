@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: senku\n"
+"POT-Creation-Date: 2024-04-03 21:01+0200\n"
+"PO-Revision-Date: 2024-04-03 21:01+0200\n"
+"Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
+"Language-Team: LeKiwiDeBx\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;__;_N;TRANSLATORS:\n"
+"X-Poedit-SearchPath-0: timer.h\n"
+"X-Poedit-SearchPath-1: timer.c\n"
+"X-Poedit-SearchPath-2: score.h\n"
+"X-Poedit-SearchPath-3: score.c\n"
+"X-Poedit-SearchPath-4: peg.h\n"
+"X-Poedit-SearchPath-5: peg.c\n"
+"X-Poedit-SearchPath-6: memento.h\n"
+"X-Poedit-SearchPath-7: memento.c\n"
+"X-Poedit-SearchPath-8: matrix.h\n"
+"X-Poedit-SearchPath-9: matrix.c\n"
+"X-Poedit-SearchPath-10: main.c\n"
+"X-Poedit-SearchPath-11: board.h\n"
+"X-Poedit-SearchPath-12: board.c\n"
+
+#: board.c:57
+msgid "Shapes choice"
+msgstr "Choix des figures"
+
+#: board.c:70
+msgid "No more move!"
+msgstr "Plus rien ne bouge!"
+
+#: board.c:71
+msgid "Nothing to [Undo]"
+msgstr "Rien à [défaire]"
+
+#: board.c:72
+msgid "[Undo] the previous move"
+msgstr "[défaire] le précédent mouvement"
+
+#: board.c:74
+msgid "Scoring"
+msgstr "Resultats"
+
+#: board.c:75
+msgid "Senku 2.2.0 Beta"
+msgstr "Senku 2.2.0 Beta [fr]"
+
+#: board.c:80
+msgid "Bonus"
+msgstr "Bonus"
+
+#: board.c:81
+msgid "Pegs"
+msgstr "Pions"
+
+#: board.c:82
+msgid "Time"
+msgstr "Temps"
+
+#: board.c:461
+msgid "Initializing ..."
+msgstr "Initialisation ..."

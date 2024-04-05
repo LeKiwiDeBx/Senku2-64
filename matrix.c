@@ -20,6 +20,12 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 
+#include <glib/gi18n.h>
+// #include <glib/gi18n-lib.h>
+#include <libintl.h>
+#include <locale.h>
+
+
 // Matrix matrixEnglish = {  // TEST TEST TEST
 //	0  1  2  3  4  5  6  7  8  9  10
 //	{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}, //0
@@ -114,7 +120,7 @@ __getCoordPegWhereWeGo(int);
  */
 int matrixLoad(int choice)
 {
-    char *nameShape[] = {"Unknown", "English", "German", "Diamond"};
+    char *nameShape[] = {N_("Unknown"), N_("English"), N_("German"), N_("Diamond")};
     Matrix *matrixType[] = {(Matrix *)NULL, (Matrix *)matrixEnglish, (Matrix *)matrixGerman, (Matrix *)matrixDiamond};
     if (choice >= 0 && choice <= 4)
     {

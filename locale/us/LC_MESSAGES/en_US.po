@@ -1,0 +1,162 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: senku\n"
+"POT-Creation-Date: 2024-04-04 20:40+0200\n"
+"PO-Revision-Date: 2024-04-04 20:41+0200\n"
+"Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
+"Language-Team: LeKiwiDeBx\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;__;_N;TRANSLATORS:\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: board.c:55
+msgid ""
+"Senku (GTK+3.22) 2.2.0 Beta\n"
+"\n"
+"[°} LeKiwiDeBx\n"
+"\n"
+"Copyright (C) 2016-2024 GNU GPLv3."
+msgstr ""
+
+#: board.c:56
+msgid "Shapes choice"
+msgstr ""
+
+#: board.c:69
+msgid "No more move!"
+msgstr ""
+
+#: board.c:70
+msgid "Nothing to [Undo]"
+msgstr ""
+
+#: board.c:71
+msgid "[Undo] the previous move"
+msgstr ""
+
+#: board.c:73
+msgid "Scoring"
+msgstr ""
+
+#: board.c:74
+msgid "Senku 2.2.0 Beta"
+msgstr ""
+
+#: board.c:79
+msgid "Bonus"
+msgstr ""
+
+#: board.c:80
+msgid "Pegs"
+msgstr ""
+
+#: board.c:81
+msgid "Time"
+msgstr ""
+
+#: board.c:82
+msgid "[°} LeKiwiDeBx"
+msgstr ""
+
+#: board.c:460
+msgid "Initializing ..."
+msgstr ""
+
+#: board.c:580
+msgid "English"
+msgstr ""
+
+#: board.c:581
+msgid "German"
+msgstr ""
+
+#: board.c:582
+msgid "Diamond"
+msgstr ""
+
+#: board.c:584
+msgid "Senku Shapes"
+msgstr ""
+
+#: board.c:587
+msgid "New Game"
+msgstr ""
+
+#: board.c:588
+msgid "Cancel"
+msgstr ""
+
+#: board.c:589
+msgid "Quit"
+msgstr ""
+
+#: board.c:899
+msgid "Do you Really wish to Quit Senku ?"
+msgstr ""
+
+#: board.c:900
+msgid "Confirm QUIT"
+msgstr ""
+
+#: board.c:1430
+msgid ""
+"\n"
+"Congratulations, "
+msgstr ""
+
+#: board.c:1431
+msgid "Username"
+msgstr ""
+
+#: board.c:1433
+msgid "Saving score"
+msgstr ""
+
+#: board.c:1436
+msgid ""
+"\n"
+"\t\tYeaah!  You're a real SENKU"
+msgstr ""
+
+#: board.c:1438
+msgid ""
+"\n"
+"\t\tThe victory is imminent!"
+msgstr ""
+
+#: board.c:1440
+msgid ""
+"\n"
+"\t\tNobody is perfect :)"
+msgstr ""
+
+#: board.c:1441
+#, c-format
+msgid ""
+"you're number %d in topmost!\n"
+"%s"
+msgstr ""
+
+#: board.c:1451
+msgid "Register"
+msgstr ""
+
+#: board.c:1599
+msgid "Close"
+msgstr ""
+
+#: score.c:20
+msgid "No name"
+msgstr ""
+
+#: score.c:247
+msgid "Unknown"
+msgstr ""

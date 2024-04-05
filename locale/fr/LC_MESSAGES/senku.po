@@ -1,0 +1,224 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: senku\n"
+"POT-Creation-Date: 2024-04-04 20:37+0200\n"
+"PO-Revision-Date: 2024-04-04 20:38+0200\n"
+"Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
+"Language-Team: LeKiwiDeBx\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;N_;__;TRANSLATORS:\n"
+"X-Poedit-SearchPath-0: timer.h\n"
+"X-Poedit-SearchPath-1: timer.c\n"
+"X-Poedit-SearchPath-2: score.h\n"
+"X-Poedit-SearchPath-3: score.c\n"
+"X-Poedit-SearchPath-4: peg.h\n"
+"X-Poedit-SearchPath-5: peg.c\n"
+"X-Poedit-SearchPath-6: memento.h\n"
+"X-Poedit-SearchPath-7: memento.c\n"
+"X-Poedit-SearchPath-8: matrix.h\n"
+"X-Poedit-SearchPath-9: matrix.c\n"
+"X-Poedit-SearchPath-10: main.c\n"
+"X-Poedit-SearchPath-11: board.h\n"
+"X-Poedit-SearchPath-12: board.c\n"
+
+#: board.c:55
+msgid ""
+"Senku (GTK+3.22) 2.2.0 Beta\n"
+"\n"
+"[°} LeKiwiDeBx\n"
+"\n"
+"Copyright (C) 2016-2024 GNU GPLv3."
+msgstr ""
+"Senku (GTK+3.22) 2.2.0 [fr] Beta\n"
+"\n"
+"[°} LeKiwiDeBx\n"
+"\n"
+"Copyright (C) 2016-2024 GNU GPLv3."
+
+#: board.c:56
+msgid "Shapes choice"
+msgstr "Choix des figures"
+
+#: board.c:69
+msgid "No more move!"
+msgstr "Plus rien ne bouge!"
+
+#: board.c:70
+msgid "Nothing to [Undo]"
+msgstr "Rien à [défaire]"
+
+#: board.c:71
+msgid "[Undo] the previous move"
+msgstr "[défait] le précédent mouvement"
+
+#: board.c:73
+msgid "Scoring"
+msgstr "Résultats"
+
+#: board.c:74
+msgid "Senku 2.2.0 Beta"
+msgstr "Senku 2.2.0 Beta [fr]"
+
+#: board.c:79
+msgid "Bonus"
+msgstr "Bonus"
+
+#: board.c:80
+msgid "Pegs"
+msgstr "Pions"
+
+#: board.c:81
+msgid "Time"
+msgstr "Temps"
+
+#: board.c:82
+msgid "[°} LeKiwiDeBx"
+msgstr "[°} LeKiwiDeBx"
+
+#: board.c:460
+msgid "Initializing ..."
+msgstr "Initialisation ..."
+
+#: board.c:554 board.c:587
+msgid "New Game"
+msgstr "Nouveau Jeu"
+
+#: board.c:554
+msgid "Undo"
+msgstr "Défaire"
+
+#: board.c:554
+msgid "Score"
+msgstr "Résultat"
+
+#: board.c:554
+msgid "Rotate Left"
+msgstr "Tourne Gauche"
+
+#: board.c:554
+msgid "Rotate Right"
+msgstr "Tourne Droite"
+
+#: board.c:554 board.c:589
+msgid "Quit"
+msgstr "Quitter"
+
+#: board.c:580 matrix.c:123
+msgid "English"
+msgstr "Anglais"
+
+#: board.c:581 matrix.c:123
+msgid "German"
+msgstr "Allemand"
+
+#: board.c:582 matrix.c:123
+msgid "Diamond"
+msgstr "Diamant"
+
+#: board.c:584
+msgid "Senku Shapes"
+msgstr "Formes Senku"
+
+#: board.c:588
+msgid "Cancel"
+msgstr "Annuler"
+
+#: board.c:899
+msgid "Do you Really wish to Quit Senku ?"
+msgstr "Veux-tu vraiment quitter Senku?"
+
+#: board.c:900
+msgid "Confirm QUIT"
+msgstr "Confirmez Quitter"
+
+#: board.c:1430
+msgid ""
+"\n"
+"Congratulations, "
+msgstr ""
+"\n"
+" \n"
+"Félicitations, "
+
+#: board.c:1431
+msgid "Username"
+msgstr "Patronyme"
+
+#: board.c:1433
+msgid "Saving score"
+msgstr "Sauvegarde du résultat"
+
+#: board.c:1436
+msgid ""
+"\n"
+"\t\tYeaah!  You're a real SENKU"
+msgstr ""
+"\n"
+"\t\\Waouh!  Tu es un vrai SENKU"
+
+#: board.c:1438
+msgid ""
+"\n"
+"\t\tThe victory is imminent!"
+msgstr ""
+"\n"
+"\t\tLa victoire est proche!"
+
+#: board.c:1440
+msgid ""
+"\n"
+"\t\tNobody is perfect :)"
+msgstr ""
+"\n"
+"\t\tPersonne n'est parfait :)"
+
+#: board.c:1441
+#, c-format
+msgid ""
+"you're number %d in topmost!\n"
+"%s"
+msgstr ""
+"tu es numéro %d en tête de classement!\n"
+"%s"
+
+#: board.c:1451
+msgid "Register"
+msgstr "Enregistrer"
+
+#: board.c:1553
+msgid "RANK"
+msgstr "RANG"
+
+#: board.c:1553
+msgid "PLAYER"
+msgstr "JOUEUR"
+
+#: board.c:1553
+msgid "PEG"
+msgstr "PION"
+
+#: board.c:1553
+msgid "SCORE"
+msgstr "SCORE"
+
+#: board.c:1553
+msgid "SHAPE"
+msgstr "FORME"
+
+#: board.c:1599
+msgid "Close"
+msgstr "Fermer"
+
+#: matrix.c:123 score.c:247
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: score.c:20
+msgid "No name"
+msgstr "Sans Nom"

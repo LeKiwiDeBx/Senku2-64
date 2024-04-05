@@ -8,11 +8,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <libintl.h>
+#include <locale.h>
 
 // #include <gmessages.h> /* memcpy */
 #include "score.h"
 
 #define PRN printf("\n")
+#define UNKNOWN       _("No name")
 
 typedef enum e_typeSort
 {
@@ -239,7 +244,7 @@ __calculateScore(const int remainPeg, const double timeBonus)
 void scoreInit()
 {
     int i;
-    const char *unknown = "Unknown";
+    const char *unknown = _("Unknown");
     char buffer[MAX_CAR_NAME];
     for (i = 0; i < SCORE_BEST_OF; i++)
     {

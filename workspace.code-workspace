@@ -14,7 +14,10 @@
 			"gtk.h": "c",
 			"features.h": "c",
 			"matrix.h": "c",
-			"splash.h": "c"
+			"splash.h": "c",
+			"gi18n.h": "c",
+			"locale.h": "c",
+			"stddef.h": "c"
 		},
 		"editor.fontFamily": "'FiraMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
 		"editor.fontLigatures": false,

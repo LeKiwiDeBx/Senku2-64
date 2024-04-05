@@ -21,9 +21,12 @@
 /**
  * translation
  */
+/* #include <libintl.h> */
+/* #include <locale.h> */
+/* #define _(string) gettext (string) */
+#include <glib/gi18n.h>
 #include <libintl.h>
 #include <locale.h>
-#define _(string) gettext (string)
 
 /**
  * headers Senku project
@@ -49,8 +52,8 @@
 #define SENKU_PANGO_MARKUP_LABEL(color, type) SENKU_PANGO_CONCAT_STR(color, type)
 #define SENKU_ABS(x) ((x)) ? (x) : (-x)
 
-#define TITLE_MAIN "Senku (GTK+3.22) 2.2.0 Beta\n\n[°} LeKiwiDeBx\n\nCopyright (C) 2016-2024 GNU GPLv3."
-#define TITLE_MENU "Shapes choice"
+#define TITLE_MAIN _("Senku (GTK+3.22) 2.2.0 Beta\n\n[°} LeKiwiDeBx\n\nCopyright (C) 2016-2024 GNU GPLv3.")
+#define TITLE_MENU _("Shapes choice")
 #define TIMER_DELAY 1000
 // #define IMG_PEG_MOVE "image/circle_gold32.png"
 #define IMG_PEG_MOVE "image/5AAAA4.png"
@@ -63,23 +66,27 @@
 // #define IMG_PEG_BOARD "image/marble_1.png"
 #define IMG_PEG_BOARD "image/2E3244_32x32.png"
 #define IMG_PEG_TRANSPARENT "image/transparent_32x32.png"
-#define NO_MORE_MOVE "No more move!"
-#define NO_ACTION_UNDO "Nothing to [Undo]"
-#define ACTION_UNDO "[Undo] the previous move"
+#define NO_MORE_MOVE _("No more move!")
+#define NO_ACTION_UNDO _("Nothing to [Undo]")
+#define ACTION_UNDO _("[Undo] the previous move")
 #define BLANK ""
-#define BOX_SCORE_TITLE " Score "
-#define APPLICATION_TITLE "Senku 2.2.0 Beta"
+#define BOX_SCORE_TITLE _("Scoring")
+#define APPLICATION_TITLE _("Senku 2.2.0 Beta")
 #define APPLICATION_SIZE_WIDTH 360
 #define APPLICATION_SIZE_HEIGHT 340
 #define APPLICATION_BORDER_WIDTH 10
 #define MAX_LABEL 10 // nombre etiquette maximum coté droit
-#define LABEL_BONUS_TEXT "Bonus"
-#define LABEL_PEG_TEXT "Pegs"
-#define LABEL_TIME_TEXT "Time"
-#define LABEL_LOGO "[°} LeKiwiDeBx"
+#define LABEL_BONUS_TEXT _("Bonus")
+#define LABEL_PEG_TEXT _("Pegs")
+#define LABEL_TIME_TEXT _("Time")
+#define LABEL_LOGO _("[°} LeKiwiDeBx")
 #define SENKU_THEME_PATH "theme/"
 #define SENKU_THEME_FILE "senku.css"
 #define IMG_BUTTON_NEW_GAME "image/img_button_new_game.png"
+
+#define SENKU_LOCALE_FILE "fr_FR.UTF-8"
+#define GETTEXT_DOMAIN_NAME "senku"
+#define GETTEXT_DIR_NAME "locale"
 
 static void
 _g_displayAllMatrix();
@@ -389,7 +396,7 @@ activate(GtkApplication *app,
 {
     /* creation fenetre Main */
     pWindowMain = gtk_application_window_new(app);
-    gtk_window_set_position(GTK_WINDOW(pWindowMain), GTK_WIN_POS_CENTER);
+    // gtk_window_set_position(GTK_WINDOW(pWindowMain), GTK_WIN_POS_CENTER);
     gtk_window_set_title(GTK_WINDOW(pWindowMain), APPLICATION_TITLE);
     gtk_window_set_resizable(GTK_WINDOW(pWindowMain), FALSE);
 
@@ -407,6 +414,8 @@ activate(GtkApplication *app,
     gtk_widget_set_halign(GTK_WIDGET(pGridMatrix), GTK_ALIGN_CENTER);
     /* attachement de la grille pricipale a la fenetre principale */
     gtk_container_add(GTK_CONTAINER(pWindowMain), pGridMain);
+    // //DEBUG GTK4 nouvel equivalent
+    //  gtk_window_set_child() , gtk_box_append , gtk_scrolled_window_set_child , gtk_info_bar_add_child , etc.
 
     /* Button bottom  <New Game> <Undo> <RotLeft> <RotRight> <Quit> */
     pHbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
@@ -448,7 +457,7 @@ activate(GtkApplication *app,
 
     /* frame Comments */
     pfrComments = gtk_frame_new(NULL);
-    plbComments = gtk_label_new("Initializing ...");
+    plbComments = gtk_label_new(_("Initializing ..."));
     gtk_frame_set_shadow_type(GTK_FRAME(pfrComments), GTK_SHADOW_NONE);
     gtk_container_add(GTK_CONTAINER(pfrComments), plbComments);
     gtk_style_context_add_class(gtk_widget_get_style_context(pfrComments), "matrix-name-label");
@@ -542,8 +551,8 @@ void OnQueryTooltip(GtkWidget *self,
                     GtkTooltip *tooltip,
                     gpointer user_data)
 {
-    const gchar *tooltipLabel[] = {"New Game", "Undo", "Score", "Rotate Left", "Rotate Right", "Quit"};
-    gtk_widget_set_tooltip_text(self, tooltipLabel[GPOINTER_TO_INT(user_data) - 1]);
+    const gchar *tooltipLabel[] = {N_("New Game"),  N_("Undo"),  N_("Score"),  N_("Rotate Left"),  N_("Rotate Right"),  N_("Quit")}; // "Score", "Rotate Left", "Rotate Right", "Quit"};
+    gtk_widget_set_tooltip_text(self, _(tooltipLabel[GPOINTER_TO_INT(user_data) - 1]));
 }
 
 int boardInitNew()
@@ -551,6 +560,12 @@ int boardInitNew()
     int status;
     app = gtk_application_new("lekiwidebx.dev.senku", G_APPLICATION_FLAGS_NONE);
     g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+    
+    setlocale (LC_ALL, "");
+    textdomain(GETTEXT_DOMAIN_NAME);
+    bind_textdomain_codeset(GETTEXT_DOMAIN_NAME, "UTF-8" );
+    bindtextdomain(GETTEXT_DOMAIN_NAME, GETTEXT_DIR_NAME); 
+   
     status = g_application_run(G_APPLICATION(app), 0, NULL);
     return status;
 }
@@ -562,16 +577,16 @@ int boardInitNew()
  */
 int _g_display_box_menu_new_game(gpointer pData)
 {
-    GtkWidget *pRadio = gtk_radio_button_new_with_label(NULL, "English");
-    GtkWidget *pRadio_1 = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio), "German");
-    GtkWidget *pRadio_2 = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio), "Diamond");
+    GtkWidget *pRadio = gtk_radio_button_new_with_label(NULL, _("English"));
+    GtkWidget *pRadio_1 = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio), _("German"));
+    GtkWidget *pRadio_2 = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio), _("Diamond"));
     GtkWidget *pDialogMenu = gtk_dialog_new_with_buttons(
-        "Senku Shapes",
+        _("Senku Shapes"),
         GTK_WINDOW(pWindowMain),
         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-        "New Game", GTK_RESPONSE_OK,
-        "Cancel", GTK_RESPONSE_CANCEL,
-        "Quit", GTK_RESPONSE_REJECT,
+        _("New Game"), GTK_RESPONSE_OK,
+        _("Cancel"), GTK_RESPONSE_CANCEL,
+        _("Quit"), GTK_RESPONSE_REJECT,
         NULL);
     gtk_window_set_position(GTK_WINDOW(pDialogMenu), GTK_WIN_POS_CENTER);
     gtk_window_set_transient_for(GTK_WINDOW(pDialogMenu), GTK_WINDOW(pWindowMain));
@@ -611,7 +626,7 @@ int _g_display_box_menu_new_game(gpointer pData)
  *       choix des shapes modale et sans decoration (style screen splash)
  *@param determine l'option par defaut
  */
-void _g_display_box_menu(gpointer pData)
+void _g_display_box_menu(gpointer pData) // OLD FUNCTION NOT USED DEPRECATED
 {
     gint optK = (GPOINTER_TO_INT(pData)) ? GPOINTER_TO_INT(pData) : 0;
     char *shapeName[] = {"Shape English", "Shape German", "Shape Diamond"};
@@ -881,8 +896,8 @@ __displayPlayAgain( ) {
 
 void OnDestroy(GtkWidget *pWidget, gpointer pData)
 {
-    pDialogBoxQuit = gtk_message_dialog_new(GTK_WINDOW(pWindowMain), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_OK_CANCEL, "Do you Really wish to Quit Senku ?");
-    gtk_window_set_title(GTK_WINDOW(pDialogBoxQuit), "Confirm QUIT");
+    pDialogBoxQuit = gtk_message_dialog_new(GTK_WINDOW(pWindowMain), GTK_DIALOG_MODAL, GTK_MESSAGE_QUESTION, GTK_BUTTONS_OK_CANCEL, _("Do you Really wish to Quit Senku ?"));
+    gtk_window_set_title(GTK_WINDOW(pDialogBoxQuit), _("Confirm QUIT"));
     gint result = gtk_dialog_run((GTK_DIALOG(pDialogBoxQuit)));
 
     switch (result)
@@ -930,7 +945,7 @@ void OnUndo(GtkWidget *pWidget, gpointer pData)
     }
 }
 
-void _setLastMementoUndoRedrawNormal(pMemento pm)
+void _setLastMementoUndoRedrawNormal(pMemento pm) /* NOT USED */
 {
     // int coefRow = 0, coefColumn = 0, x = 0, y = 0;
     if (pm != NULL && pm->mvtEnd.row != 0)
@@ -939,17 +954,19 @@ void _setLastMementoUndoRedrawNormal(pMemento pm)
         /*  y = pm->mvtEnd.column; */
         /*  coefRow = pm->mvtBetween.row - pm->mvtStart.row; */
         /*  coefColumn = pm->mvtBetween.column - pm->mvtStart.column; */
-        GtkWidget *imgPegDelete = gtk_image_new_from_file(IMG_PEG_DELETE);
-        GtkWidget *imgPegMove_2 = gtk_image_new_from_file(IMG_PEG_MOVE);
-        GtkWidget *imgPegMove_3 = gtk_image_new_from_file(IMG_PEG_MOVE);
+
+        /* GtkWidget *imgPegDelete = gtk_image_new_from_file(IMG_PEG_DELETE); */
+        /* GtkWidget *imgPegMove_2 = gtk_image_new_from_file(IMG_PEG_MOVE); */
+        /* GtkWidget *imgPegMove_3 = gtk_image_new_from_file(IMG_PEG_MOVE); */
+        /*  */
         if (pMementoLastUndo != NULL)
         {
-            gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtEnd.column, pMementoLastUndo->mvtEnd.row));
-            gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtBetween.row, pMementoLastUndo->mvtBetween.row));
-            gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtStart.column, pMementoLastUndo->mvtStart.row));
-            gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDelete, pMementoLastUndo->mvtEnd.column, pMementoLastUndo->mvtEnd.row, 1, 1);
-            gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove_2, pMementoLastUndo->mvtBetween.row, pMementoLastUndo->mvtBetween.row, 1, 1);
-            gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove_3, pMementoLastUndo->mvtStart.column, pMementoLastUndo->mvtStart.row, 1, 1);
+            /* gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtEnd.column, pMementoLastUndo->mvtEnd.row)); */
+            /* gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtBetween.row, pMementoLastUndo->mvtBetween.row)); */
+            /* gtk_widget_destroy(gtk_grid_get_child_at(GTK_GRID(pGridMatrix), pMementoLastUndo->mvtStart.column, pMementoLastUndo->mvtStart.row)); */
+            /* gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegDelete, pMementoLastUndo->mvtEnd.column, pMementoLastUndo->mvtEnd.row, 1, 1); */
+            /* gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove_2, pMementoLastUndo->mvtBetween.row, pMementoLastUndo->mvtBetween.row, 1, 1); */
+            /* gtk_grid_attach(GTK_GRID(pGridMatrix), imgPegMove_3, pMementoLastUndo->mvtStart.column, pMementoLastUndo->mvtStart.row, 1, 1); */
         }
     }
 }
@@ -960,7 +977,7 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData)
     if (response != GTK_RESPONSE_CANCEL)
     {
         scoreResetBonusTimeScore();
-        gtk_label_set_label(GTK_LABEL(plbComments), currentMatrixOfBoard.name);
+        gtk_label_set_label(GTK_LABEL(plbComments), _(currentMatrixOfBoard.name));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
 
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", 0));
@@ -1298,7 +1315,7 @@ void OnPlay(GtkWidget *pWidget, gpointer pData)
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
 
-        gtk_label_set_label(GTK_LABEL(plbComments), currentMatrixOfBoard.name);
+        gtk_label_set_label(GTK_LABEL(plbComments), _(currentMatrixOfBoard.name));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
         if (handleTimeout)
         {
@@ -1410,18 +1427,18 @@ void _g_display_get_name(int rank)
     GtkWidget *pButtonOk;
     GtkWidget *pGridGetName;
     const char *labelNom = "";
-    char *labelMessage = "\nCongratulations, ";
-    const char *labelInsideEntry = "Username";
+    char *labelMessage = _("\nCongratulations, ");
+    const char *labelInsideEntry = _("Username");
     score *findRecord = (score *)scoreGetSortScore(rank);
-    const char *title = "Saving score";
+    const char *title = _("Saving score");
     const char *msgAdd;
     if (findRecord->remainingPeg == 1)
-        msgAdd = "\n\t\tYeaah!  You're a real SENKU";
+        msgAdd = _("\n\t\tYeaah!  You're a real SENKU");
     else if (findRecord->remainingPeg == 2)
-        msgAdd = "\n\t\tThe victory is imminent!";
+        msgAdd = _("\n\t\tThe victory is imminent!");
     else
-        msgAdd = "\n\t\tNobody is perfect :)";
-    const char *topmost = g_strdup_printf("you're number %d in topmost!\n%s", rank, msgAdd);
+        msgAdd = _("\n\t\tNobody is perfect :)");
+    const char *topmost = g_strdup_printf(_("you're number %d in topmost!\n%s"), rank, msgAdd);
     pLabelName = gtk_label_new(labelNom);
     labelMessage = g_strconcat(labelMessage, topmost, NULL);
     pLabelMessage = gtk_label_new(labelMessage);
@@ -1431,7 +1448,7 @@ void _g_display_get_name(int rank)
     gtk_window_set_deletable(GTK_WINDOW(pWindowGetName), FALSE);
     gtk_window_set_title(GTK_WINDOW(pWindowGetName), title);
     pGridGetName = gtk_grid_new();
-    pButtonOk = gtk_button_new_with_label("Register");
+    pButtonOk = gtk_button_new_with_label(_("Register"));
     gtk_widget_set_can_default(GTK_WIDGET(pButtonOk), TRUE);
     gtk_window_set_default(GTK_WINDOW(pWindowGetName), GTK_WIDGET(pButtonOk));
     pEntryName = gtk_entry_new();
@@ -1467,7 +1484,7 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
     const gchar *sName = gtk_entry_get_text(GTK_ENTRY(pData->pWidgetName));
     scoreSetNamePlayer(sName, rank);
     ;
-    scoreSetNameMatrix(g_strdup_printf("%10s", currentMatrixOfBoard.name), rank);
+    scoreSetNameMatrix(g_strdup_printf("%10s", _(currentMatrixOfBoard.name)), rank);
     pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
     if (resultScore)
     {
@@ -1533,7 +1550,7 @@ void OnLeave(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 void _g_display_box_score(pScore ps, const int rank)
 {
     int i, k;
-    char *scoreTitle[] = {"RANK", "PLAYER", "PEG", "SCORE", "SHAPE"};
+    char *scoreTitle[] = {N_("RANK"), N_("PLAYER"), N_("PEG"), N_("SCORE"), N_("SHAPE")};
 
     GtkWidget *pButtonOk = NULL;
     GtkWidget *plbScoreOrder = NULL;
@@ -1557,7 +1574,7 @@ void _g_display_box_score(pScore ps, const int rank)
 
     for (k = 0; k < sizeArray; k++)
     {
-        lbScore[k] = gtk_label_new(scoreTitle[k]);
+        lbScore[k] = gtk_label_new(_(scoreTitle[k]));
     }
     gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1);
     for (k = 0; k < sizeArray - 1; k++)
@@ -1573,13 +1590,13 @@ void _g_display_box_score(pScore ps, const int rank)
             (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
                         : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
         }
-        lbScore[4] = gtk_label_new(ps->nameMatrix);
+        lbScore[4] = gtk_label_new(_(ps->nameMatrix));
         gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
         for (k = 0; k < sizeArray - 1; k++)
             gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
         ps++;
     }
-    pButtonOk = gtk_button_new_with_label("Close");
+    pButtonOk = gtk_button_new_with_label(_("Close"));
     gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
     g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
     gtk_widget_show_all(pBoxScore);
