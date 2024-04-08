@@ -21,9 +21,6 @@
 /**
  * translation
  */
-/* #include <libintl.h> */
-/* #include <locale.h> */
-/* #define _(string) gettext (string) */
 #include <glib/gi18n.h>
 #include <libintl.h>
 #include <locale.h>
@@ -48,10 +45,10 @@
 #define LABEL_COLOR_BG_LOGO "white" // #2D3047
 
 // #385998
-#define SENKU_PANGO_CONCAT_STR(color, type) "<span size=\"x-large\" weight=\"bold\" color=\"" #color "\">%" #type "</span>"
-#define SENKU_PANGO_MARKUP_LABEL(color, type) SENKU_PANGO_CONCAT_STR(color, type)
-#define SENKU_ABS(x) ((x)) ? (x) : (-x)
-
+/* #define SENKU_PANGO_CONCAT_STR(color, type) "<span size=\"x-large\" weight=\"bold\" color=\"" #color "\">%" #type "</span>" */
+/* #define SENKU_PANGO_MARKUP_LABEL(color, type) SENKU_PANGO_CONCAT_STR(color, type) */
+/* #define SENKU_ABS(x) ((x)) ? (x) : (-x) */
+/*  */
 #define TITLE_MAIN _("Senku (GTK+3.22) 2.2.0 Beta\n\n[°} LeKiwiDeBx\n\nCopyright (C) 2016-2024 GNU GPLv3.")
 #define TITLE_MENU _("Shapes choice")
 #define TIMER_DELAY 1000
@@ -472,7 +469,7 @@ activate(GtkApplication *app,
     gtk_box_set_homogeneous(GTK_BOX(pVbox), TRUE);
     gtk_widget_set_halign(GTK_WIDGET(pVbox), GTK_ALIGN_CENTER);
     gtk_container_add(GTK_CONTAINER(pfrValues), pVbox);
-    // char *markup;
+    
     for (int k = 0; k < 3; k++)
     {
         plbValues[k] = gtk_label_new(plbValuesTitle[k]);
@@ -1224,10 +1221,10 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
 void _g_labelSet(GtkWidget *pWidget, gpointer pData) //// DO NOT USE THIS  -- USING CSS STYLE INSTEAD  --
 {
-    char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), GPOINTER_TO_INT(pData));
-    gtk_label_set_markup(GTK_LABEL(pWidget), markup);
-    gtk_label_set_use_markup(GTK_LABEL(pWidget), TRUE);
-    g_free(markup);
+   /*  char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), GPOINTER_TO_INT(pData)); */
+   /*  gtk_label_set_markup(GTK_LABEL(pWidget), markup); */
+   /*  gtk_label_set_use_markup(GTK_LABEL(pWidget), TRUE); */
+   /*  g_free(markup); */
 }
 
 void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)

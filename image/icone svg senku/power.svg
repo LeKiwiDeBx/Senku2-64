@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Isolation_Mode"
+   data-name="Isolation Mode"
+   viewBox="0 0 24 24"
+   width="512"
+   height="512"
+   version="1.1"
+   sodipodi:docname="power.svg"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.5234375"
+     inkscape:cx="256"
+     inkscape:cy="255.67179"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Isolation_Mode" />
+  <path
+     d="M16,2.764V6.082a8,8,0,1,1-8,0V2.764a11,11,0,1,0,8,0Z"
+     id="path1"
+     inkscape:export-filename="../../Senku/image/img_button_quit64x64.png"
+     inkscape:export-xdpi="11.994527"
+     inkscape:export-ydpi="11.994527" />
+  <rect
+     x="10.5"
+     width="3"
+     height="8"
+     id="rect1" />
+</svg>
