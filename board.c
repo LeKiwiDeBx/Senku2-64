@@ -294,12 +294,6 @@ _firstSelectPeg(char *action, gboolean value);
  */
 void _g_display_box_score(pScore ps, const int rank);
 /**
- *@brief Dialog box Menu
- *       choix des shapes modale et sans decoration (style screen splash)
- *@param determine l'option par defaut
- */
-void _g_display_box_menu(gpointer pData);
-/**
  * @brief Construct a new g display box menu new game object
  *
  */
@@ -437,10 +431,10 @@ activate(GtkApplication *app,
 
     gtk_grid_attach_next_to(GTK_GRID(pGridMain), pfrValues, pfrComments, GTK_POS_BOTTOM, 1, 1);
 
-    /* _____________________________________________________*
+    /* _____________________________________________________ *
      *                                                       *
      *                 CSS est la vie plus belle             *
-     *                                                       *
+     *                 =========================             *
      *______________________________________________________ */
     GtkCssProvider *pCssProvider = gtk_css_provider_new();
     const gchar *themePathFile = g_strdup_printf("%s%s", SENKU_THEME_PATH, SENKU_THEME_FILE);
@@ -560,70 +554,6 @@ int _g_display_box_menu_new_game(gpointer pData)
         gtk_widget_destroy(GTK_WIDGET(pDialogMenu));
     }
     return newGame;
-}
-/**
- *@brief Dialog box Menu
- *       choix des shapes modale et sans decoration (style screen splash)
- *@param determine l'option par defaut
- */
-void _g_display_box_menu(gpointer pData) // OLD FUNCTION NOT USED DEPRECATED
-{
-    gint optK = (GPOINTER_TO_INT(pData)) ? GPOINTER_TO_INT(pData) : 0;
-    char *shapeName[] = {"Shape English", "Shape German", "Shape Diamond"};
-    const int sizeShapeName = (int)(sizeof(shapeName) / sizeof(shapeName[0]));
-    const int boxMenuWidth = 360;
-    const int boxMenuHeight = 340;
-    const int boxMenuOptionSpacing = 20;
-    const int boxMenuOptionPadding = 25;
-    const int boxMenuButtonSpacing = 20;
-    const gchar *labelQuit = "Quit";
-    const gchar *labelPlay = "Play";
-    pBoxMenu = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(pBoxMenu), TITLE_MENU);
-    gtk_window_set_modal(GTK_WINDOW(pBoxMenu), TRUE);
-    gtk_window_set_position(GTK_WINDOW(pBoxMenu), GTK_WIN_POS_CENTER);
-    gtk_window_set_decorated(GTK_WINDOW(pBoxMenu), TRUE);
-    gtk_window_set_deletable(GTK_WINDOW(pBoxMenu), FALSE);
-    /* rend la fenetre de choix dependante de la fenetre principale */
-    gtk_window_set_transient_for(GTK_WINDOW(pBoxMenu), GTK_WINDOW(pWindowMain));
-    gtk_window_resize(GTK_WINDOW(pBoxMenu), boxMenuWidth, boxMenuHeight);
-    gtk_container_set_border_width(GTK_CONTAINER(pBoxMenu), APPLICATION_BORDER_WIDTH);
-
-    /* options */
-    pBoxMenuOption = gtk_box_new(GTK_ORIENTATION_VERTICAL, boxMenuOptionSpacing);
-    gtk_box_set_homogeneous(GTK_BOX(pBoxMenuOption), FALSE);
-    plbTitle = gtk_label_new(TITLE_MAIN);
-    gtk_box_pack_start(GTK_BOX(pBoxMenuOption), plbTitle, TRUE, FALSE, boxMenuOptionPadding);
-
-    GtkWidget *pRadio[sizeShapeName];
-
-    pRadio[0] = gtk_radio_button_new_with_label(NULL, shapeName[0]);
-    gtk_box_pack_start(GTK_BOX(pBoxMenuOption), pRadio[0], FALSE, FALSE, 0);
-
-    pRadio[1] = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio[0]), shapeName[1]);
-    gtk_box_pack_start(GTK_BOX(pBoxMenuOption), pRadio[1], FALSE, FALSE, 0);
-
-    pRadio[2] = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(pRadio[1]), shapeName[2]);
-    gtk_box_pack_start(GTK_BOX(pBoxMenuOption), pRadio[2], FALSE, FALSE, 0);
-
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pRadio[optK]), TRUE);
-
-    /* boutons <Quit> et <Play> ben oui au moins :)) */
-    pBoxMenuButton = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, boxMenuButtonSpacing);
-    pBtnMenuQuit = gtk_button_new_with_label(labelQuit);
-    pBtnMenuPlay = gtk_button_new_with_label(labelPlay);
-    /* on ajoute les boutons */
-    gtk_box_pack_start(GTK_BOX(pBoxMenuButton), pBtnMenuPlay, TRUE, TRUE, boxMenuButtonSpacing);
-    gtk_box_pack_start(GTK_BOX(pBoxMenuButton), pBtnMenuQuit, FALSE, FALSE, boxMenuButtonSpacing);
-    /* on ajoute box des boutons à la box des menu*/
-    gtk_box_pack_start(GTK_BOX(pBoxMenuOption), pBoxMenuButton, TRUE, FALSE, boxMenuOptionSpacing);
-    /* on ajoute les options */
-    gtk_container_add(GTK_CONTAINER(pBoxMenu), pBoxMenuOption);
-    /* les signaux */
-    g_signal_connect(G_OBJECT(pBtnMenuQuit), "clicked", G_CALLBACK(OnDestroy), pBoxMenu);
-    g_signal_connect(G_OBJECT(pBtnMenuPlay), "clicked", G_CALLBACK(OnPlay), pRadio[0]);
-    /* on se la montre... */
-    gtk_widget_show_all(pBoxMenu);
 }
 
 void OnDestroy(GtkWidget *pWidget, gpointer pData)
@@ -866,7 +796,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         {
                             _firstSelectPeg("set", FALSE);
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
-                            g_printf("\nDEBUG prise successive? ");
+                            g_printf("\nDEBUG prise successive? "); //DEBUG
                             gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                             gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                             gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
@@ -891,7 +821,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         _firstSelectPeg("set", FALSE);
                         // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
-                    if (!matrixCanMovePeg())
+                    if (!matrixCanMovePeg()) // si le jeu est termine
                     {
                         remainingPeg = matrixCountRemainPeg();
                         scoreSetRemainingPeg(remainingPeg);
@@ -907,19 +837,19 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                             _g_display_get_name(rank);
                     }
                 }
-                else if (sumDelta == 0 && (deltaX != -deltaY))
+                else if (sumDelta == 0 && (deltaX != -deltaY)) // pas de prise possible ???
                 { // on reclic sur le meme que le premier
                     if (matrixSelectPeg(p->x, p->y))
                     {                                                                       // en excluant la cdtions particuliere sumdelta==0
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);              // pour une autre raison (pions coins opposes d'un carre)
-                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
+                        //_g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
                     }
                 }
                 else
                 { // ni prise ni meme peg de depart
                     g_print("\nDEBUG :: change selection de depart si prise possible\n");
                     _firstSelectPeg("set", FALSE);
-                    _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
+                    //_g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
@@ -932,7 +862,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     }
                     else
                     {
-                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y); // debug
+                       // _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y); // debug
                     }
                 }
             }
