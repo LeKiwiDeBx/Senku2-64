@@ -469,7 +469,7 @@ activate(GtkApplication *app,
     gtk_box_set_homogeneous(GTK_BOX(pVbox), TRUE);
     gtk_widget_set_halign(GTK_WIDGET(pVbox), GTK_ALIGN_CENTER);
     gtk_container_add(GTK_CONTAINER(pfrValues), pVbox);
-    
+
     for (int k = 0; k < 3; k++)
     {
         plbValues[k] = gtk_label_new(plbValuesTitle[k]);
@@ -1104,6 +1104,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
             //            g_print("\nDEBUG :: premier selection clic") ;
             gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
             gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
             timerStartClock();
             if (matrixSelectPeg(p->x, p->y))
             {
@@ -1129,8 +1130,10 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 deltaY = pOld.y - p->y;
                 sumDelta = deltaX + deltaY;
                 _firstSelectPeg("set", TRUE);
+
                 gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_NORMAL, TRUE);
                 gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_NORMAL, TRUE);
+                gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
 
                 //                g_print( "\nDEBUG :: deltaX: %d deltaY: %d sumDelta: %d", deltaX, deltaY, sumDelta ) ;
                 //                g_print( "\nDEBUG :: pOldX: %d pOldY: %d px: %d py: %d", pOld.x, pOld.y, p->x, p->y ) ;
@@ -1154,6 +1157,10 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         {
                             _firstSelectPeg("set", FALSE);
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
+                            g_printf("\nDEBUG prise successive? ");
+                            gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                            gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         }
                         scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
                         // printf("%.0f\n", scoreGetBonusTimeScore()); //DEBUG
@@ -1166,13 +1173,14 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         _firstSelectPeg("set", FALSE);
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
-
                         pOld.x = p->x;
                         pOld.y = p->y;
+                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     else
                     { // changement d'avis sans prise (ie: erreur de second clique)
                         _firstSelectPeg("set", FALSE);
+                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     if (!matrixCanMovePeg())
                     {
@@ -1193,22 +1201,29 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 else if (sumDelta == 0 && (deltaX != -deltaY))
                 { // on reclic sur le meme que le premier
                     if (matrixSelectPeg(p->x, p->y))
-                    {                                                          // en excluant la cdtions particuliere sumdelta==0
-                        _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y); // pour une autre raison (pions coins opposes d'un carre)
+                    {                                                                       // en excluant la cdtions particuliere sumdelta==0
+                        _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);              // pour une autre raison (pions coins opposes d'un carre)
+                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
                     }
                 }
                 else
                 { // ni prise ni meme peg de depart
-                    //                    g_print( "\nDEBUG :: change selection de depart si prise possible\n" ) ;
+                    g_print("\nDEBUG :: change selection de depart si prise possible\n");
                     _firstSelectPeg("set", FALSE);
+                    _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
                         gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         pOld.x = p->x;
                         pOld.y = p->y;
+                    }
+                    else
+                    {
+                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y); // debug
                     }
                 }
             }
@@ -1221,10 +1236,10 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
 void _g_labelSet(GtkWidget *pWidget, gpointer pData) //// DO NOT USE THIS  -- USING CSS STYLE INSTEAD  --
 {
-   /*  char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), GPOINTER_TO_INT(pData)); */
-   /*  gtk_label_set_markup(GTK_LABEL(pWidget), markup); */
-   /*  gtk_label_set_use_markup(GTK_LABEL(pWidget), TRUE); */
-   /*  g_free(markup); */
+    /*  char *markup = g_markup_printf_escaped(SENKU_PANGO_MARKUP_LABEL(LABEL_COLOR_TEXT, d), GPOINTER_TO_INT(pData)); */
+    /*  gtk_label_set_markup(GTK_LABEL(pWidget), markup); */
+    /*  gtk_label_set_use_markup(GTK_LABEL(pWidget), TRUE); */
+    /*  g_free(markup); */
 }
 
 void _g_displayUpdateMatrix(actionSelect action, const int x, const int y)
