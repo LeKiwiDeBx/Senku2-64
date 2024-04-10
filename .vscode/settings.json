@@ -4,5 +4,7 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
     "codeium.telemetry": true,
-    "editor.columnSelection": true
+    "editor.columnSelection": false,
+    "editor.fontFamily": "'Menlo Regular', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontSize": 17
 }

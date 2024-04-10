@@ -19,12 +19,13 @@
 			"locale.h": "c",
 			"stddef.h": "c"
 		},
-		"editor.fontFamily": "'FiraMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
+		"editor.fontFamily": "'Menlo Regular', 'FiraMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
 		"editor.fontLigatures": false,
 		"cSpell.words": [
 			"senku"
 		],
 		"codeium.enableSearch": true,
-		"codeium.aggressiveShutdown": true
+		"codeium.aggressiveShutdown": true,
+		"editor.fontSize": 17
 	}
 }
