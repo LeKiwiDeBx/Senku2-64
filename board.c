@@ -746,7 +746,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
         if (_firstSelectPeg("get", FALSE))
         { // premier clic de selection
 
-            g_print("\nDEBUG 2:: si premier selection clic");
+            g_print("\nDEBUG 2:: si premiere selection clic");
 
             gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
             gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
@@ -754,14 +754,14 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
             timerStartClock();
             if (matrixSelectPeg(p->x, p->y))
             {
-                g_print("\nDEBUG 3:: premier selection clic est selectionnable");
+                g_print("\nDEBUG 3:: si premiere selection clic est selectionnable pour prise");
 
                 _firstSelectPeg("set", FALSE);
                 _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
                 if ((pOld.x || pOld.y) && (pMatrixLoad[pOld.x][pOld.y] == 1))
                 { /* unselect si l'ancien si existe */
 
-                    g_print("\nDEBUG 4:: deselecte le premier selection clic si l ancien existe?");
+                    g_print("\nDEBUG 4:: deselecte l'ancienne selection  si un l'ancienne existe");
 
                     _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                 }
@@ -772,14 +772,14 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
         else
         { // seconde selection cliquée
 
-            g_print("\nDEBUG 5:: seconde selection clic");
+            g_print("\nDEBUG 5:: c'est la seconde selection clic (pour terminer une prise) ");
 
             timerStopClock();
             //            g_printf( "\nDEBUG :: Elapse %f", timerGetElapseClock( ) * 1000 ) ;
             if (matrixSelectPeg(pOld.x, pOld.y))
             { // si prise possible
 
-                g_print("\nDEBUG 6:: seconde selection clic est prise possible");
+                g_print("\nDEBUG 6:: à la seconde selection avec la premiere selection qui est une prise possible");
 
                 int deltaX = 0, deltaY = 0, sumDelta = 0;
                 deltaX = pOld.x - p->x;
@@ -795,7 +795,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 //                g_print( "\nDEBUG :: pOldX: %d pOldY: %d px: %d py: %d", pOld.x, pOld.y, p->x, p->y ) ;
                 if (deltaX != deltaY && (sumDelta == 2 || sumDelta == -2))
                 {
-                    g_print("\nDEBUG 7:: sera une action Nord Sud Est Ouest");
+                    g_print("\nDEBUG 7:: on determine le sens de la prise Nord Sud Est Ouest");
 
                     if (deltaConstantXY == abs(deltaX) && (deltaY == 0))
                         action = (deltaX > 0) ? ACTION_SELECT_TAKE_NORTH : ACTION_SELECT_TAKE_SOUTH;
@@ -803,55 +803,60 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         action = (deltaY > 0) ? ACTION_SELECT_TAKE_WEST : ACTION_SELECT_TAKE_EAST;
                     if (matrixUpdate(action))
                     {
-                        g_print("\nDEBUG 8:: modification matrice sur une action Nord Sud Est Ouest");
+                        g_print("\nDEBUG 8:: on modifie la matrice sur une action Nord Sud Est Ouest");
 
                         _g_displayUpdateMatrix(action, p->x, p->y);
 
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
 
-                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
+                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
                         pOld.x = p->x;
                         pOld.y = p->y;
                         if (matrixSelectPeg(pOld.x, pOld.y))
                         {
-                            g_print("\nDEBUG 9:: la nouvelle pos peut faire une prise (prise successive)");
+                            g_print("\nDEBUG 9:: on trouve que la nouvelle pos peut faire une prise successive");
                             _firstSelectPeg("set", FALSE);
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
-                            // g_printf("\nDEBUG prise successive? "); // DEBUG
+
                             gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                             gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                             gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         }
                         scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
-                        // printf("%.0f\n", scoreGetBonusTimeScore()); //DEBUG
-
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", scoreGetBonusTimeScore()));
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
                     }
                     else if (matrixSelectPeg(p->x, p->y))
                     { // clique changement d'avis avec prise
 
-                        g_print("\nDEBUG 10: coin externe jeu changement d'avis avec prise action NSEO");
+                        g_print("\nDEBUG 10: clique mais pas prise avec depart prec \
+                                  \n -bon ecart(3 pegs succ) jeu changement d'avis mais avec prise \
+                                  \n -nouvelle pos action NSEO");
                         _firstSelectPeg("set", FALSE);
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
                         pOld.x = p->x;
                         pOld.y = p->y;
-                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        
+                        gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     else
                     { // changement d'avis sans prise (ie: erreur de second clique)
 
-                        g_print("\nDEBUG 11: changement d'avis sans prise possible (second clique mauvais)");
+                        g_print("\nDEBUG 11: changement d'avis sans prise possible\n-(second clique bon ecart (3 pegs succ) mais prise impossible)");
 
                         _firstSelectPeg("set", FALSE);
-                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     if (!matrixCanMovePeg()) // si le jeu est termine
                     {
 
-                        g_print("\nDEBUG 12: plus rien ne prends, end of game");
+                        g_print("\nDEBUG 12: plus rien ne prends, EOG end of game");
 
                         remainingPeg = matrixCountRemainPeg();
                         scoreSetRemainingPeg(remainingPeg);
@@ -867,7 +872,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                             _g_display_get_name(rank);
                     }
                 }
-                else if (sumDelta == 0 && (deltaX != -deltaY)) // pas de prise possible ???
+                else if (sumDelta == 0 && (deltaX != -deltaY)) // pas de prise possible ??? prise diagonale??? test impossible ??
                 {
                     g_print("\nDEBUG 13: ***recov sans prise possible (second clique test du delta)"); // on reclic sur le meme que le premier
 
@@ -877,7 +882,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
                         // en excluant la cdtions particuliere sumdelta==0
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y); // pour une autre raison (pions coins opposes d'un carre)
-                        //_g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
+                        
                     }
                 }
                 else
@@ -887,24 +892,25 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     g_print("\nDEBUG 15: sans prise effective ni meme peg du depart (second clique test du delta)");
 
                     _firstSelectPeg("set", FALSE);
-                    //_g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y); // debug
+                    
+                    gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                    gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                    gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
 
-                        g_print("\nDEBUG 16: change selection du depart si prise possible ");
+                        g_print("\nDEBUG 16: change selection du depart si une prise est possible ");
 
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
-                        gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+
                         pOld.x = p->x;
                         pOld.y = p->y;
                     }
                     else
                     {
-                        g_print("\nDEBUG 17: fait pas la prise ");
-                        // _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y); // debug
+                        g_print("\nDEBUG 17: la selection ne fait pas de prise possible");
+                        
                     }
                 }
             }
@@ -913,6 +919,14 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 g_print("\nDEBUG 18:: ***recov? seconde selection TEST :/ impossible! Où suis-je?");
                 //            g_print( "\nDEBUG :: prise impossible " ) ;
             }
+        }
+        if (_firstSelectPeg("get", TRUE) && !matrixSelectPeg(p->x, p->y))
+        {
+            g_print("\n\nDEBUG 19a:: premier pas de selection possible");
+
+            gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_NORMAL, TRUE);
+            gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_NORMAL, TRUE);
+            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
         }
         g_print("\n\nDEBUG 19:: fin du Onselect --------------------------------");
         gtk_widget_show_all(GTK_WIDGET(pGridMain));
