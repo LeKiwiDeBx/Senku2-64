@@ -280,9 +280,18 @@ void _g_displayUpdateMatrix(actionSelect action, const int x, const int y);
 gboolean
 _g_display_time(gpointer pData);
 /**
+ * @brief Met à jour l'accessibilite des boutons Undo Turn left turn right...
+ *
+ * @param pArrayWidgets le tableau des boutons
+ * @param size taille du tableau
+ * @param state etat concernant l'accessibilite des boutons
+ * @param sensitive si actif ou pas
+ */
+void _g_set_state_flags_buttons(GtkWidget *pArrayWidgets[], const int size, const int state, const gboolean sensitive);
+/**
  * @brief gestion de la variable booleene firsSelectPeg
- * @param action "get" ou "set" une valeur bool
- * @param value booelen à positionner
+ * @param action "get" ou "set" une valeur boolean
+ * @param value booleen à positionner
  * @return return la valeur de firstSelectPeg ou -1 si Pbleme
  */
 gboolean
@@ -731,6 +740,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     size_t size = sizeof(Coord);
     Coord *p = (Coord *)g_malloc(size);
     p = (Coord *)pData;
+    GtkWidget *pArrayWidgets[] = {pButtonRotateLeft, pButtonRotateRight, pButtonUndo};
+    gint sizeArrayWidgets = (gint)sizeof(pArrayWidgets) / sizeof(GtkWidget *);
 
     gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
     gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
@@ -747,10 +758,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
         { // premier clic de selection
 
             g_print("\nDEBUG 2:: si premiere selection clic");
+            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
 
-            gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-            gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
             timerStartClock();
             if (matrixSelectPeg(p->x, p->y))
             {
@@ -786,10 +795,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 deltaY = pOld.y - p->y;
                 sumDelta = deltaX + deltaY;
                 _firstSelectPeg("set", TRUE);
-
-                gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_NORMAL, TRUE);
-                gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_NORMAL, TRUE);
-                gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
+                _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
 
                 //                g_print( "\nDEBUG :: deltaX: %d deltaY: %d sumDelta: %d", deltaX, deltaY, sumDelta ) ;
                 //                g_print( "\nDEBUG :: pOldX: %d pOldY: %d px: %d py: %d", pOld.x, pOld.y, p->x, p->y ) ;
@@ -806,11 +812,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         g_print("\nDEBUG 8:: on modifie la matrice sur une action Nord Sud Est Ouest");
 
                         _g_displayUpdateMatrix(action, p->x, p->y);
-
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
-                        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-
-                        // gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
+                        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");                   
                         pOld.x = p->x;
                         pOld.y = p->y;
                         if (matrixSelectPeg(pOld.x, pOld.y))
@@ -818,10 +821,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                             g_print("\nDEBUG 9:: on trouve que la nouvelle pos peut faire une prise successive");
                             _firstSelectPeg("set", FALSE);
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
-
-                            gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                            gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         }
                         scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", scoreGetBonusTimeScore()));
@@ -838,10 +838,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
                         pOld.x = p->x;
                         pOld.y = p->y;
-                        
-                        gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     else
                     { // changement d'avis sans prise (ie: erreur de second clique)
@@ -849,9 +846,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         g_print("\nDEBUG 11: changement d'avis sans prise possible\n-(second clique bon ecart (3 pegs succ) mais prise impossible)");
 
                         _firstSelectPeg("set", FALSE);
-                        gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     if (!matrixCanMovePeg()) // si le jeu est termine
                     {
@@ -882,7 +877,6 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
                         // en excluant la cdtions particuliere sumdelta==0
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y); // pour une autre raison (pions coins opposes d'un carre)
-                        
                     }
                 }
                 else
@@ -892,10 +886,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     g_print("\nDEBUG 15: sans prise effective ni meme peg du depart (second clique test du delta)");
 
                     _firstSelectPeg("set", FALSE);
-                    
-                    gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                    gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                    gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                    _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
 
@@ -910,7 +902,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     else
                     {
                         g_print("\nDEBUG 17: la selection ne fait pas de prise possible");
-                        
+                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
+                        _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
                     }
                 }
             }
@@ -923,13 +916,18 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
         if (_firstSelectPeg("get", TRUE) && !matrixSelectPeg(p->x, p->y))
         {
             g_print("\n\nDEBUG 19a:: premier pas de selection possible");
-
-            gtk_widget_set_state_flags(pButtonRotateLeft, GTK_STATE_FLAG_NORMAL, TRUE);
-            gtk_widget_set_state_flags(pButtonRotateRight, GTK_STATE_FLAG_NORMAL, TRUE);
-            gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_NORMAL, TRUE);
+            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
         }
         g_print("\n\nDEBUG 19:: fin du Onselect --------------------------------");
         gtk_widget_show_all(GTK_WIDGET(pGridMain));
+    }
+}
+
+void _g_set_state_flags_buttons(GtkWidget *pArrayWidgets[], const int size, const int state, const gboolean sensitive)
+{
+    for (int i = 0; i < size; i++)
+    {
+        gtk_widget_set_state_flags(pArrayWidgets[i], state, sensitive);
     }
 }
 
