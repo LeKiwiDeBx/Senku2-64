@@ -1,0 +1,5 @@
+#!/bin/bash
+# Go to work directory
+cd /home/jean/Senku2-64
+# Launch senku2
+./senku2

@@ -749,6 +749,21 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     //    g_print( "\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y ) ;
 
     g_printf("\n\nDEBUG 0:: debut Onselect----------------------------------\n");
+    if (pOld.x == p->x && pOld.y == p->y) // si même coordonnees on reclique le meme peg
+    {
+        g_printf("\nDEBUG 0a:: coordonnees identiques");
+        pOld.x = 0;
+        pOld.y = 0;
+        if (!_firstSelectPeg("get", TRUE))
+        {
+            _firstSelectPeg("set", TRUE);
+            _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y);
+            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
+            return;
+        }
+    }
+    else
+        g_printf("\nDEBUG 0b:: coordonnees differentes");
 
     if (matrixCanMovePeg())
     {
@@ -767,7 +782,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
                 _firstSelectPeg("set", FALSE);
                 _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
-                if ((pOld.x || pOld.y) && (pMatrixLoad[pOld.x][pOld.y] == 1))
+                if ((pOld.x || pOld.y) && (pMatrixLoad[pOld.x][pOld.y] == 1) && (pOld.x != p->x || pOld.y != p->y))
                 { /* unselect si l'ancien si existe */
 
                     g_print("\nDEBUG 4:: deselecte l'ancienne selection  si un l'ancienne existe");
@@ -813,7 +828,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
                         _g_displayUpdateMatrix(action, p->x, p->y);
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
-                        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");                   
+                        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
                         pOld.x = p->x;
                         pOld.y = p->y;
                         if (matrixSelectPeg(pOld.x, pOld.y))
@@ -844,8 +859,13 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     { // changement d'avis sans prise (ie: erreur de second clique)
 
                         g_print("\nDEBUG 11: changement d'avis sans prise possible\n-(second clique bon ecart (3 pegs succ) mais prise impossible)");
-
-                        _firstSelectPeg("set", FALSE);
+                        _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
+                        if (!_firstSelectPeg("get", TRUE))
+                        {                                  // DEBUG CRITIQUE
+                            _firstSelectPeg("set", FALSE); // DEBUG CRITIQUE
+                            pOld.x = p->x;                 // DEBUG CRITIQUE
+                            pOld.y = p->y;                 // DEBUG CRITIQUE
+                        } // DEBUG CRITIQUE
                         _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                     }
                     if (!matrixCanMovePeg()) // si le jeu est termine
@@ -865,6 +885,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         }
                         if ((rank = scoreNew()))
                             _g_display_get_name(rank);
+                        return;
                     }
                 }
                 else if (sumDelta == 0 && (deltaX != -deltaY)) // pas de prise possible ??? prise diagonale??? test impossible ??
@@ -890,6 +911,23 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
 
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
+                        /* if (pOld.x == p->x && pOld.y == p->y)
+                        {
+                            g_print("\nDEBUG 16a: reselection du meme peg");
+
+                            if (!_firstSelectPeg("get", FALSE))
+                            {
+                                g_print("\nDEBUG 16b: et n'est pas la premiere selection %d", _firstSelectPeg("get", TRUE));
+                                _firstSelectPeg("set", TRUE);
+                                _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y);
+                                _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
+                            }
+                            else
+                            {
+                                _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
+                            }
+                        }
+                        else */
 
                         g_print("\nDEBUG 16: change selection du depart si une prise est possible ");
 
@@ -902,6 +940,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     else
                     {
                         g_print("\nDEBUG 17: la selection ne fait pas de prise possible");
+                        _firstSelectPeg("set", TRUE); // DEBUG CRITIQUE
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
                     }
