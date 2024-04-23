@@ -35,7 +35,7 @@ score.o: score.c score.h
 	$(CC) $(CFLAGS) score.o -c score.c $(PKG_CONFIG)
 
 timer.o: timer.c timer.h
-	$(CC) $(CFLAGS) timer.o -c timer.c
+	$(CC) $(CFLAGS) timer.o -c timer.c $(PKG_CONFIG)
 
 memento.o: memento.c memento.h #peg.h
 	$(CC) $(CFLAGS) memento.o -c memento.c

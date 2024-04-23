@@ -17,7 +17,9 @@
 			"splash.h": "c",
 			"gi18n.h": "c",
 			"locale.h": "c",
-			"stddef.h": "c"
+			"stddef.h": "c",
+			"timer.h": "c",
+			"time.h": "c"
 		},
 		"editor.fontFamily": "'Menlo Regular', 'FiraMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
 		"editor.fontLigatures": false,

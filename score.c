@@ -17,7 +17,7 @@
 #include "score.h"
 
 #define PRN printf("\n")
-#define UNKNOWN       _("No name")
+#define UNKNOWN _("No name")
 
 typedef enum e_typeSort
 {
@@ -112,18 +112,42 @@ __insertRecord(score *inputScore)
     return 0;
 }
 
-void scoreSetCalculateBonusElapseTimer(double elapseTimer)
+void scoreSetCalculateBonusElapseTimer(double elapseTimer, const scoreTimer mvtTimer)
 {
     /* cast sauvage !!!! :(*/
-    int i = (int)elapseTimer;
-    double bonus = 0;
-    if (i >= MIN_SEC_BONUS && i <= MAX_SEC_BONUS)
+    // int i = (int)elapseTimer;
+
+    // static int bonus = 0;
+    /* if (elapseTimer >= MIN_SEC_BONUS && elapseTimer <= MAX_SEC_BONUS)
     {
         // bonus = 5*(9-i) ;
         bonus = (MAX_SEC_BONUS - elapseTimer);
         bonusTimeScore += bonus;
         //		__displaySetCalculateBonusElapseTimer(bonus) ;
+    } */
+    switch (mvtTimer)
+    {
+    case SCORE_TIMER_HOLD_PEG: // temps de prise: le temps de saut
+        if (elapseTimer < 1.0)
+        {
+            bonusTimeScore += 10;
+        }
+        break;
+    case SCORE_TIMER_WAIT_PEG: // temps de pose: le temps entre deux sauts
+        if (elapseTimer < 1.0)
+        {
+            bonusTimeScore += 100;
+        }
+        else if (elapseTimer < 2.0)
+        {
+            bonusTimeScore += 50;
+        }
+        break;
+    default:
+        break;
     }
+
+    printf("\nDEBUG :: scoreSetCalculateBonusElapseTimer bonus = %.2f\n", bonusTimeScore);
 }
 
 /*
@@ -234,9 +258,14 @@ __clean(const char *buffer, FILE *fp){
 static double
 __calculateScore(const int remainPeg, const double timeBonus)
 {
+    printf("\nDEBUG :: calculateScore remainPeg = %d timeBonus = %.2f\n", remainPeg, timeBonus);
+
     const int pegFloorToCalc = 7, pointFactor = 1000;
     if (remainPeg < pegFloorToCalc)
+    {
         return ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus);
+        printf("\nDEBUG :: calculateScore return = %.2f\n", ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus));
+    }
     else
         return timeBonus;
 }

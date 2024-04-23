@@ -171,6 +171,8 @@ GtkWidget *plbValuesValue[MAX_LABEL];
 GtkWidget *pDialogBoxQuit = NULL;
 GtkWidget *pWindowGetName = NULL;
 GtkWidget *plbLogo = NULL;
+
+static GTimer *timerSelection = NULL;
 /**
  * @brief Appel selection image avec un clic souris
  * @param pWidget boxEvent qui encapsule l'image
@@ -621,21 +623,26 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData)
     gint response = _g_display_box_menu_new_game(NULL);
     if (response != GTK_RESPONSE_CANCEL)
     {
-        scoreResetBonusTimeScore();
         gtk_label_set_label(GTK_LABEL(plbComments), _(currentMatrixOfBoard.name));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
-
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", 0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", 0.0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
-
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_TIME]), g_strdup_printf("%4d", 0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_TIME]), "value-values-label");
-
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
+        scoreResetBonusTimeScore();
+        scoreSetRemainingPeg(matrixCountRemainPeg());
+        printf("\nDEBUG :: 1 BonusTimeScore = %f\n", scoreGetBonusTimeScore());
+        // timerSetStopTimer();
+        // timerStopClock();
+        // timerSetStartTimer();
+        // timerStartClock();
+        if (timerSelection != NULL)
+            timerSelection = NULL;
+        printf("\nDEBUG :: 2 BonusTimeScore = %f\n", scoreGetBonusTimeScore());
         caretakerNew();
         _g_displayAllMatrix();
     }
@@ -743,15 +750,44 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     GtkWidget *pArrayWidgets[] = {pButtonRotateLeft, pButtonRotateRight, pButtonUndo};
     gint sizeArrayWidgets = (gint)sizeof(pArrayWidgets) / sizeof(GtkWidget *);
 
+    static gdouble elapsed_old = 0.0;
+    gdouble elapsed = 0.0;
     gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
     gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
     //    g_print( "\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y ) ;
     //    g_print( "\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y ) ;
 
-    g_printf("\n\nDEBUG 0:: debut Onselect----------------------------------\n");
+    // g_printf("\n\nDEBUG 0:: debut Onselect----------------------------------\n");
+    if (!timerSelection)
+    {
+        timerSelection = g_timer_new();
+    }
+    else if (g_timer_is_active(timerSelection))
+    {
+        g_timer_stop(timerSelection);
+        g_timer_continue(timerSelection);
+        elapsed = g_timer_elapsed(timerSelection, NULL);
+        if (elapsed > elapsed_old && _firstSelectPeg("get", TRUE))
+        {
+            g_printf("\nDEBUG :: Elapse Wait %.1fs\n", elapsed - elapsed_old);
+            scoreSetCalculateBonusElapseTimer(elapsed - elapsed_old, SCORE_TIMER_WAIT_PEG);
+        }
+        else
+        {
+            g_printf("\nDEBUG :: Elapse Hold %.1fs\n", elapsed - elapsed_old);
+            scoreSetCalculateBonusElapseTimer(elapsed - elapsed_old, SCORE_TIMER_HOLD_PEG);
+        }
+        elapsed_old = elapsed;
+    }
+    else
+    {
+        g_timer_start(timerSelection);
+    }
+
     if (pOld.x == p->x && pOld.y == p->y) // si même coordonnees on reclique le meme peg
     {
-        g_printf("\nDEBUG 0a:: coordonnees identiques");
+        // g_printf("\nDEBUG 0a:: coordonnees identiques");
+
         pOld.x = 0;
         pOld.y = 0;
         if (!_firstSelectPeg("get", TRUE))
@@ -763,29 +799,33 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
         }
     }
     else
-        g_printf("\nDEBUG 0b:: coordonnees differentes");
-
+    {
+        // g_printf("\nDEBUG 0b:: coordonnees differentes");
+    }
     if (matrixCanMovePeg())
     {
-        g_printf("\nDEBUG 1:: debut des prises sont possibles");
+        // g_printf("\nDEBUG 1:: debut des prises sont possibles");
 
         if (_firstSelectPeg("get", FALSE))
         { // premier clic de selection
 
             g_print("\nDEBUG 2:: si premiere selection clic");
-            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
 
-            timerStartClock();
+            // timerStartClock();
+            // g_printf("\nDEBUG :: Elapse Prise %f s\n", g_timer_elapsed(timerSelection, NULL));
+
+            _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
             if (matrixSelectPeg(p->x, p->y))
             {
-                g_print("\nDEBUG 3:: si premiere selection clic est selectionnable pour prise");
+                // g_print("\nDEBUG 3:: si premiere selection clic est selectionnable pour prise");
 
                 _firstSelectPeg("set", FALSE);
+
                 _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
                 if ((pOld.x || pOld.y) && (pMatrixLoad[pOld.x][pOld.y] == 1) && (pOld.x != p->x || pOld.y != p->y))
                 { /* unselect si l'ancien si existe */
 
-                    g_print("\nDEBUG 4:: deselecte l'ancienne selection  si un l'ancienne existe");
+                    // g_print("\nDEBUG 4:: deselecte l'ancienne selection  si un l'ancienne existe");
 
                     _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                 }
@@ -794,16 +834,16 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
             }
         }
         else
-        { // seconde selection cliquée
+        { // seconde selection cliquée *******************************************************
 
-            g_print("\nDEBUG 5:: c'est la seconde selection clic (pour terminer une prise) ");
+            // g_print("\nDEBUG 5:: c'est la seconde selection clic (pour terminer une prise) ");
 
-            timerStopClock();
-            //            g_printf( "\nDEBUG :: Elapse %f", timerGetElapseClock( ) * 1000 ) ;
+            // scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
+
             if (matrixSelectPeg(pOld.x, pOld.y))
             { // si prise possible
 
-                g_print("\nDEBUG 6:: à la seconde selection avec la premiere selection qui est une prise possible");
+                // g_print("\nDEBUG 6:: à la seconde selection avec la premiere selection qui est une prise possible");
 
                 int deltaX = 0, deltaY = 0, sumDelta = 0;
                 deltaX = pOld.x - p->x;
@@ -811,12 +851,11 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 sumDelta = deltaX + deltaY;
                 _firstSelectPeg("set", TRUE);
                 _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
-
                 //                g_print( "\nDEBUG :: deltaX: %d deltaY: %d sumDelta: %d", deltaX, deltaY, sumDelta ) ;
                 //                g_print( "\nDEBUG :: pOldX: %d pOldY: %d px: %d py: %d", pOld.x, pOld.y, p->x, p->y ) ;
                 if (deltaX != deltaY && (sumDelta == 2 || sumDelta == -2))
                 {
-                    g_print("\nDEBUG 7:: on determine le sens de la prise Nord Sud Est Ouest");
+                    // g_print("\nDEBUG 7:: on determine le sens de la prise Nord Sud Est Ouest");
 
                     if (deltaConstantXY == abs(deltaX) && (deltaY == 0))
                         action = (deltaX > 0) ? ACTION_SELECT_TAKE_NORTH : ACTION_SELECT_TAKE_SOUTH;
@@ -833,21 +872,26 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         pOld.y = p->y;
                         if (matrixSelectPeg(pOld.x, pOld.y))
                         {
-                            g_print("\nDEBUG 9:: on trouve que la nouvelle pos peut faire une prise successive");
+                            // g_print("\nDEBUG 9:: on trouve que la nouvelle pos peut faire une prise successive");
+
                             _firstSelectPeg("set", FALSE);
                             _g_displayUpdateMatrix(ACTION_SELECT_PEG, pOld.x, pOld.y);
                             _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
                         }
-                        scoreSetCalculateBonusElapseTimer(timerGetElapseClock() * 1000);
+                        // g_timer_stop(timerSelection);
+                        // g_printf("\nDEBUG :: Elapse Apres prise %f s\n", g_timer_elapsed(timerSelection, NULL));
+                        // timerStopClock();
+                        // g_printf("\nDEBUG :: Elapse after Stop %f s", timerGetElapseClock());
                         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", scoreGetBonusTimeScore()));
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
                     }
                     else if (matrixSelectPeg(p->x, p->y))
                     { // clique changement d'avis avec prise
 
-                        g_print("\nDEBUG 10: clique mais pas prise avec depart prec \
+                        /* g_print("\nDEBUG 10: clique mais pas prise avec depart prec \
                                   \n -bon ecart(3 pegs succ) jeu changement d'avis mais avec prise \
-                                  \n -nouvelle pos action NSEO");
+                                  \n -nouvelle pos action NSEO"); */
+
                         _firstSelectPeg("set", FALSE);
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
@@ -858,7 +902,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     else
                     { // changement d'avis sans prise (ie: erreur de second clique)
 
-                        g_print("\nDEBUG 11: changement d'avis sans prise possible\n-(second clique bon ecart (3 pegs succ) mais prise impossible)");
+                        // g_print("\nDEBUG 11: changement d'avis sans prise possible\n-(second clique bon ecart (3 pegs succ) mais prise impossible)");
+
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         if (!_firstSelectPeg("get", TRUE))
                         {                                  // DEBUG CRITIQUE
@@ -871,13 +916,13 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                     if (!matrixCanMovePeg()) // si le jeu est termine
                     {
 
-                        g_print("\nDEBUG 12: plus rien ne prends, EOG end of game");
+                        // g_print("\nDEBUG 12: plus rien ne prends, EOG end of game");
 
                         remainingPeg = matrixCountRemainPeg();
                         scoreSetRemainingPeg(remainingPeg);
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
                         gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-                        timerStopClock();
+                        g_timer_destroy(timerSelection);
                         if (handleTimeout)
                         {
                             g_source_remove(handleTimeout);
@@ -890,11 +935,11 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 }
                 else if (sumDelta == 0 && (deltaX != -deltaY)) // pas de prise possible ??? prise diagonale??? test impossible ??
                 {
-                    g_print("\nDEBUG 13: ***recov sans prise possible (second clique test du delta)"); // on reclic sur le meme que le premier
+                    // g_print("\nDEBUG 13: ***recov sans prise possible (second clique test du delta)"); // on reclic sur le meme que le premier
 
                     if (matrixSelectPeg(p->x, p->y))
                     {
-                        g_print("\nDEBUG 14: ***recov mais le peg est selectionnable");
+                        // g_print("\nDEBUG 14: ***recov mais le peg est selectionnable");
 
                         // en excluant la cdtions particuliere sumdelta==0
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y); // pour une autre raison (pions coins opposes d'un carre)
@@ -904,42 +949,23 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                 { // ni prise ni meme peg de depart
                     // g_print("\nDEBUG :: change selection de depart si prise possible\n");
 
-                    g_print("\nDEBUG 15: sans prise effective ni meme peg du depart (second clique test du delta)");
+                    // g_print("\nDEBUG 15: sans prise effective ni meme peg du depart (second clique test du delta)");
 
                     _firstSelectPeg("set", FALSE);
                     _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_INSENSITIVE, TRUE);
-
                     if (matrixSelectPeg(p->x, p->y))
                     { // si une prise possible
-                        /* if (pOld.x == p->x && pOld.y == p->y)
-                        {
-                            g_print("\nDEBUG 16a: reselection du meme peg");
 
-                            if (!_firstSelectPeg("get", FALSE))
-                            {
-                                g_print("\nDEBUG 16b: et n'est pas la premiere selection %d", _firstSelectPeg("get", TRUE));
-                                _firstSelectPeg("set", TRUE);
-                                _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, p->x, p->y);
-                                _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
-                            }
-                            else
-                            {
-                                _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
-                            }
-                        }
-                        else */
-
-                        g_print("\nDEBUG 16: change selection du depart si une prise est possible ");
+                        // g_print("\nDEBUG 16: change selection du depart si une prise est possible ");
 
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_displayUpdateMatrix(ACTION_SELECT_PEG, p->x, p->y);
-
                         pOld.x = p->x;
                         pOld.y = p->y;
                     }
                     else
                     {
-                        g_print("\nDEBUG 17: la selection ne fait pas de prise possible");
+                        // g_print("\nDEBUG 17: la selection ne fait pas de prise possible");
                         _firstSelectPeg("set", TRUE); // DEBUG CRITIQUE
                         _g_displayUpdateMatrix(ACTION_SELECT_UNSELECT_PEG, pOld.x, pOld.y);
                         _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
@@ -948,16 +974,17 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
             }
             else
             {
-                g_print("\nDEBUG 18:: ***recov? seconde selection TEST :/ impossible! Où suis-je?");
-                //            g_print( "\nDEBUG :: prise impossible " ) ;
+                // g_print("\nDEBUG 18:: ***recov? seconde selection TEST :/ impossible! Où suis-je?");
             }
         }
         if (_firstSelectPeg("get", TRUE) && !matrixSelectPeg(p->x, p->y))
         {
-            g_print("\n\nDEBUG 19a:: premier pas de selection possible");
+            // g_print("\n\nDEBUG 19a:: premier pas de selection possible");
             _g_set_state_flags_buttons(pArrayWidgets, sizeArrayWidgets, GTK_STATE_FLAG_NORMAL, TRUE);
         }
-        g_print("\n\nDEBUG 19:: fin du Onselect --------------------------------");
+
+        // g_print("\n\nDEBUG 19:: fin du Onselect --------------------------------");
+
         gtk_widget_show_all(GTK_WIDGET(pGridMain));
     }
 }
@@ -1050,7 +1077,7 @@ void OnPlay(GtkWidget *pWidget, gpointer pData)
         onlyOneBoard.set = &currentMatrixOfBoard;
         caretakerNew(); // pattern memento du mecanisme pour le Undo
         scoreResetBonusTimeScore();
-        timerStartClock();
+        // timerStartClock();
 
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
@@ -1225,87 +1252,97 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
     scoreSetNamePlayer(sName, rank);
     ;
     scoreSetNameMatrix(g_strdup_printf("%10s", _(currentMatrixOfBoard.name)), rank);
-    pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
+    // pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
+    pScore resultScore = g_malloc(SCORE_BEST_OF * sizeof(score));
     if (resultScore)
     {
         resultScore = (pScore)scoreGetSortScore(0); /*arg: (int) NULL */
         _g_display_box_score(resultScore, rank);
+        // g_free(resultScore);
     }
     else
     {
-        free(resultScore);
+        // g_free(resultScore);
     }
     gtk_widget_destroy(pWindowGetName);
 }
 
 void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
 {
-    pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
+    // pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
+    pScore resultScore = g_malloc(SCORE_BEST_OF * sizeof(score));
     if (resultScore)
+    {
         resultScore = (pScore)scoreGetSortScore(0); /* arg:(int) NULL */
-    _g_display_box_score(resultScore, 0);
-}
-
-void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)
-{
-}
-
-void _g_display_box_score(pScore ps, const int rank)
-{
-    int i, k;
-    char *scoreTitle[] = {N_("RANK"), N_("PLAYER"), N_("PEG"), N_("SCORE"), N_("SHAPE")};
-
-    GtkWidget *pButtonOk = NULL;
-    GtkWidget *plbScoreOrder = NULL;
-    GtkWidget *plbScorePlayer = NULL;
-    GtkWidget *plbScorePeg = NULL;
-    GtkWidget *plbScoreScore = NULL;
-    GtkWidget *plbScoreRank = NULL;
-    GtkWidget *lbScore[] = {plbScoreOrder, plbScorePlayer, plbScorePeg, plbScoreScore, plbScoreRank};
-    gint sizeArray = (int)(sizeof(lbScore) / sizeof(GtkWidget *));
-    pBoxScore = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_widget_set_name(GTK_WIDGET(pBoxScore), "boxScore");
-    gtk_window_set_title(GTK_WINDOW(pBoxScore), BOX_SCORE_TITLE);
-    gtk_window_set_modal(GTK_WINDOW(pBoxScore), TRUE);
-    gtk_window_set_position(GTK_WINDOW(pBoxScore), GTK_WIN_POS_CENTER_ALWAYS);
-    gtk_window_set_deletable(GTK_WINDOW(pBoxScore), FALSE);
-    gtk_window_set_transient_for(GTK_WINDOW(pBoxScore), GTK_WINDOW(pWindowMain));
-    gtk_window_set_resizable(GTK_WINDOW(pBoxScore), FALSE);
-    /*  Grille du Score  */
-    pGridScore = gtk_grid_new();
-    gtk_container_add(GTK_CONTAINER(pBoxScore), pGridScore);
-
-    for (k = 0; k < sizeArray; k++)
-    {
-        lbScore[k] = gtk_label_new(_(scoreTitle[k]));
+        _g_display_box_score(resultScore, 0);
+        // g_free(resultScore);
     }
-    gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1);
-    for (k = 0; k < sizeArray - 1; k++)
-        gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
-    for (i = 1; i <= SCORE_BEST_OF; i++)
+    else
     {
-        lbScore[0] = gtk_label_new(g_strdup_printf("%d", i));
-        lbScore[1] = gtk_label_new(ps->namePlayer);
-        lbScore[2] = gtk_label_new(g_strdup_printf("%d", ps->remainingPeg));
-        lbScore[3] = gtk_label_new(g_strdup_printf("%.f", ps->scoreGame));
-        for (int j = 0; j < 4; j++)
+        // g_free(resultScore);}
+    }
+}
+
+    void OnDestroyGetName(GtkWidget * pWidget, gpointer pData)
+    {
+    }
+
+    void _g_display_box_score(pScore ps, const int rank)
+    {
+        int i, k;
+        char *scoreTitle[] = {N_("RANK"), N_("PLAYER"), N_("PEG"), N_("SCORE"), N_("SHAPE")};
+
+        GtkWidget *pButtonOk = NULL;
+        GtkWidget *plbScoreOrder = NULL;
+        GtkWidget *plbScorePlayer = NULL;
+        GtkWidget *plbScorePeg = NULL;
+        GtkWidget *plbScoreScore = NULL;
+        GtkWidget *plbScoreRank = NULL;
+        GtkWidget *lbScore[] = {plbScoreOrder, plbScorePlayer, plbScorePeg, plbScoreScore, plbScoreRank};
+        gint sizeArray = (int)(sizeof(lbScore) / sizeof(GtkWidget *));
+        pBoxScore = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        gtk_widget_set_name(GTK_WIDGET(pBoxScore), "boxScore");
+        gtk_window_set_title(GTK_WINDOW(pBoxScore), BOX_SCORE_TITLE);
+        gtk_window_set_modal(GTK_WINDOW(pBoxScore), TRUE);
+        gtk_window_set_position(GTK_WINDOW(pBoxScore), GTK_WIN_POS_CENTER_ALWAYS);
+        gtk_window_set_deletable(GTK_WINDOW(pBoxScore), FALSE);
+        gtk_window_set_transient_for(GTK_WINDOW(pBoxScore), GTK_WINDOW(pWindowMain));
+        gtk_window_set_resizable(GTK_WINDOW(pBoxScore), FALSE);
+        /*  Grille du Score  */
+        pGridScore = gtk_grid_new();
+        gtk_container_add(GTK_CONTAINER(pBoxScore), pGridScore);
+
+        for (k = 0; k < sizeArray; k++)
         {
-            (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
-                        : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
+            lbScore[k] = gtk_label_new(_(scoreTitle[k]));
         }
-        lbScore[4] = gtk_label_new(_(ps->nameMatrix));
-        gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
+        gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1);
         for (k = 0; k < sizeArray - 1; k++)
             gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
-        ps++;
+        for (i = 1; i <= SCORE_BEST_OF; i++)
+        {
+            lbScore[0] = gtk_label_new(g_strdup_printf("%d", i));
+            lbScore[1] = gtk_label_new(ps->namePlayer);
+            lbScore[2] = gtk_label_new(g_strdup_printf("%d", ps->remainingPeg));
+            lbScore[3] = gtk_label_new(g_strdup_printf("%.f", ps->scoreGame));
+            for (int j = 0; j < 4; j++)
+            {
+                (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
+                            : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
+            }
+            lbScore[4] = gtk_label_new(_(ps->nameMatrix));
+            gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
+            for (k = 0; k < sizeArray - 1; k++)
+                gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
+            ps++;
+        }
+        pButtonOk = gtk_button_new_with_label(_("Close"));
+        gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
+        g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
+        gtk_widget_show_all(pBoxScore);
     }
-    pButtonOk = gtk_button_new_with_label(_("Close"));
-    gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
-    g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
-    gtk_widget_show_all(pBoxScore);
-}
 
-void OnCloseBoxScore(GtkWidget *pWidget, gpointer pData)
-{
-    gtk_widget_destroy(pBoxScore);
-}
+    void OnCloseBoxScore(GtkWidget * pWidget, gpointer pData)
+    {
+        gtk_widget_destroy(pBoxScore);
+    }
