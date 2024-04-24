@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/**"
+                "/usr/include/**",
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
@@ -13,7 +14,8 @@
             "intelliSenseMode": "${default}",
             "browse": {
                 "path": [
-                    "${workspaceFolder}"
+                    "${workspaceFolder}",
+                    "/usr/lib/x86_64-linux-gnu/glib-2.0/include/**"
                 ],
                 "limitSymbolsToIncludedHeaders": true
             },

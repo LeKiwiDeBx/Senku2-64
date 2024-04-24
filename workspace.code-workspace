@@ -28,6 +28,13 @@
 		],
 		"codeium.enableSearch": true,
 		"codeium.aggressiveShutdown": true,
-		"editor.fontSize": 17
+		"editor.fontSize": 17,
+		"makefile.launchConfigurations": [
+			{
+				"cwd": "/home/jean/Senku2-64",
+				"binaryPath": "/home/jean/Senku2-64/senku2",
+				"binaryArgs": []
+			}
+		]
 	}
 }

@@ -588,10 +588,10 @@ void OnUndo(GtkWidget *pWidget, gpointer pData)
 {
     char *msg;
     pMemento pMementoUndo = (memento *)malloc(1 * sizeof(memento));
-    if (pMementoLastUndo->mvtEnd.row != 0 && pMementoLastUndo != NULL)
+    /* if (pMementoLastUndo->mvtEnd.row != 0 && pMementoLastUndo != NULL)
     {
         //        g_print("\nDEBUG pMementoLastUndo end.row %d end.column %d",pMementoLastUndo->mvtEnd.row,pMementoLastUndo->mvtEnd.column) ;
-    }
+    } */
     if ((pMementoUndo = caretakerGetMemento(1)))
     {
         msg = ACTION_UNDO;
@@ -743,7 +743,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     const int deltaConstantXY = 2;
     int remainingPeg = 0;
     int rank = 0;
-    actionSelect action = 0;
+    actionSelect action = 0; 
     size_t size = sizeof(Coord);
     Coord *p = (Coord *)g_malloc(size);
     p = (Coord *)pData;

@@ -263,8 +263,10 @@ __calculateScore(const int remainPeg, const double timeBonus)
     const int pegFloorToCalc = 7, pointFactor = 1000;
     if (remainPeg < pegFloorToCalc)
     {
-        return ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus);
         printf("\nDEBUG :: calculateScore return = %.2f\n", ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus));
+        
+        return ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus);
+        
     }
     else
         return timeBonus;
