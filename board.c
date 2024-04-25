@@ -754,15 +754,15 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     gdouble elapsed = 0.0;
     gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
     gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-    //    g_print( "\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y ) ;
-    //    g_print( "\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y ) ;
+       g_print( "\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y ) ;
+       g_print( "\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y ) ;
 
     // g_printf("\n\nDEBUG 0:: debut Onselect----------------------------------\n");
     if (!timerSelection)
     {
         timerSelection = g_timer_new();
     }
-    else if (g_timer_is_active(timerSelection))
+    else if (g_timer_is_active(timerSelection) && !(pOld.x == p->x && pOld.y == p->y))
     {
         g_timer_stop(timerSelection);
         g_timer_continue(timerSelection);
@@ -788,8 +788,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     {
         // g_printf("\nDEBUG 0a:: coordonnees identiques");
 
-        pOld.x = 0;
-        pOld.y = 0;
+        // pOld.x = 0;
+        // pOld.y = 0;
         if (!_firstSelectPeg("get", TRUE))
         {
             _firstSelectPeg("set", TRUE);
