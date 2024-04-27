@@ -5,21 +5,30 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/**",
-                "/usr/lib/x86_64-linux-gnu/glib-2.0/include/**"
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include/**",
+                "${default}"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/gcc",
+            "defines": [
+                "${default}"
+            ],
+            "forcedInclude": [
+                "${default}",
+                "/usr/include/ctype.h"
+            ],
+            "compilerPath": "/usr/bin/x86_64-linux-gnu-gcc-11",
             "cStandard": "c11",
             "cppStandard": "c++14",
-            "intelliSenseMode": "${default}",
+            "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
                     "${workspaceFolder}",
-                    "/usr/lib/x86_64-linux-gnu/glib-2.0/include/**"
+                    "/usr/include",
+                    "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
                 ],
-                "limitSymbolsToIncludedHeaders": true
+                "limitSymbolsToIncludedHeaders": false
             },
-            "mergeConfigurations": true
+            "mergeConfigurations": true,
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: senku\n"
 "POT-Creation-Date: 2024-04-04 20:46+0200\n"
-"PO-Revision-Date: 2024-04-04 20:46+0200\n"
+"PO-Revision-Date: 2024-04-27 12:21+0200\n"
 "Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
 "Language-Team: LeKiwiDeBx\n"
 "Language: en_US\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: board.c:74
 msgid "Senku 2.2.0 Beta"
-msgstr ""
+msgstr "Senku 2.2.0 Beta [en]"
 
 #: board.c:79
 msgid "Bonus"

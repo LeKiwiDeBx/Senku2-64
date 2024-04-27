@@ -743,7 +743,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     const int deltaConstantXY = 2;
     int remainingPeg = 0;
     int rank = 0;
-    actionSelect action = 0; 
+    actionSelect action = 0;
     size_t size = sizeof(Coord);
     Coord *p = (Coord *)g_malloc(size);
     p = (Coord *)pData;
@@ -754,8 +754,8 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
     gdouble elapsed = 0.0;
     gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", matrixCountRemainPeg()));
     gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
-       g_print( "\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y ) ;
-       g_print( "\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y ) ;
+    g_print("\nDEBUG :: Coord Old X:%d Y:%d", pOld.x, pOld.y);
+    g_print("\nDEBUG :: Coord New X:%d Y:%d", p->x, p->y);
 
     // g_printf("\n\nDEBUG 0:: debut Onselect----------------------------------\n");
     if (!timerSelection)
@@ -1283,66 +1283,66 @@ void OnDisplayScore(GtkWidget *pWidget, dataName *pData)
     }
 }
 
-    void OnDestroyGetName(GtkWidget * pWidget, gpointer pData)
+void OnDestroyGetName(GtkWidget *pWidget, gpointer pData)
+{
+}
+
+void _g_display_box_score(pScore ps, const int rank)
+{
+    int i, k;
+    char *scoreTitle[] = {N_("RANK"), N_("PLAYER"), N_("PEG"), N_("SCORE"), N_("SHAPE")};
+
+    GtkWidget *pButtonOk = NULL;
+    GtkWidget *plbScoreOrder = NULL;
+    GtkWidget *plbScorePlayer = NULL;
+    GtkWidget *plbScorePeg = NULL;
+    GtkWidget *plbScoreScore = NULL;
+    GtkWidget *plbScoreRank = NULL;
+    GtkWidget *lbScore[] = {plbScoreOrder, plbScorePlayer, plbScorePeg, plbScoreScore, plbScoreRank};
+    gint sizeArray = (int)(sizeof(lbScore) / sizeof(GtkWidget *));
+    pBoxScore = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_widget_set_name(GTK_WIDGET(pBoxScore), "boxScore");
+    gtk_window_set_title(GTK_WINDOW(pBoxScore), BOX_SCORE_TITLE);
+    gtk_window_set_modal(GTK_WINDOW(pBoxScore), TRUE);
+    gtk_window_set_position(GTK_WINDOW(pBoxScore), GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_deletable(GTK_WINDOW(pBoxScore), FALSE);
+    gtk_window_set_transient_for(GTK_WINDOW(pBoxScore), GTK_WINDOW(pWindowMain));
+    gtk_window_set_resizable(GTK_WINDOW(pBoxScore), FALSE);
+    /*  Grille du Score  */
+    pGridScore = gtk_grid_new();
+    gtk_container_add(GTK_CONTAINER(pBoxScore), pGridScore);
+
+    for (k = 0; k < sizeArray; k++)
     {
+        lbScore[k] = gtk_label_new(_(scoreTitle[k]));
     }
-
-    void _g_display_box_score(pScore ps, const int rank)
+    gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1);
+    for (k = 0; k < sizeArray - 1; k++)
+        gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
+    for (i = 1; i <= SCORE_BEST_OF; i++)
     {
-        int i, k;
-        char *scoreTitle[] = {N_("RANK"), N_("PLAYER"), N_("PEG"), N_("SCORE"), N_("SHAPE")};
-
-        GtkWidget *pButtonOk = NULL;
-        GtkWidget *plbScoreOrder = NULL;
-        GtkWidget *plbScorePlayer = NULL;
-        GtkWidget *plbScorePeg = NULL;
-        GtkWidget *plbScoreScore = NULL;
-        GtkWidget *plbScoreRank = NULL;
-        GtkWidget *lbScore[] = {plbScoreOrder, plbScorePlayer, plbScorePeg, plbScoreScore, plbScoreRank};
-        gint sizeArray = (int)(sizeof(lbScore) / sizeof(GtkWidget *));
-        pBoxScore = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-        gtk_widget_set_name(GTK_WIDGET(pBoxScore), "boxScore");
-        gtk_window_set_title(GTK_WINDOW(pBoxScore), BOX_SCORE_TITLE);
-        gtk_window_set_modal(GTK_WINDOW(pBoxScore), TRUE);
-        gtk_window_set_position(GTK_WINDOW(pBoxScore), GTK_WIN_POS_CENTER_ALWAYS);
-        gtk_window_set_deletable(GTK_WINDOW(pBoxScore), FALSE);
-        gtk_window_set_transient_for(GTK_WINDOW(pBoxScore), GTK_WINDOW(pWindowMain));
-        gtk_window_set_resizable(GTK_WINDOW(pBoxScore), FALSE);
-        /*  Grille du Score  */
-        pGridScore = gtk_grid_new();
-        gtk_container_add(GTK_CONTAINER(pBoxScore), pGridScore);
-
-        for (k = 0; k < sizeArray; k++)
+        lbScore[0] = gtk_label_new(g_strdup_printf("%d", i));
+        lbScore[1] = gtk_label_new(ps->namePlayer);
+        lbScore[2] = gtk_label_new(g_strdup_printf("%d", ps->remainingPeg));
+        lbScore[3] = gtk_label_new(g_strdup_printf("%.f", ps->scoreGame));
+        for (int j = 0; j < 4; j++)
         {
-            lbScore[k] = gtk_label_new(_(scoreTitle[k]));
+            (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
+                        : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
         }
-        gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, 0, 1, 1);
+        lbScore[4] = gtk_label_new(_(ps->nameMatrix));
+        gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
         for (k = 0; k < sizeArray - 1; k++)
             gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
-        for (i = 1; i <= SCORE_BEST_OF; i++)
-        {
-            lbScore[0] = gtk_label_new(g_strdup_printf("%d", i));
-            lbScore[1] = gtk_label_new(ps->namePlayer);
-            lbScore[2] = gtk_label_new(g_strdup_printf("%d", ps->remainingPeg));
-            lbScore[3] = gtk_label_new(g_strdup_printf("%.f", ps->scoreGame));
-            for (int j = 0; j < 4; j++)
-            {
-                (i == rank) ? gtk_style_context_add_class(gtk_widget_get_style_context(lbScore[j]), "rank")
-                            : gtk_style_context_remove_class(gtk_widget_get_style_context(lbScore[j]), "rank");
-            }
-            lbScore[4] = gtk_label_new(_(ps->nameMatrix));
-            gtk_grid_attach(GTK_GRID(pGridScore), lbScore[0], 0, i, 1, 1);
-            for (k = 0; k < sizeArray - 1; k++)
-                gtk_grid_attach_next_to(GTK_GRID(pGridScore), lbScore[k + 1], lbScore[k], GTK_POS_RIGHT, 1, 1);
-            ps++;
-        }
-        pButtonOk = gtk_button_new_with_label(_("Close"));
-        gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
-        g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
-        gtk_widget_show_all(pBoxScore);
+        ps++;
     }
+    pButtonOk = gtk_button_new_with_label(_("Close"));
+    gtk_grid_attach_next_to(GTK_GRID(pGridScore), pButtonOk, lbScore[sizeArray / 2 - 1], GTK_POS_BOTTOM, 3, 1);
+    g_signal_connect(G_OBJECT(pButtonOk), "clicked", G_CALLBACK(OnCloseBoxScore), NULL);
+    gtk_widget_show_all(pBoxScore);
+}
 
-    void OnCloseBoxScore(GtkWidget * pWidget, gpointer pData)
-    {
-        gtk_widget_destroy(pBoxScore);
-    }
+void OnCloseBoxScore(GtkWidget *pWidget, gpointer pData)
+{
+    gtk_widget_destroy(pBoxScore);
+}

@@ -6,6 +6,7 @@ TARGET_TITLE="Senku II"
 case $1 in
   fr) country="LANGUAGE=fr_FR.UTF-8" ;;
   en) country="LANGUAGE=en_US.UTF-8" ;;
+  es) country="LANGUAGE=es_ES.UTF-8" ;;
   *) echo "Usage: $0 fr|en, english by default" ; 
     country="LANGUAGE=en_US.UTF-8" ;;
 esac

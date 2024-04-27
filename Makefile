@@ -1,7 +1,7 @@
 # makefile de senku // Le Kiwi
 PROG = senku2
 
-CC = gcc
+CC = gcc -g
 # gcc
 #pour gcc
 CFLAGS =  -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o
