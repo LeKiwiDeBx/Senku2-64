@@ -922,6 +922,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                         scoreSetRemainingPeg(remainingPeg);
                         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
                         gtk_widget_set_state_flags(pButtonUndo, GTK_STATE_FLAG_INSENSITIVE, TRUE);
+                        gtk_label_set_label(GTK_LABEL(plbComments), NO_MORE_MOVE);
                         g_timer_destroy(timerSelection);
                         if (handleTimeout)
                         {

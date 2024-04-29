@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>senku</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <style>
+
+
+/*
+Based on Minimal CSS (minimalcss.com) under the MIT license.
+*/
+
+/* Reset */
+* { margin: 0; padding: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/* Layout */
+body { font: 14px/20px -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+.container { position: relative; max-width: 90%; margin: 0 auto; }
+
+/* Typography */
+a { color: #105CB6; text-decoration: none; }
+a:hover, a:focus { color: #105CB6; text-decoration: underline; }
+a:active { color: #105CB6; }
+
+h1 { font-size: 24px; line-height: 20px; margin: 10px 0; }
+h2 { font-size: 20px; line-height: 20px; margin: 10px 0; }
+h3 { font-size: 16px; line-height: 20px; margin: 10px 0; }
+h4 { font-size: 14px; line-height: 20px; margin: 10px 0; }
+h5 { font-size: 12px; line-height: 20px; margin: 10px 0; }
+h5 { font-size: 10px; line-height: 20px; margin: 10px 0; }
+
+p { margin-bottom: 10px; }
+
+.float-left     { float: left; }
+.float-right    { float: right; }
+img.float-left  { float: left; margin: 0 20px 20px 0; }
+img.float-right { float: right; margin: 0 0 20px 20px; }
+img.center      { margin: 0 auto; display: block; }
+
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* List */
+ul { list-style-position:inside; }
+ol { list-style-position:inside; }
+
+/* Table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th { font-weight: bold; }
+tfoot { font-style: italic; }
+
+/* Metadata part */
+
+.metadata {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 90%;
+}
+table.metadata td {
+  padding-right: 20px;
+}
+
+.stats {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+.graph {
+  width: 100%;
+}
+.graph div { float: left; }
+.graph div:first-child { border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
+.graph div:last-child { border-top-right-radius: 3px; border-bottom-right-radius: 3px; }
+.legend {
+  font-size: smaller;
+  padding-top: 12px;
+  text-align: center;
+}
+
+/* Translations */
+table.translations {
+  width: 100%;
+  table-layout: fixed;
+}
+table.translations th, table.translations td {
+  padding: 5px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #F1F1F1;
+}
+table.translations th {
+  text-align: left;
+}
+table.translations th:first-child, table.translations td:first-child { padding-left: 0; }
+table.translations th:last-child, table.translations td:last-child { padding-right: 0; }
+
+.with-comments td {
+  border-bottom: none !important;
+}
+tr.comments div {
+  float: left;
+  max-width: 90%;
+  font-size: smaller;
+}
+tr.comments div p:last-child { margin-bottom: 0; }
+tr.comments td { padding-top: 0; }
+
+.id {
+  font-size: smaller;
+}
+
+.msgctxt {
+  font-size: smaller;
+  border-radius: 2px;
+  padding: 2px 4px;
+  margin-right: 4px;
+}
+
+
+/* Colors */
+
+body { background-color: #fff; color: #333; }
+
+.percent-done    { background-color: rgb(146, 236, 106); height: 10px; }
+.percent-fuzzy   { background-color: rgb(255, 149, 0); height: 10px; }
+.percent-untrans { background-color: #F1F1F1; height: 10px; }
+.legend          { color: #aaa; }
+.id              { color: #aaa; }
+tr.comments div  { color: #aaa; }
+.fuzzy .tra      { color: rgb(230, 134, 0); }
+
+.msgctxt         { color: rgb(70, 109, 137); background-color: rgb(217, 232, 242); }
+
+
+@media (prefers-color-scheme: dark) {
+    body             { background-color: rgb(45, 42, 41); color: #eee; }
+    .percent-untrans { background-color: rgba(255, 255, 255, 0.3); }
+    .legend          { color: rgba(255, 255, 255, 0.6); }
+    .id              { color: rgba(255, 255, 255, 0.6); }
+    tr.comments div  { color: rgba(255, 255, 255, 0.6); }
+    .fuzzy .tra      { color: rgb(253, 178, 72); }
+    .msgctxt         { color: rgb(180, 222, 254); background-color: rgba(67, 94, 147, 0.6); }
+    table.translations th, table.translations td { border-bottom: 1px solid #333; }
+}
+
+
+  </style>
+</head>
+<body>
+<div class='container'>
+<table class='metadata'>
+<tr><td>Projet :</td><td>senku</td></tr>
+<tr><td>Langue :</td><td>espagnol</td></tr>
+</table>
+<div class='stats'>
+  <div class='graph'>
+    <div class='percent-done' style='width: 100%'>&nbsp;</div>
+  </div>
+  <div class='legend'>Traduit : 41 de 41 (100 %)  </div>
+</div>
+<table class='translations'>
+  <thead>
+    <tr>
+      <th>Texte original — anglais</th>
+      <th>Traduction — espagnol</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class='i'>
+<td class='src'  lang='en'>
+Senku (GTK+3.22) 2.2.0 Beta
+<br>
+<br>[°} LeKiwiDeBx
+<br>
+<br>Copyright (C) 2016-2024 GNU GPLv3.</td>
+<td class='tra'  lang='es'>
+Senku (GTK+3.22) 2.2.0 Beta
+<br>
+<br>[°} LeKiwiDeBx
+<br>
+<br>Copyright (C) 2016-2024 GNU GPLv3.</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Shapes choice</td>
+<td class='tra'  lang='es'>
+Selección de formas</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No more move!</td>
+<td class='tra'  lang='es'>
+¡Nada se mueve!</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Nothing to [Undo]</td>
+<td class='tra'  lang='es'>
+No hay nada que [deshacer]</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+[Undo] the previous move</td>
+<td class='tra'  lang='es'>
+[Deshacer] la jugada anterior</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Scoring</td>
+<td class='tra'  lang='es'>
+Puntuación</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Senku 2.2.0 Beta</td>
+<td class='tra'  lang='es'>
+Senku 2.2.0 Beta [es es.po]</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Bonus</td>
+<td class='tra'  lang='es'>
+Puntos extra</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Pegs</td>
+<td class='tra'  lang='es'>
+Piezas</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Time</td>
+<td class='tra'  lang='es'>
+Tiempo</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+[°} LeKiwiDeBx</td>
+<td class='tra'  lang='es'>
+[°} LeKiwiDeBx</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Initializing ...</td>
+<td class='tra'  lang='es'>
+Inicialización ...</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+New Game</td>
+<td class='tra'  lang='es'>
+Nuevo Juego</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Undo</td>
+<td class='tra'  lang='es'>
+Deshacer</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Score</td>
+<td class='tra'  lang='es'>
+Puntuación</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Rotate Left</td>
+<td class='tra'  lang='es'>
+Rotar Izquierda</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Rotate Right</td>
+<td class='tra'  lang='es'>
+Rotar Derecha</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Quit</td>
+<td class='tra'  lang='es'>
+Salir</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+English</td>
+<td class='tra'  lang='es'>
+Inglés</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+German</td>
+<td class='tra'  lang='es'>
+Alemán</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Diamond</td>
+<td class='tra'  lang='es'>
+Diamante</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Senku Shapes</td>
+<td class='tra'  lang='es'>
+Formas Senku</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Cancel</td>
+<td class='tra'  lang='es'>
+Cancelar</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Do you Really wish to Quit Senku ?</td>
+<td class='tra'  lang='es'>
+¿Está seguro de que desea salir de Senku?</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Confirm QUIT</td>
+<td class='tra'  lang='es'>
+Confirmar SALIDA</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+
+<br>Congratulations, </td>
+<td class='tra'  lang='es'>
+
+<br>Felicitades, </td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Username</td>
+<td class='tra'  lang='es'>
+Nombre de usuario</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Saving score</td>
+<td class='tra'  lang='es'>
+Puntuación salvada</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+
+<br>		Yeaah!  You're a real SENKU</td>
+<td class='tra'  lang='es'>
+
+<br>		¡Sí!  Eres un verdadero SENKU</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+
+<br>		The victory is imminent!</td>
+<td class='tra'  lang='es'>
+
+<br>		¡La victoria es inminente!</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+
+<br>		Nobody is perfect :)</td>
+<td class='tra'  lang='es'>
+
+<br>		Nadie es perfecto :)</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+you're number %d in topmost!
+<br>%s</td>
+<td class='tra'  lang='es'>
+¡eres el número %d en topmost!
+<br>%s</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Register</td>
+<td class='tra'  lang='es'>
+Guardar</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+RANK</td>
+<td class='tra'  lang='es'>
+CLASIFICACIÓN</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+PLAYER</td>
+<td class='tra'  lang='es'>
+JUGADOR</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+PEG</td>
+<td class='tra'  lang='es'>
+PIEZA</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+SCORE</td>
+<td class='tra'  lang='es'>
+PUNTUACIÓN</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+SHAPE</td>
+<td class='tra'  lang='es'>
+FORMA</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Close</td>
+<td class='tra'  lang='es'>
+Cerrar</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+Unknown</td>
+<td class='tra'  lang='es'>
+Desconocido</td>
+</tr>
+<tr class='i'>
+<td class='src'  lang='en'>
+No name</td>
+<td class='tra'  lang='es'>
+Sin nombre</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: senku\n"
 "POT-Creation-Date: 2024-04-27 16:47+0200\n"
-"PO-Revision-Date: 2024-04-27 16:48+0200\n"
+"PO-Revision-Date: 2024-04-29 14:18+0200\n"
 "Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
 "Language-Team: LeKiwiDeBx\n"
 "Language: es\n"
@@ -38,15 +38,15 @@ msgstr "Selección de formas"
 
 #: board.c:66
 msgid "No more move!"
-msgstr "¡No te muevas!"
+msgstr "¡No hay más movimiento!"
 
 #: board.c:67
 msgid "Nothing to [Undo]"
-msgstr "Nada que [Deshacer]"
+msgstr "No hay nada que [deshacer]"
 
 #: board.c:68
 msgid "[Undo] the previous move"
-msgstr "[Deshacer] la jugada anterior"
+msgstr "[Deshacer] el movimiento anterior"
 
 #: board.c:70
 msgid "Scoring"
@@ -58,11 +58,11 @@ msgstr "Senku 2.2.0 Beta [es es.po]"
 
 #: board.c:76
 msgid "Bonus"
-msgstr "Bonificación"
+msgstr "Puntos extra"
 
 #: board.c:77
 msgid "Pegs"
-msgstr "Clavijas"
+msgstr "Piezas"
 
 #: board.c:78
 msgid "Time"
@@ -74,7 +74,7 @@ msgstr "[°} LeKiwiDeBx"
 
 #: board.c:405
 msgid "Initializing ..."
-msgstr "Nicializando ..."
+msgstr "Inicialización ..."
 
 #: board.c:499 board.c:532
 msgid "New Game"
@@ -90,11 +90,11 @@ msgstr "Puntuación"
 
 #: board.c:499
 msgid "Rotate Left"
-msgstr "Rotar izquierda"
+msgstr "Girar a la Izquierda"
 
 #: board.c:499
 msgid "Rotate Right"
-msgstr "Rotar derecha"
+msgstr "Girar a la Derecha"
 
 #: board.c:499 board.c:534
 msgid "Quit"
@@ -122,11 +122,11 @@ msgstr "Cancelar"
 
 #: board.c:572
 msgid "Do you Really wish to Quit Senku ?"
-msgstr "¿Realmente deseas renunciar a Senku?"
+msgstr "¿Está seguro de que desea salir de Senku?"
 
 #: board.c:573
 msgid "Confirm QUIT"
-msgstr "Confirmar SALIR"
+msgstr "Confirmar SALIDA"
 
 #: board.c:1197
 msgid ""
@@ -142,7 +142,7 @@ msgstr "Nombre de usuario"
 
 #: board.c:1200
 msgid "Saving score"
-msgstr "Guardar puntuación"
+msgstr "Puntuación salvada"
 
 #: board.c:1203
 msgid ""
@@ -179,7 +179,7 @@ msgstr ""
 
 #: board.c:1218
 msgid "Register"
-msgstr "Regístro"
+msgstr "Guardar"
 
 #: board.c:1293
 msgid "RANK"
@@ -191,7 +191,7 @@ msgstr "JUGADOR"
 
 #: board.c:1293
 msgid "PEG"
-msgstr "PEG"
+msgstr "PIEZA"
 
 #: board.c:1293
 msgid "SCORE"
@@ -207,7 +207,7 @@ msgstr "Cerrar"
 
 #: matrix.c:137 score.c:278
 msgid "Unknown"
-msgstr "Desconocida"
+msgstr "Desconocido"
 
 #: score.c:20
 msgid "No name"
