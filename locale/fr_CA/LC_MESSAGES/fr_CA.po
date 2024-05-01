@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: senku\n"
-"POT-Creation-Date: 2024-04-27 16:23+0200\n"
-"PO-Revision-Date: 2024-04-27 16:24+0200\n"
+"POT-Creation-Date: 2024-04-29 20:27+0200\n"
+"PO-Revision-Date: 2024-04-29 20:27+0200\n"
 "Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
 "Language-Team: LeKiwiDeBx\n"
 "Language: fr_CA\n"
@@ -123,70 +123,70 @@ msgstr ""
 msgid "Confirm QUIT"
 msgstr ""
 
-#: board.c:1197
+#: board.c:1198
 msgid ""
 "\n"
 "Congratulations, "
 msgstr ""
 
-#: board.c:1198
+#: board.c:1199
 msgid "Username"
 msgstr ""
 
-#: board.c:1200
+#: board.c:1201
 msgid "Saving score"
 msgstr ""
 
-#: board.c:1203
+#: board.c:1204
 msgid ""
 "\n"
 "\t\tYeaah!  You're a real SENKU"
 msgstr ""
 
-#: board.c:1205
+#: board.c:1206
 msgid ""
 "\n"
 "\t\tThe victory is imminent!"
 msgstr ""
 
-#: board.c:1207
+#: board.c:1208
 msgid ""
 "\n"
 "\t\tNobody is perfect :)"
 msgstr ""
 
-#: board.c:1208
+#: board.c:1209
 #, c-format
 msgid ""
 "you're number %d in topmost!\n"
 "%s"
 msgstr ""
 
-#: board.c:1218
+#: board.c:1219
 msgid "Register"
 msgstr ""
 
-#: board.c:1293
+#: board.c:1294
 msgid "RANK"
 msgstr ""
 
-#: board.c:1293
+#: board.c:1294
 msgid "PLAYER"
 msgstr ""
 
-#: board.c:1293
+#: board.c:1294
 msgid "PEG"
 msgstr ""
 
-#: board.c:1293
+#: board.c:1294
 msgid "SCORE"
 msgstr ""
 
-#: board.c:1293
+#: board.c:1294
 msgid "SHAPE"
 msgstr ""
 
-#: board.c:1339
+#: board.c:1340
 msgid "Close"
 msgstr ""
 

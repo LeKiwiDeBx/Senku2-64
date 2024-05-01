@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: senku\n"
-"POT-Creation-Date: 2024-04-04 20:37+0200\n"
-"PO-Revision-Date: 2024-04-27 15:02+0200\n"
+"POT-Creation-Date: 2024-04-29 20:27+0200\n"
+"PO-Revision-Date: 2024-04-29 20:27+0200\n"
 "Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
 "Language-Team: LeKiwiDeBx\n"
 "Language: fr_FR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: _;N_;__;TRANSLATORS:\n"
+"X-Poedit-KeywordsList: _;N_;Q_;NC_;C_;__;TRANSLATORS:\n"
 "X-Poedit-SearchPath-0: timer.h\n"
 "X-Poedit-SearchPath-1: timer.c\n"
 "X-Poedit-SearchPath-2: score.h\n"
@@ -27,7 +27,7 @@ msgstr ""
 "X-Poedit-SearchPath-11: board.h\n"
 "X-Poedit-SearchPath-12: board.c\n"
 
-#: board.c:55
+#: board.c:52
 msgid ""
 "Senku (GTK+3.22) 2.2.0 Beta\n"
 "\n"
@@ -41,103 +41,103 @@ msgstr ""
 "\n"
 "Copyright (C) 2016-2024 GNU GPLv3."
 
-#: board.c:56
+#: board.c:53
 msgid "Shapes choice"
 msgstr "Choix des figures"
 
-#: board.c:69
+#: board.c:66
 msgid "No more move!"
 msgstr "Plus rien ne bouge!"
 
-#: board.c:70
+#: board.c:67
 msgid "Nothing to [Undo]"
 msgstr "Rien à [défaire]"
 
-#: board.c:71
+#: board.c:68
 msgid "[Undo] the previous move"
 msgstr "[défait] le précédent mouvement"
 
-#: board.c:73
+#: board.c:70
 msgid "Scoring"
 msgstr "Résultats"
 
-#: board.c:74
+#: board.c:71
 msgid "Senku 2.2.0 Beta"
 msgstr "Senku 2.2.0 Beta [fr senku.po]"
 
-#: board.c:79
+#: board.c:76
 msgid "Bonus"
 msgstr "Bonus"
 
-#: board.c:80
+#: board.c:77
 msgid "Pegs"
 msgstr "Pions"
 
-#: board.c:81
+#: board.c:78
 msgid "Time"
 msgstr "Temps"
 
-#: board.c:82
+#: board.c:79
 msgid "[°} LeKiwiDeBx"
 msgstr "[°} LeKiwiDeBx"
 
-#: board.c:460
+#: board.c:405
 msgid "Initializing ..."
 msgstr "Initialisation ..."
 
-#: board.c:554 board.c:587
+#: board.c:499 board.c:532
 msgid "New Game"
 msgstr "Nouveau Jeu"
 
-#: board.c:554
+#: board.c:499
 msgid "Undo"
 msgstr "Défaire"
 
-#: board.c:554
+#: board.c:499
 msgid "Score"
 msgstr "Résultat"
 
-#: board.c:554
+#: board.c:499
 msgid "Rotate Left"
 msgstr "Tourne Gauche"
 
-#: board.c:554
+#: board.c:499
 msgid "Rotate Right"
 msgstr "Tourne Droite"
 
-#: board.c:554 board.c:589
+#: board.c:499 board.c:534
 msgid "Quit"
 msgstr "Quitter"
 
-#: board.c:580 matrix.c:123
+#: board.c:525 matrix.c:137
 msgid "English"
 msgstr "Anglais"
 
-#: board.c:581 matrix.c:123
+#: board.c:526 matrix.c:137
 msgid "German"
 msgstr "Allemand"
 
-#: board.c:582 matrix.c:123
+#: board.c:527 matrix.c:137
 msgid "Diamond"
 msgstr "Diamant"
 
-#: board.c:584
+#: board.c:529
 msgid "Senku Shapes"
 msgstr "Formes Senku"
 
-#: board.c:588
+#: board.c:533
 msgid "Cancel"
 msgstr "Annuler"
 
-#: board.c:899
+#: board.c:572
 msgid "Do you Really wish to Quit Senku ?"
 msgstr "Veux-tu vraiment quitter Senku?"
 
-#: board.c:900
+#: board.c:573
 msgid "Confirm QUIT"
 msgstr "Confirmez Quitter"
 
-#: board.c:1430
+#: board.c:1198
 msgid ""
 "\n"
 "Congratulations, "
@@ -146,15 +146,15 @@ msgstr ""
 " \n"
 "Félicitations, "
 
-#: board.c:1431
+#: board.c:1199
 msgid "Username"
 msgstr "Patronyme"
 
-#: board.c:1433
+#: board.c:1201
 msgid "Saving score"
 msgstr "Sauvegarde du résultat"
 
-#: board.c:1436
+#: board.c:1204
 msgid ""
 "\n"
 "\t\tYeaah!  You're a real SENKU"
@@ -162,7 +162,7 @@ msgstr ""
 "\n"
 "\t\\Waouh!  Tu es un vrai SENKU"
 
-#: board.c:1438
+#: board.c:1206
 msgid ""
 "\n"
 "\t\tThe victory is imminent!"
@@ -170,7 +170,7 @@ msgstr ""
 "\n"
 "\t\tLa victoire est proche!"
 
-#: board.c:1440
+#: board.c:1208
 msgid ""
 "\n"
 "\t\tNobody is perfect :)"
@@ -178,7 +178,7 @@ msgstr ""
 "\n"
 "\t\tPersonne n'est parfait :)"
 
-#: board.c:1441
+#: board.c:1209
 #, c-format
 msgid ""
 "you're number %d in topmost!\n"
@@ -187,35 +187,35 @@ msgstr ""
 "tu es numéro %d en tête de classement!\n"
 "%s"
 
-#: board.c:1451
+#: board.c:1219
 msgid "Register"
 msgstr "Enregistrer"
 
-#: board.c:1553
+#: board.c:1294
 msgid "RANK"
 msgstr "RANG"
 
-#: board.c:1553
+#: board.c:1294
 msgid "PLAYER"
 msgstr "JOUEUR"
 
-#: board.c:1553
+#: board.c:1294
 msgid "PEG"
 msgstr "PION"
 
-#: board.c:1553
+#: board.c:1294
 msgid "SCORE"
 msgstr "SCORE"
 
-#: board.c:1553
+#: board.c:1294
 msgid "SHAPE"
 msgstr "FORME"
 
-#: board.c:1599
+#: board.c:1340
 msgid "Close"
 msgstr "Fermer"
 
-#: matrix.c:123 score.c:247
+#: matrix.c:137 score.c:278
 msgid "Unknown"
 msgstr "Inconnu"
 

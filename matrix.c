@@ -157,6 +157,7 @@ int matrixLoad(int choice)
         currentMatrixOfBoard.id = choice;
         memcpy(matrixCopy, currentMatrixOfBoard.pShape, HOR_MAX * VER_MAX * sizeof(char));
         pMatrixLoad = matrixCopy;
+        currentMatrixOfBoard.nbMaxPeg = matrixCountRemainPeg();
         //		__displayMatrix(matrixCopy) ;
         return 1;
     }
@@ -347,6 +348,7 @@ int matrixCountRemainPeg()
     }
     return count;
 }
+
 /*
  * rotation de la matrice
  * switch row and column VER_MAX = 3 and HOR_MAX = 3

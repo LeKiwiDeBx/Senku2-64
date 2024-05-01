@@ -625,8 +625,8 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData)
     {
         gtk_label_set_label(GTK_LABEL(plbComments), _(currentMatrixOfBoard.name));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbComments), "matrix-name-label");
-        gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", 0));
-        gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
+        /*  gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_PEG]), g_strdup_printf("%3d", 0));
+         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label"); */
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_BONUS]), g_strdup_printf("%4.0lf", 0.0));
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_BONUS]), "value-values-label");
         gtk_label_set_label(GTK_LABEL(plbValuesValue[LABEL_TIME]), g_strdup_printf("%4d", 0));
@@ -635,6 +635,7 @@ void OnNewGame(GtkWidget *pWidget, gpointer pData)
         gtk_style_context_add_class(gtk_widget_get_style_context(plbValuesValue[LABEL_PEG]), "value-values-label");
         scoreResetBonusTimeScore();
         scoreSetRemainingPeg(matrixCountRemainPeg());
+
         printf("\nDEBUG :: 1 BonusTimeScore = %f\n", scoreGetBonusTimeScore());
         // timerSetStopTimer();
         // timerStopClock();
@@ -929,7 +930,7 @@ void OnSelect(GtkWidget *pWidget, GdkEvent *event, gpointer pData)
                             g_source_remove(handleTimeout);
                             g_timeout_add(TIMER_DELAY, _g_display_time, GINT_TO_POINTER(FALSE));
                         }
-                        if ((rank = scoreNew()))
+                        if ((rank = scoreNew(currentMatrixOfBoard.nbMaxPeg)))
                             _g_display_get_name(rank);
                         return;
                     }
@@ -1251,7 +1252,7 @@ void OnSetName(GtkWidget *pWidget, dataName *pData)
     int rank = pData->rang;
     const gchar *sName = gtk_entry_get_text(GTK_ENTRY(pData->pWidgetName));
     scoreSetNamePlayer(sName, rank);
-    ;
+
     scoreSetNameMatrix(g_strdup_printf("%10s", _(currentMatrixOfBoard.name)), rank);
     // pScore resultScore = (score *)malloc(SCORE_BEST_OF * sizeof(score));
     pScore resultScore = g_malloc(SCORE_BEST_OF * sizeof(score));

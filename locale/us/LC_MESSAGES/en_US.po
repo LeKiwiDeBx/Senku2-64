@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: senku\n"
-"POT-Creation-Date: 2024-04-04 20:40+0200\n"
-"PO-Revision-Date: 2024-04-27 14:56+0200\n"
+"POT-Creation-Date: 2024-04-29 20:27+0200\n"
+"PO-Revision-Date: 2024-04-29 20:27+0200\n"
 "Last-Translator: LeKiwiDeBx <LeKiwiDeBx@translate.org>\n"
 "Language-Team: LeKiwiDeBx\n"
 "Language: en_US\n"
@@ -14,10 +14,10 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: _;__;_N;TRANSLATORS:\n"
+"X-Poedit-KeywordsList: _;N_;NC_;C_;Q_;__;TRANSLATORS:\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: board.c:55
+#: board.c:52
 msgid ""
 "Senku (GTK+3.22) 2.2.0 Beta\n"
 "\n"
@@ -26,137 +26,173 @@ msgid ""
 "Copyright (C) 2016-2024 GNU GPLv3."
 msgstr ""
 
-#: board.c:56
+#: board.c:53
 msgid "Shapes choice"
 msgstr ""
 
-#: board.c:69
+#: board.c:66
 msgid "No more move!"
 msgstr ""
 
-#: board.c:70
+#: board.c:67
 msgid "Nothing to [Undo]"
 msgstr ""
 
-#: board.c:71
+#: board.c:68
 msgid "[Undo] the previous move"
 msgstr ""
 
-#: board.c:73
+#: board.c:70
 msgid "Scoring"
 msgstr ""
 
-#: board.c:74
+#: board.c:71
 msgid "Senku 2.2.0 Beta"
 msgstr "Senku 2.2.0 Beta [en_US]"
 
-#: board.c:79
+#: board.c:76
 msgid "Bonus"
 msgstr ""
 
-#: board.c:80
+#: board.c:77
 msgid "Pegs"
 msgstr ""
 
-#: board.c:81
+#: board.c:78
 msgid "Time"
 msgstr ""
 
-#: board.c:82
+#: board.c:79
 msgid "[°} LeKiwiDeBx"
 msgstr ""
 
-#: board.c:460
+#: board.c:405
 msgid "Initializing ..."
 msgstr ""
 
-#: board.c:580
-msgid "English"
-msgstr ""
-
-#: board.c:581
-msgid "German"
-msgstr ""
-
-#: board.c:582
-msgid "Diamond"
-msgstr ""
-
-#: board.c:584
-msgid "Senku Shapes"
-msgstr ""
-
-#: board.c:587
+#: board.c:499 board.c:532
 msgid "New Game"
 msgstr ""
 
-#: board.c:588
-msgid "Cancel"
+#: board.c:499
+msgid "Undo"
 msgstr ""
 
-#: board.c:589
+#: board.c:499
+msgid "Score"
+msgstr ""
+
+#: board.c:499
+msgid "Rotate Left"
+msgstr ""
+
+#: board.c:499
+msgid "Rotate Right"
+msgstr ""
+
+#: board.c:499 board.c:534
 msgid "Quit"
 msgstr ""
 
-#: board.c:899
+#: board.c:525 matrix.c:137
+msgid "English"
+msgstr ""
+
+#: board.c:526 matrix.c:137
+msgid "German"
+msgstr ""
+
+#: board.c:527 matrix.c:137
+msgid "Diamond"
+msgstr ""
+
+#: board.c:529
+msgid "Senku Shapes"
+msgstr ""
+
+#: board.c:533
+msgid "Cancel"
+msgstr ""
+
+#: board.c:572
 msgid "Do you Really wish to Quit Senku ?"
 msgstr ""
 
-#: board.c:900
+#: board.c:573
 msgid "Confirm QUIT"
 msgstr ""
 
-#: board.c:1430
+#: board.c:1198
 msgid ""
 "\n"
 "Congratulations, "
 msgstr ""
 
-#: board.c:1431
+#: board.c:1199
 msgid "Username"
 msgstr ""
 
-#: board.c:1433
+#: board.c:1201
 msgid "Saving score"
 msgstr ""
 
-#: board.c:1436
+#: board.c:1204
 msgid ""
 "\n"
 "\t\tYeaah!  You're a real SENKU"
 msgstr ""
 
-#: board.c:1438
+#: board.c:1206
 msgid ""
 "\n"
 "\t\tThe victory is imminent!"
 msgstr ""
 
-#: board.c:1440
+#: board.c:1208
 msgid ""
 "\n"
 "\t\tNobody is perfect :)"
 msgstr ""
 
-#: board.c:1441
+#: board.c:1209
 #, c-format
 msgid ""
 "you're number %d in topmost!\n"
 "%s"
 msgstr ""
 
-#: board.c:1451
+#: board.c:1219
 msgid "Register"
 msgstr ""
 
-#: board.c:1599
+#: board.c:1294
+msgid "RANK"
+msgstr ""
+
+#: board.c:1294
+msgid "PLAYER"
+msgstr ""
+
+#: board.c:1294
+msgid "PEG"
+msgstr ""
+
+#: board.c:1294
+msgid "SCORE"
+msgstr ""
+
+#: board.c:1294
+msgid "SHAPE"
+msgstr ""
+
+#: board.c:1340
 msgid "Close"
+msgstr ""
+
+#: matrix.c:137 score.c:278
+msgid "Unknown"
 msgstr ""
 
 #: score.c:20
 msgid "No name"
-msgstr ""
-
-#: score.c:247
-msgid "Unknown"
 msgstr ""

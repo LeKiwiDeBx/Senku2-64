@@ -49,10 +49,11 @@ static void __setScoreGame(int);
 // static void		__displaySetNamePlayer() ;
 // static void		__displaySetCalculateBonusElapseTimer(double bonus) ;
 
-int scoreNew()
+int scoreNew(int nbMaxPeg)
 {
     static int id = 0, ret = 0;
     inputScore.idScore = ++id;
+    inputScore.nbMaxPeg = nbMaxPeg;
     ret = __insertRecord(&inputScore);
     //	__displaySortScore(ret) ; //version terminal
     return ret;
@@ -200,6 +201,19 @@ __setRemainingPeg(int remainPeg)
 }
 
 static void
+__setNbMaxPeg(int maxPeg)
+{
+    if (maxPeg)
+        cursorScore->nbMaxPeg = maxPeg;
+}
+
+static int
+__getNbMaxPeg()
+{
+    return cursorScore->nbMaxPeg;
+}
+
+static void
 __setScoreGame(int scoreGame)
 {
     if (scoreGame)
@@ -258,15 +272,15 @@ __clean(const char *buffer, FILE *fp){
 static double
 __calculateScore(const int remainPeg, const double timeBonus)
 {
-    printf("\nDEBUG :: calculateScore remainPeg = %d timeBonus = %.2f\n", remainPeg, timeBonus);
+    int maxPegMatrix = __getNbMaxPeg();
+    printf("\nDEBUG :: calculateScore remainPeg = %d timeBonus = %.2f maxPegMatrix = %d\n", remainPeg, timeBonus, maxPegMatrix);
 
     const int pegFloorToCalc = 7, pointFactor = 1000;
     if (remainPeg < pegFloorToCalc)
     {
         printf("\nDEBUG :: calculateScore return = %.2f\n", ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus));
-        
+
         return ((double)pointFactor * ((pegFloorToCalc - 1) - remainPeg) + timeBonus);
-        
     }
     else
         return timeBonus;

@@ -24,6 +24,7 @@ typedef struct s_Score
     char namePlayer[MAX_CAR_NAME];
     char nameMatrix[MAX_CAR_NAME];
     int remainingPeg;
+    int nbMaxPeg;
     double bonusElapseTime;
     double scoreGame;
 } score;
@@ -32,7 +33,7 @@ typedef score tabScore[SCORE_BEST_OF];
 
 void scoreAdd();
 void scoreInit();
-int scoreNew();
+int scoreNew(int);
 void scoreSetTimeGame(int);
 void scoreSetCalculateBonusElapseTimer(double, const scoreTimer);
 double scoreGetBonusTimeScore();

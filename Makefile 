@@ -1,0 +1,37 @@
+[
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o main.o -c main.c `pkg-config --cflags --libs gtk+-3.0`",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/main.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o board.o -c board.c `pkg-config --cflags --libs gtk+-3.0`",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/board.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o matrix.o -c matrix.c `pkg-config --cflags --libs gtk+-3.0`",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/matrix.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o peg.o -c peg.c",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/peg.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o timer.o -c timer.c `pkg-config --cflags --libs gtk+-3.0`",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/timer.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o score.o -c score.c `pkg-config --cflags --libs gtk+-3.0`",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/score.c"
+    },
+    {
+        "command": "gcc -g -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-unused-function -Wno-char-subscripts -Wdeprecated-declarations -O3 -Wall -Wextra -o memento.o -c memento.c",
+        "directory": "/home/jean/Senku2-64",
+        "file": "/home/jean/Senku2-64/memento.c"
+    }
+]

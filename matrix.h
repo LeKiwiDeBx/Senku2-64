@@ -35,6 +35,7 @@ typedef struct s_matrixOfBoard
     int id;
     char *name;
     Matrix *pShape;
+    int nbMaxPeg;
 } matrixOfBoard;
 
 /**
